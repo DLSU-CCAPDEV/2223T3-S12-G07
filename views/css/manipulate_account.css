@@ -120,3 +120,10 @@ textarea{
     padding:15px;
     outline-width:16px;
 }
+
+#menu_icon{
+    background-image: url(../../assets/icons/menu.svg);
+    background-size: cover;
+    height:100px;
+    width:100px;
+}
