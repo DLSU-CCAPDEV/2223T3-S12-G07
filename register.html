@@ -1,7 +1,7 @@
 <!DOCtype html>
 <html>
     <head>
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="register.css">
         <title>Register Account</title>
     </head>
     <body>
@@ -12,8 +12,28 @@
             Create New Account
         </div>
         <div class ="mainForm">
-            <p>name</p>
-            <p>email</p>
+            <form>
+                <label for ="email">email</label><br>
+                <input type ="text" id ="email" name ="email"><br>
+                <label for ="password">password</label><br>
+                <input type ="text" id ="password" name ="password"><br>
+                <label for="confirmpassword">confirm password</label><br>
+                <input type="text" id="confirmpassword" name="confirmpassword"><br>
+                <label for ="username">username</label>
+                <input type ="text" id ="username" name ="username"><br>
+                <label for ="idnumber">id number</label>
+                <input type ="text" id ="idnumber" name ="idnumber"><br>
+                <label for ="contactnumber">contact number</label>
+                <input type ="text" id ="contactnumber" name ="contactnumber"><br>
+                <label for="firstname">first name</label>
+                <input type="text" id="firstname" name="firstname"><br>
+                <label for="lastname">last name</label>
+                <input type="text" id="lastname" name="lastname"><br>
+                <div class="center">
+                    <input type ="submit" value ="LOG IN"><br>
+                    <span class="regiser_login_footer">Already have an account? <a href="login.php">Log in</a></span>
+                </div>
+            </form>
         </div>
         
     </body>
