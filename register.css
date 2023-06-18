@@ -5,7 +5,7 @@ body{
     flex-direction: column;
     width:100%;
     background-color:#0D8828;
-    height: 2500px;
+    height: 100%;
 }
 a.link{
     color:#0D8828;
@@ -57,7 +57,7 @@ input[type=submit]{
     position:relative;
     top:-400px;
     width:100%;
-    height:1500px;
+    height:70%;
     z-index: 1;
 
 }
@@ -101,4 +101,16 @@ input[type='submit']{
 a {
     color:#0D8828;
     text-decoration:none;
+}
+
+label remember_me{
+    color:#797878;
+}
+.remember_text{
+    color:#797878;
+}
+input[type='checkbox']{
+    border-radius:100%;
+    margin:15px;
+    padding:15px;
 }
