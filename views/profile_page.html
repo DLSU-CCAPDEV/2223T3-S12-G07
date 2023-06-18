@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/pages_with_content.css">
+        <title>Profile Page</title>
+    </head>
+    <body>
+        <div class="page">
+            <div class="header">
+                <span class="animo_hub">AnimoHub</span>
+                <form id ="search">
+                <input type="text" placeholder="search AnimoHub" class="search_bar">
+                <input type="submit" value="Search" class="search_button">
+                </form>
+                <div class="profile_drop_down">
+                    <div class="profile_drop_down_interface">
+                        <div class="profile_picture_bubble"></div>
+                        <div class="user_identity">
+                            <p>John Doe</p>
+                            <p class="user_name">johnny26</p>
+                       </div>
+                    </div>
+                    <div class="profile_drop_down_options">
+                        <a href="editprofile.html">Edit</a>
+                        <a href="logout.html">Log Out</a>
+                    </div>
+                </div>
+        </div>
+        <div class ="lower_body">
+            <!--the nav_bar contains the links to home and trending-->
+            <div class="nav_bar">
+                <a href="home.html">Home</a><br>
+                <a href="trending.html">Trending</a>
+            </div>
+            <div class="main_body">
+                <!--profile_header consists of two rows-->
+                <div class="profile_header">
+                    <div class="cover_photo"></div>
+                    <div class="profile_details">
+                        <div class="profile_picture"></div>
+                        <div class="name">John Doe</div>
+                        <div class="edit"></div>
+                    </div>
+                    <hr id ="profile_header_break">
+                </div>
+                <div class="main_lower_body">
+                    <div class="profile_nav_bar">
+                        <a href="posts.html">Posts</a>
+                        <a href="comments.html">Comments</a>
+                        <a href="upvotes.html">Upvotes</a>
+                        <a href="downvotes.html">downvotes</a>
+                    </div>
+                    <div class="feed">
+                        <div class="about_me">
+                            <h3>About Me</h3>
+                            <hr>
+                            <p>Lorem ipsum dolor sit amet, 
+                                consectetur adipiscing elit. Fusce a scelerisque est. 
+                                Sed dictum cursus elit, at rhoncus felis blandit et. Etiam eget mauris justo. 
+                            </p>
+                        </div>
+                        <div class="create_posts">
+                            
+                            <form>
+                                <div class="profile_picture_bubble"></div>
+                                <input type="text" placeholder="What's on your mind?"><br>
+                                <input type="submit" value="POST">
+                            </form>
+                        </div>
+                        <div class="posts">
+                            <div class="posts_header">
+                                <div class="profile_picture_bubble"></div>
+                                <span class="user_name">John Doe</span>
+                            </div>
+                            <h3>Post Title</h3>
+                            <p>Lorem ipsum dolor sit amet, 
+                                consectetur adipiscing elit. Fusce a scelerisque est. 
+                                Sed dictum cursus elit, at rhoncus felis blandit et. Etiam eget mauris justo. 
+                                Lorem ipsum dolor sit amet, 
+                                onsectetur adipiscing elit. Fusce a scelerisque est. 
+                                Sed dictum cursus elit, at rhoncus felis blandit et. Etiam eget mauris justo. 
+                        
+                            </p>
+                            <div class="posts_footer">
+                                <div class="comment_icon"></div>
+                                <span class="actions">comment</span>
+                                <div class="upvote_icon"></div>
+                                <span class="actions">upvote</span>
+                                <div class="downvote_icon"></div>
+                                <span class="actions">downvote</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </body>
+</html>
