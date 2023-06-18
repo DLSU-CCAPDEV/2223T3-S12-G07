@@ -127,3 +127,11 @@ textarea{
     height:100px;
     width:100px;
 }
+
+#home_icon{
+    background-image: url(../../assets/icons/home.svg);
+    background-size: cover;
+    height:100px;
+    width:100px;
+   
+}
