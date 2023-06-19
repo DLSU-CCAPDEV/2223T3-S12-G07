@@ -2,9 +2,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/pages_with_content.css">
+        <script type="text/javascript" src="../scripts/posts.js"></script>
         <title>Profile Page</title>
     </head>
-    <body>
+    <body onload="render_posts();">
         <div class="page">
             <div class="header">
                 <span class="animo_hub">AnimoHub</span>
@@ -68,6 +69,9 @@
                                 <input type="submit" value="POST">
                                 </a>
                             </form>
+                        </div>
+                        <div class="posts" id="new_post">
+                            <!--this is where the posts will be rendered-->
                         </div>
                         <div class="posts">
                             <div class="posts_header">

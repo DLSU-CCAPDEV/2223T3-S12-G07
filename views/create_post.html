@@ -3,8 +3,9 @@
     <head>
         <title>Create a post</title>
         <link rel="stylesheet" type="text/css" href="./css/pages_with_content.css">
+        <script type="text/javascript" src="../scripts/posts.js"></script>
     </head>
-    <body>
+    <body onload="submit_post_form()">
         <div class="page">
             <div class="header">
                 <span class="animo_hub">AnimoHub</span>
@@ -34,7 +35,7 @@
                 <div class="main_body post_creation">
                     <div class="feed create_post_feed">
                         <div class="white_box create_post_whitebox">
-                            <form id="create_post_form" class="flex_col">
+                            <form id="create_post_form" action="profile_page.html" class="flex_col">
                                 <div class="flex_row center_align">
                                     <div class="profile_picture_bubble"></div>
                                     <div class="user_identity">
@@ -43,8 +44,8 @@
                                     </div>  
                                 </div>
                                 <hr>
-                                <textarea placeholder="title" id="post_create_title"></textarea>
-                                <textarea placeholder="content" id="post_create_content"></textarea>
+                                <textarea placeholder="title" id="post_create_title" name="post_create_title"></textarea>
+                                <textarea placeholder="content" id="post_create_content" name="post_create_content"></textarea>
                                 <input type="submit" value="Post" class="post_button">
                             </form>
                         </div>

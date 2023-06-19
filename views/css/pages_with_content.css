@@ -4,9 +4,6 @@ body{
     font-size:24px;
     display:flex;
     flex-direction: column;
-    width:100%;
-    height: 100%;
-    
 }
 .post{
     width:100%;
@@ -23,9 +20,10 @@ body{
     width:100%;
     height:50px;
     outline:1px solid #0D8828;
-    padding:15px;
+    padding: 0px 15px 15px 10px;
     position:sticky;
     top:0px;
+    left:0px;
     z-index:2;
 }
 .lower_body{
@@ -46,6 +44,7 @@ body{
     background-color:#FFFFFF;
     position:sticky;
     top:70px;
+    left:0px;
 }
 .nav_bar a{
     margin:15px;
@@ -341,11 +340,13 @@ a{
     outline: 1px solid #797878;
     margin:10px;
     padding:10px;
+    border-radius: 15px;
 }
 textarea{
     margin:15px;
     padding:10px;
     width:80%;
+    border-radius:15px;
 }
 .post_creation{
     width:60%;
@@ -369,4 +370,7 @@ hr{
     z-index:1;
     width:100%;
     color:#797878;
+}
+#new_post{
+    display:none;
 }
