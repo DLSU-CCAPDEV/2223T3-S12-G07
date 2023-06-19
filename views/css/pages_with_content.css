@@ -19,10 +19,12 @@ body{
     align-items: center;
     background-color:#FFFFFF;
     width:100%;
-    height:10%;
+    height:50px;
     outline:1px solid #0D8828;
     padding:15px;
-    position:relative;
+    position:sticky;
+    top:0px;
+    z-index:1;
 }
 .lower_body{
     display:flex;
@@ -33,17 +35,20 @@ body{
 }
 .nav_bar{
     outline: 1px solid #0D8828;
-    dispaly:flex;
+    display:flex;
     flex-direction: column;
     align-items: center;
     color:#797878;
-    text-size:24px;
-    height:100%;
+    font-size:24px;
+    height:500px;
     background-color:#FFFFFF;
+    position:sticky;
+    top:70px;
 }
 .nav_bar a{
     margin:15px;
     padding:15px;
+    color:#797878;
 }
 .main_body{
     display:flex;
@@ -54,7 +59,7 @@ body{
     padding:30px;
 }
 .profile_header{  
-    display:flex
+    display:flex;
     flex-direction:column;
     width:100%;
 }
@@ -103,7 +108,9 @@ a{
 }
 #profile_header_break{
     position:relative;
-    top:-100px;
+    z-index:1;
+    outline: 2px;
+    color:#FFFFFF;
 }
 .feed{
     display:flex;
@@ -151,7 +158,7 @@ form{
 .posts{
     width:600px;
     background-color: #FFFFFF;
-    disply:flex;
+    display:flex;
     flex-direction: column;
     margin:10px;
     padding:15px;
@@ -163,9 +170,8 @@ form{
     align-items: center;
 }
 .user_name{
-    margin:10px;
-    padding:10px;
     color:#797878;
+    font-size:11px;
 }
 .posts_footer{
     display:flex;
@@ -205,35 +211,59 @@ form{
     color:#0D8828;
 }
 input[type=text] .search_bar{
-    backgroud-color:F9F7F7;
+    background-color:F9F7F7;
     border-radius:50%;
     width:500px;
 }
 .profile_drop_down{
     display:inline-block;
     position:relative;
+    outline: 1px solid #D9d9d9;
+    padding:2px;
+    height:45px;
+    width:150px;
 
 }
 .profile_drop_down_interface{
     display:flex;
+    align-items: center;
+    font-size:16px;
+    height:100%;
+    width:100%;
+    padding:2px;
+}
+.profile_drop_down_interface .profile_picture_bubble{
+    height:32px;
+    width:32px;
 }
 .profile_drop_down_options{
-    margin:10px;
+    
     padding:10px;
     display:none;
     position:absolute;
     color: #FFFFFF;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 2;
+    width:100%;
 }
 .profile_drop_down_options a{
     color:#797878;
     margin:10px;
-    padding:10px;
+    padding-bottom:10px;
+    font-size:12px;
+    display:block;
 }
 .profile_drop_down_options a:hover{
     border-bottom: 1px solid #797878;
 }
 .profile_drop_down:hover .profile_drop_down_options{
     display:block;
+}
+.user_identity{
+    margin:5px;
+    padding:5px;
+    display:flex;
+    flex-direction: column;
+    align-content:center;
+    
 }
