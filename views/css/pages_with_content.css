@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
 body{
     font-family:Inter,sans-serif;
     font-size:24px;
@@ -5,6 +6,7 @@ body{
     flex-direction: column;
     width:100%;
     height: 100%;
+    
 }
 .post{
     width:100%;
@@ -37,7 +39,7 @@ body{
     outline: 1px solid #0D8828;
     display:flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     color:#797878;
     font-size:24px;
     height:500px;
@@ -50,6 +52,9 @@ body{
     padding:15px;
     color:#797878;
 }
+.nav_bar a:hover{
+    color:#403D3D;
+}
 .main_body{
     display:flex;
     flex-direction: column;
@@ -57,6 +62,8 @@ body{
     background-color: #d9d9d9;
     margin:30px;
     padding:30px;
+    position:relative;
+    left:75px;
 }
 .profile_header{  
     display:flex;
@@ -108,9 +115,11 @@ a{
 }
 #profile_header_break{
     position:relative;
+    top:-100px;
     z-index:1;
     outline: 2px;
     color:#FFFFFF;
+    width:100%;
 }
 .feed{
     display:flex;
@@ -146,8 +155,18 @@ a{
 }
 form{
     display:flex;
-    justify-content: space-evenly;
+    justify-content: left;
     align-items: center;
+    height:100%;
+}
+form a{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    width:80%;
+}
+form a input[type=text]{
+    width:70%;
 }
 .profile_picture_bubble{
     height:48px;
@@ -182,6 +201,7 @@ form{
 .actions{
     margin:5px;
     padding:5px;
+    width:60px;
 }
 .comment_icon{
     background-image: url(../../assets/icons/comment_icon.svg);
@@ -205,13 +225,14 @@ form{
     margin:5px;
 }
 .animo_hub{
-    font-family:'Montserrat', sans-serif;
+    font-family:Montserrat, sans-serif;
     font-size:36;
-    font-weight:bolder;
+    font-weight:1000;
     color:#0D8828;
+
 }
 input[type=text] .search_bar{
-    background-color:F9F7F7;
+    background-color:#F9F7F7;
     border-radius:50%;
     width:500px;
 }
@@ -222,7 +243,9 @@ input[type=text] .search_bar{
     padding:2px;
     height:45px;
     width:150px;
-
+}
+.profile_drop_down:hover{
+    outline:1px solid #403D3D;
 }
 .profile_drop_down_interface{
     display:flex;
@@ -231,16 +254,16 @@ input[type=text] .search_bar{
     height:100%;
     width:100%;
     padding:2px;
+    position:relative;
 }
 .profile_drop_down_interface .profile_picture_bubble{
     height:32px;
     width:32px;
 }
 .profile_drop_down_options{
-    
-    padding:10px;
     display:none;
     position:absolute;
+    right:0;
     color: #FFFFFF;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 2;
@@ -252,6 +275,7 @@ input[type=text] .search_bar{
     padding-bottom:10px;
     font-size:12px;
     display:block;
+    width:100%;
 }
 .profile_drop_down_options a:hover{
     border-bottom: 1px solid #797878;
@@ -266,4 +290,24 @@ input[type=text] .search_bar{
     flex-direction: column;
     align-content:center;
     
+}
+a{
+    text-decoration:none;
+}
+.posts_footer a{
+    color:#797878;
+    width:110px;
+    margin:5px;
+    padding:5px;
+    display:flex;
+    align-items: center;
+}
+.posts_footer a:hover{
+    border-bottom: 1px solid #797878;
+}
+.profile_picture_bubble:hover{
+    outline:1px solid #797878;
+}
+.profile_picture:hover{
+    outline:1px solid #797878;
 }

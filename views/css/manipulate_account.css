@@ -1,4 +1,5 @@
 body{
+    @import: url('https://fonts.googleapis.com/css2?family=Inter&family=Montserrat&display=swap');
     font-family:Inter,sans-serif;
     font-size:24px;
     display:flex;
@@ -51,7 +52,6 @@ input[type=submit]{
     border-radius:50px;
     background-color:#FFFFFF;
     display:flex;
-
     align-items: center;
     flex-direction: column;
     position:relative;
