@@ -70,7 +70,7 @@
                                 </a>
                             </form>
                         </div>
-                        <div class="posts" id="new_post">
+                        <div id="new_post">
                             <!--this is where the posts will be rendered-->
                         </div>
                         <div class="posts">
@@ -89,12 +89,20 @@
                             </p>
                             <div class="posts_footer">
                                 <!-- this buttons leading to login.html is temporary-->
-                                <a href="login.html"><div class="comment_icon"></div>
-                                <div class="actions">comment</div></a>
+                                <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+                                <div class="actions" >comment</div></a>
                                 <a href="login.html"><div class="upvote_icon"></div>
                                 <div class="actions">upvote</div></a>
                                 <a href="login.html"><div class="downvote_icon"></div>
                                 <div class="actions">downvote</div></a>
+                            </div>
+                            <div class="comment_section">
+                                <div class="create_comment">
+                                    <form id="create_comment_form">
+                                        <textarea placeholder="Write a comment..." id="create_comment_input"></textarea>
+                                        <input type="submit" value="post" id="create_comment_button" onsubmit="post_comment">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
