@@ -418,7 +418,7 @@ hr{
     display:none;
 }
 .login_button{
-    display:flex;
+    display:grid;
     justify-content: center;
     align-items: center;
     flex-direction: column;
