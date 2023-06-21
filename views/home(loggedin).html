@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+    <head>
+        <title>Home Page</title>
+        <link rel="stylesheet" href="./css/pages_with_content.css">
+    </head>
+
+    <body>
+        <div class="page">
+            <div class="header">
+                  <span class="animo_hub">AnimoHub</span>
+                  <form id ="search">
+                  <input type="text" placeholder="search AnimoHub" class="search_bar">
+                  <input type="submit" value="Search" class="search_button">
+                  </form>
+                  <div class="profile_drop_down">
+                      <div class="profile_drop_down_interface">
+                          <div class="profile_picture_bubble"></div>
+                          <div class="user_identity">
+                              John Doe
+                              <p class="user_name">@johnny26</p>
+                         </div>
+                      </div>
+                      <div class="profile_drop_down_options">
+                          <a href="editprofile.html">Edit</a>
+                          <a href="login.html">SignOut</a>
+                      </div>
+                  </div>
+            </div>
+          <div class ="lower_body">
+              <!--the nav_bar contains the links to home and trending-->
+              <div class="nav_bar">
+                  <a href="home.html">Home</a><br>
+                  <a href="trending.html">Trending</a>
+              </div>
+                <!--Reusing same class since they should practically look similar-->
+                <div class="main_body post_creation">
+                    <div class="feed create_post_feed">
+                        <div class="white_box create_post_whitebox">
+                            <!--Sample post content-->
+                            <div class="flex_row left_align">
+                                <div class="profile_picture_bubble"></div>
+                                <div class="user_identity">
+                                    John Doe
+                                    <p class="user_name">@johnny26</p>
+                                </div>
+                                <div class="content">
+                                    <!--Flex box with post content-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+      </div>
+    </body>
+</html>
