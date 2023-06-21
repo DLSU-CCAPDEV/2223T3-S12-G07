@@ -375,6 +375,9 @@ a{
 .center_align{
     align-items: center;
 }
+.left_align{
+    align-items: left;
+}
 .space_between_justify{
     justify-content: space-between;
 }
