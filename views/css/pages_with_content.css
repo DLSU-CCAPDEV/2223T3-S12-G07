@@ -10,7 +10,7 @@ body{
     position:absolute;
     display:flex;
     flex-direction: column;
-    width:100vw;
+    width:1440pxß;
     margin:0px;
 }
 .header{
@@ -18,7 +18,7 @@ body{
     justify-content: space-between;
     align-items: center;
     background-color:#FFFFFF;
-    width:100%;
+    width:99vw;
     height:50px;
     outline:1px solid #0D8828;
    
@@ -27,7 +27,8 @@ body{
     left:0px;
     right:0px;
     bottom:0px;
-    z-index:2;
+    z-index:3;
+    padding:5px;
 }
 .lower_body{
     display:flex;
@@ -56,7 +57,9 @@ body{
 .nav_bar a{
     margin:15px;
     padding:15px;
+    width:60%;
     color:#797878;
+    position:relative;
 }
 .nav_bar a:hover{
     color:#403D3D;
@@ -70,7 +73,7 @@ body{
     padding:30px;
     position:relative;
     left:50px;
-    width:88%;
+    width:87%;
 }
 .profile_header{  
     display:flex;
@@ -79,7 +82,7 @@ body{
 }
 .cover_photo{
     width:100%;
-    height:261px;
+    height:300px;
     background-color: #b2b4f6;
 
 }
@@ -99,7 +102,7 @@ body{
 }
 .main_lower_body{
     display:flex;
-
+    width:100%;
 }
 .profile_nav_bar{
     display:flex;
@@ -134,6 +137,7 @@ a{
     align-items: center;
     margin:15px;
     padding:15px;
+    width:100%;
 }
 .about_me{
     width:600px;
@@ -186,6 +190,7 @@ form a input[type=text]{
     width:48px;
     border-radius:100%;
     background-color:#41e996;
+    margin-right:5px;
 }
 .posts{
     width:600px;
@@ -204,6 +209,7 @@ form a input[type=text]{
 .user_name{
     color:#797878;
     font-size:11px;
+    margin: 0px 5px 5px 5px;
 }
 .posts_footer{
     display:flex;
@@ -230,8 +236,22 @@ form a input[type=text]{
     width:12px;
     margin:5px;
 }
+.upvote_icon_true{
+    background-image: url(../../assets/icons/upvote_true.svg);
+    background-size:cover;
+    height:12px;
+    width:12px;
+    margin:5px;
+}
 .downvote_icon{
     background-image: url(../../assets/icons/downvote.svg);
+    background-size:cover;
+    height:12px;
+    width:12px;
+    margin:5px;
+}
+.downvote_icon_true{
+    background-image: url(../../assets/icons/downvote_true.svg);
     background-size:cover;
     height:12px;
     width:12px;
@@ -241,9 +261,16 @@ form a input[type=text]{
     display:none;
     margin:10px;
     padding:15px;
+    width:90%;
+}
+.reply_section{
+    display:none;
+    margin:10px;
+    padding:15px;
+    width:90%;
 }
 .create_comment{
-    width:80%;
+    width:90%;
     height:30px;
     background-color: #FFFFFF;
     margin:10px;
@@ -251,11 +278,11 @@ form a input[type=text]{
     border-radius:5px;
     outline:1px solid #797878;
     display:flex;
-    justify-content: flex-end;
+    justify-content: center;
 }
 .create_comment form{
     display:flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items:center;
     width:100%;
 }
@@ -263,14 +290,31 @@ form a input[type=text]{
     width:70%;
     height:100%
 }
-.create_comment form input[type=submit]{
+.create_comment form input[type=button]{
     border-radius:100%;
 
 }
 .create_comment:hover{
     border: 1px solid #403D3D;
 }
-
+.comment_feed{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin:10px;
+    padding:15px;
+    border-radius:5px;
+    width:80%;
+}
+.reply_feed{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin:10px;
+    padding:15px;
+    border-radius:5px;
+    width:80%;
+}
 .posts:hover{
     border: 1px solid #403D3D;
 }
@@ -278,8 +322,14 @@ form a input[type=text]{
     font-family:Montserrat, sans-serif;
     font-size:36;
     font-weight:1000;
+    margin:5px;
+    position:relative;
+    left:20px;
     color:#0D8828;
 
+}
+.animo_hub:hover{
+    color:#276D37;
 }
 input[type=text] .search_bar{
     background-color:#F9F7F7;
@@ -289,6 +339,7 @@ input[type=text] .search_bar{
 .profile_drop_down{
     display:inline-block;
     position:relative;
+    right:20px;
     outline: 1px solid #D9d9d9;
     padding:2px;
     height:45px;
@@ -334,7 +385,7 @@ input[type=text] .search_bar{
     display:block;
 }
 .user_identity{
-    margin:5px;
+    margin:5px 5px 0px 5px;
     padding:5px;
     display:flex;
     flex-direction: column;
@@ -397,11 +448,13 @@ textarea{
 }
 .create_post_feed{
     width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items: center;
 }
 .create_post_whitebox{
     width:100%;
 }
-
 #create_header{
     width:100%;
 }
@@ -416,4 +469,23 @@ hr{
 }
 #new_post{
     display:none;
+}
+.width_100{
+    width:100%;
+}
+.comment_feed .profile_picture_bubble{
+    height:16px;
+    width:16px;
+}
+.posts p{
+    font-size:14px;
+}
+.comment_feed p{
+    font-size:12px;
+}
+.indiv_comment_container{
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
+    width:100%;
 }
