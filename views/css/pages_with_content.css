@@ -421,7 +421,6 @@ hr{
     display:grid;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     margin:15px;
     padding:15px;
 }
