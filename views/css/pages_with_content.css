@@ -426,6 +426,9 @@ a{
 .center_align{
     align-items: center;
 }
+.left_align{
+    align-items: left;
+}
 .space_between_justify{
     justify-content: space-between;
 }
@@ -470,6 +473,21 @@ hr{
 #new_post{
     display:none;
 }
+.login_button{
+    display:grid;
+    justify-content: center;
+    align-items: center;
+    margin:15px;
+    padding:15px;
+}
+input[type='login']{
+    border-radius:50px;
+    background-color:#0D8828;
+    color:#FFFFFF;
+    font-weight:bold;
+    font-size:24px;
+}
+
 .width_100{
     width:100%;
 }
