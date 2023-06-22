@@ -14,27 +14,17 @@ function password_strength(password){
     return regex.test(password);
 }
 
-function password_confirm_match(password,confirm_password){
-    if(password == confirm_password){
-        return true;
-    }
-    else{
-        return false;
-    }
-    
-}
 
 function contact_number_validation(number){
-    var regex = /((^(\+)(\d){12}$)|(^\d{11}$))/;
+    var regex = /((\+[0-9]{2})|0)[.\- ]?9[0-9]{2}[.\- ]?[0-9]{3}[.\- ]?[0-9]{4}/;
     return regex.test(number);
 }
-
 function login_validation(){
     event.preventDefault();
  var  form = document.getElementById("login_form");
     var email = form.email.value;
     var password = form.password.value;
-    var remmember = form.remmember;
+    var remmember = form.remember;
 
     if(!email_validation(email)){
         alert("Please enter correct email format."); 
@@ -49,42 +39,55 @@ function login_validation(){
             form.submit();
         }
     }
-
 }
-
 function sign_up_validation(){
+    event.preventDefault();
     var form = document.getElementById("sign_up_form");
     var email = form.email.value;
     var password = form.password.value;
     var confirm_password = form.confirm_password.value;
     var contact_number = form.contact_number.value;
+    var gate = true;
 
     if(!email_validation(email)){
         alert("Please enter correct email format.");
         form.email.reset();
-        return false;
-    }else{
-        if(!password_strength(password)){
+        gate = false;
+    }
+    if(!password_strength(password)){
             alert("Please enter a stronger password.");
-            form.password.reset();
+            gate = false;
+            password="";
+        }
+    if(password != confirm_password){
+            alert("Password and confirm password does not match.");
+            gate= false;
+            password="";
+            confirm_password="";
+    }
+    if(contact_number!=""){
+        if(!contact_number_validation(contact_number)){
+            alert("Please enter a correct contact number format.");
+            form.contact_number="";
+            gate = false;
+        }
+    }
+    if(gate)
+        form.submit();
+    else
+        return false;
+}
+
+function edit_profile_validate(){
+    event.preventDefault();
+    var form = document.getElementById("edit_profile_form");
+    contact_number = form.contact_number.value;
+
+    if(contact_number!=""){
+        if(!contact_number_validation(contact_number)){
+            alert("Please enter a correct contact number format.");
+            form.contact_number="";
             return false;
-        }else{
-            if(!password_confirm_match(password,confirm_password)){
-                alert("Password and confirm password does not match.");
-                form.password.reset();
-                form.confirm_password.reset();
-                return false;
-            }else{
-                if(contact_number!=""){
-                    if(!contact_number_validation(contact_number)){
-                        alert("Please enter a correct contact number format.");
-                        form.contact_number.reset();
-                        return false;
-                    }else{
-                        form.submit();
-                    }
-                }
-            }
         }
     }
 }

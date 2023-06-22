@@ -2,6 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/manipulate_account.css">
+        <script type="text/javascript" src="../scripts/account_validation.js"></script>
         <title>Register</title>
     </head>
     <body>
@@ -14,23 +15,23 @@
                 Create New Account
             </div>
             <div class ="mainForm">
-                <form>
+                <form id="sign_up_form" action="./profile_page.html" onsubmit="sign_up_validation();">
                     <label for ="email">Email</label><br>
-                    <input type ="email" id ="email" name ="email"><br>
+                    <input type ="email" id ="email" name ="email" required><br>
                     <label for ="password">Password</label><br>
-                    <input type ="password" id ="password" name ="password"><br>
-                    <label for="confirmpassword">Confirm Password</label><br>
-                    <input type="password" id="confirmpassword" name="confirmpassword"><br>
+                    <input type ="password" id ="password" name ="password" minlength="8" required><br>
+                    <label for="confirm_password">Confirm Password</label><br>
+                    <input type="password" id="confirm_password" name="confirm_password" minlength="8" required><br>
                     <label for ="username">Username</label><br>
-                    <input type ="text" id ="username" name ="username"><br>
+                    <input type ="text" id ="username" name ="username" required><br>
                     <label for ="idnumber">ID Number</label><br>
-                    <input type ="text" id ="idnumber" name ="idnumber"><br>
-                    <label for ="contactnumber">Contact Number</label><br>
-                    <input type ="text" id ="contactnumber" name ="contactnumber"><br>
+                    <input type ="text" id ="idnumber" name ="idnumber" required><br>
+                    <label for ="contact_number">Contact Number</label><br>
+                    <input type ="text" id ="contact_number" name ="contact_number"><br>
                     <label for="firstname">First Name</label><br>
-                    <input type="text" id="firstname" name="firstname"><br>
+                    <input type="text" id="firstname" name="firstname" required><br>
                     <label for="lastname">Last Name</label><br>
-                    <input type="text" id="lastname" name="lastname"><br>
+                    <input type="text" id="lastname" name="lastname" required><br>
                     <div class="center">
                         <input type ="submit" value ="REGISTER"><br>
                         <div class="register_login_footer">Already have an account? <a href="login.html">Log In</a></div>

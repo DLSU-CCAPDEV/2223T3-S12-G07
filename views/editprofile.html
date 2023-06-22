@@ -8,20 +8,20 @@
     <body>
         <div class="content">
             <div class ="greenHeader">
-                <a id="home_icon" href="editprofile.html"></a>
+                <a id="home_icon" href="profile_page.html"></a>
             </div>
             <div class ="titleBox">
                 <br>
                 Make Some Changes
             </div>
             <div class ="mainForm">
-                <form id ="edit_profile_form" action="/profile_page.html">
+                <form id ="edit_profile_form" action="/profile_page.html" onsubmit="edit_profile_validate();">
                     <label for ="first_name">First Name</label><br>
                     <input type ="text" id ="first_name" name ="first_name"><br>
                     <label for ="last_name">Last name</label><br>
                     <input type ="text" id ="last_name" name ="last_name"><br>
                     <label for="profile_picture">Profile Picture</label><br>
-                    <input type="file" id ="profile_picture" name ="profile_picture"><br>
+                    <input type="file" id ="profile_picture" name ="profile_picture" multiple-accept=".jpg, .png"><br>
                     <label for="cover_photo">Cover Photo</label><br>
                     <input type="file" id ="cover_photo" name ="cover_photo"><br>
                     <label for="bio">About Yourself</label><br>

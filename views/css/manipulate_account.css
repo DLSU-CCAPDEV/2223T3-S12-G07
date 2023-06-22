@@ -32,6 +32,10 @@ input[type=submit]{
     width:318px;
     height:69px;
 }
+input[type=submit]:hover{
+    background-color:#065217;
+    
+}
 .greenHeader{
     background-color: #0D8828;
     display:flex;
@@ -141,8 +145,13 @@ input[type='submit']{
     width:100%;
     text-align: center;
 }
+
 a {
     color:#0D8828;
+    text-decoration:none;
+}
+a:hover{
+    color:#065217;
     text-decoration:none;
 }
 
@@ -172,6 +181,7 @@ textarea{
     outline-width:16px;
     height:40px;
     width:90%;
+    
 }
 
 #menu_icon{
@@ -187,4 +197,17 @@ textarea{
     height:100px;
     width:100px;
    
+}
+#home_icon:hover{
+    background-image: url(../../assets/icons/home_hover.svg);
+    background-size: cover;
+    height:100px;
+    width:100px;
+}
+
+.required{
+    color:red;
+    font-size:12px;
+    font-weight:bold;
+    margin:2px;
 }
