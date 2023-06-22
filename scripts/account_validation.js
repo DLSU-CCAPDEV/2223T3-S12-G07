@@ -1,0 +1,90 @@
+function email_validation(email){
+    if(email==""){
+        return false;
+    }
+    var regex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    return regex.test(email);
+}
+
+function password_strength(password){
+    if(password=="" || password.length<8){
+        return false;
+    }
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
+    return regex.test(password);
+}
+
+function password_confirm_match(password,confirm_password){
+    if(password == confirm_password){
+        return true;
+    }
+    else{
+        return false;
+    }
+    
+}
+
+function contact_number_validation(number){
+    var regex = /((^(\+)(\d){12}$)|(^\d{11}$))/;
+    return regex.test(number);
+}
+
+function login_validation(){
+    event.preventDefault();
+ var  form = document.getElementById("login_form");
+    var email = form.email.value;
+    var password = form.password.value;
+    var remmember = form.remmember;
+
+    if(!email_validation(email)){
+        alert("Please enter correct email format."); 
+        form.email="";
+        return false;
+    }else{
+        if(!password_strength(password)){
+            alert("Please enter a correct password format.");
+            form.password="";
+            return false;
+        }else{
+            form.submit();
+        }
+    }
+
+}
+
+function sign_up_validation(){
+    var form = document.getElementById("sign_up_form");
+    var email = form.email.value;
+    var password = form.password.value;
+    var confirm_password = form.confirm_password.value;
+    var contact_number = form.contact_number.value;
+
+    if(!email_validation(email)){
+        alert("Please enter correct email format.");
+        form.email.reset();
+        return false;
+    }else{
+        if(!password_strength(password)){
+            alert("Please enter a stronger password.");
+            form.password.reset();
+            return false;
+        }else{
+            if(!password_confirm_match(password,confirm_password)){
+                alert("Password and confirm password does not match.");
+                form.password.reset();
+                form.confirm_password.reset();
+                return false;
+            }else{
+                if(contact_number!=""){
+                    if(!contact_number_validation(contact_number)){
+                        alert("Please enter a correct contact number format.");
+                        form.contact_number.reset();
+                        return false;
+                    }else{
+                        form.submit();
+                    }
+                }
+            }
+        }
+    }
+}

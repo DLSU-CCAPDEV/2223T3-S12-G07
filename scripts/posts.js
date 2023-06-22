@@ -165,7 +165,7 @@ function post_comment(comment_section){
         downvote_icon.className = "downvote_icon";
         var actions1 = document.createElement('span');
         actions1.className = "actions";
-        actions1.innerHTML = "comment";
+        actions1.innerHTML = "reply";
         var upvote_icon = document.createElement('div');
         upvote_icon.className = "upvote_icon";
         var actions2 = document.createElement('span');

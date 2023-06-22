@@ -2,30 +2,34 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/manipulate_account.css">
+        <script type="text/javascript" src="../scripts/account_validation.js"></script>
         <title>Login</title>
     </head>
     <body>
-        <div class ="greenHeader">
-            <a id="home_icon" href="editprofile.html"></a>
+        <div class="content">
+            <div class ="greenHeader">
+                <a id="home_icon" href="editprofile.html"></a>
+            </div>
+            <div class ="titleBox">
+                <br>
+                Log In to your Account
+            </div>
+            <div class ="mainForm">
+                <form id ="login_form"  action="./profile_page.html" onsubmit="login_validation();">
+                    <label for ="email" required>Email</label><br>
+                    <input type ="email" id ="email" name ="email"><br>
+                    <label for ="password" required>Password</label><br>
+                    <input type ="password" id ="password" name ="password"><br>
+                    <input type ="checkbox" id ="remember_me" name ="remember_me" value="remember_me">
+                    <label for ="remember_me" class="remember_text">Remember Me</label>
+                    
+                    <div class="center">
+                        <br>
+                        <input type ="submit" value ="LOG IN"><br>
+                        <div class="register_login_footer">Don't have an account yet? <a href="register.html">Register here</a></div>
+                    </div>
+                </form>
+            </div>
         </div>
-        <div class ="titleBox">
-            Login to your Account
-        </div>
-        <div class ="mainForm">
-            <form>
-                <label for ="email">Email</label><br>
-                <input type ="text" id ="email" name ="email"><br>
-                <label for ="password">Password</label><br>
-                <input type ="text" id ="password" name ="password"><br>
-                <input type ="checkbox" id ="remember_me" name ="remember_me" value="remember_me">
-                <label for ="remember_me" class="remember_text">Remember Me</label>
-               
-                <div class="center">
-                    <input type ="submit" value ="LOG IN"><br>
-                    <span class="regiser_login_footer">Don't have an account yet? <a href="register.html">Register here</a></span>
-                </div>
-            </form>
-        </div>
-        
     </body>
 </html>
