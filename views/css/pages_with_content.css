@@ -481,6 +481,11 @@ hr{
     justify-content:center;
     align-items:center;
     flex-direction:column;
+    
+}
+<!-- test changes -->
+
+.login{
     margin:15px;
     padding:15px;
     border-radius:50px;
@@ -489,13 +494,6 @@ hr{
     font-weight:bold;
     font-size:24px;
 }
-<!-- test changes
-
-.login{
-    
-}
-
--->
 
 .width_100{
     width:100%;
