@@ -477,6 +477,7 @@ hr{
     display:grid;
     justify-content: center;
     align-items: center;
+    width:30%;
     margin:15px;
     padding:15px;
 }
