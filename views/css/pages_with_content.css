@@ -481,13 +481,12 @@ hr{
     justify-content:center;
     align-items:center;
     flex-direction:column;
-    
+    margin:15px;
+    padding:15px;
 }
 <!-- test changes -->
 
 .login{
-    margin:15px;
-    padding:15px;
     border-radius:50px;
     background-color:#0D8828;
     color:#FFFFFF;
