@@ -477,7 +477,6 @@ hr{
 .login_button{
     width:64px;
     height:9px;
-    display:flex;
     justify-content:center;
     align-items:center;
     flex-direction:column;
