@@ -49,7 +49,6 @@
                     <div class="actions">downvote</div></a>
                 </div>
                 <div class="comment_section">
-                    <p>test here</p>
                     <div class="comment_feed"></div>
                     <span class="center_align width_100">
                         <div class="create_comment">
@@ -64,6 +63,38 @@
                 <p>Login to participate in the discussion and add your insights</p>
                 
                 <!--add whole comment here-->
+                <div class="posts">
+                    <div class="posts_header">
+                        <div class="profile_picture_bubble"></div>
+                        <span class="user_name">John Doe</span>
+                    </div>
+                    <h3>LF Animusika VIP tickets</h3>
+                    <p>Anyone selling their VIP tickets? Really wanted to see Zild and Munimuni perform. 
+                        NEed 2 plssz
+                    </p>
+                    <div class="posts_footer">
+                    <!-- these buttons leading to login.html is temporary-->
+                        <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+                        <div class="actions" >reply</div></a>
+                        <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                        <div class="actions">upvote</div></a>
+                        <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                        <div class="actions">downvote</div></a>
+                    </div>
+                    <div class="comment_section">
+                        <div class="comment_feed"></div>
+                        <span class="center_align width_100">
+                            <div class="create_comment">
+                                <form id="create_comment_form">
+                                    <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
+                                    <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
+                                </form> 
+                            </div>
+                        </span>     
+                    </div>
+                    <hr>
+                </div>
+                
             </div>
         </div>
         
