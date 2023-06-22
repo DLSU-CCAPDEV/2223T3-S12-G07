@@ -2,6 +2,6 @@
 Forum Web application
 
 Members:
-Yuri Balanon
+Rovic Balanon
 David Grasparil
 Ralph Dawson G. Pineda
