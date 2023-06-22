@@ -481,7 +481,7 @@ hr{
     margin:15px;
     padding:15px;
 }
-input[type='login']{
+.login{
     border-radius:50px;
     background-color:#0D8828;
     color:#FFFFFF;
