@@ -475,8 +475,8 @@ hr{
     display:none;
 }
 .login_button{
-    width:89px;
-    height:12px;
+    width:64px;
+    height:9px;
     display:flex;
     justify-content:center;
     align-items:center;
