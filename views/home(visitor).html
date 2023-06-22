@@ -26,6 +26,8 @@
                   <a href="trending.html">Trending</a>
               </div>
               <div class="main_body">
+                    <!--this is where the posts start-->
+                  
                     <div class="posts">
                             <div class="posts_header">
                                 <div class="profile_picture_bubble"></div>
@@ -55,15 +57,53 @@
                                 </div>
                                 <span class="center_align width_100">
                                     <div class="create_comment">
-                                    <form id="create_comment_form">
-                                        <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
-                                        <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
-                                    </form>
-                                
-                                </div>
-                            </span>     
-                        </div>
+                                        <form id="create_comment_form">
+                                            <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
+                                            <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
+                                        </form>
+                                    </div>
+                                </span>     
+                            </div>
                     </div>
+
+                    <div class="posts">
+                            <div class="posts_header">
+                                <div class="profile_picture_bubble"></div>
+                                <span class="user_name">John Doe</span>
+                            </div>
+                            <h3>Post Title</h3>
+                            <p>Lorem ipsum dolor sit amet, 
+                                consectetur adipiscing elit. Fusce a scelerisque est. 
+                                Sed dictum cursus elit, at rhoncus felis blandit et. Etiam eget mauris justo. 
+                                Lorem ipsum dolor sit amet, 
+                                onsectetur adipiscing elit. Fusce a scelerisque est. 
+                                Sed dictum cursus elit, at rhoncus felis blandit et. Etiam eget mauris justo. 
+                        
+                            </p>
+                            <div class="posts_footer">
+                                <!-- this buttons leading to login.html is temporary-->
+                                <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+                                <div class="actions" >comment</div></a>
+                                <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                                <div class="actions">upvote</div></a>
+                                <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                                <div class="actions">downvote</div></a>
+                            </div>
+                            <div class="comment_section">       
+                                <div class="comment_feed">
+                                    
+                                </div>
+                                <span class="center_align width_100">
+                                    <div class="create_comment">
+                                        <form id="create_comment_form">
+                                            <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
+                                            <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
+                                        </form>
+                                    </div>
+                                </span>     
+                            </div>
+                    </div>
+                  
               </div>
           </div>
       </div>
