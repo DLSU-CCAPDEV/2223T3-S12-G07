@@ -474,19 +474,27 @@ hr{
     display:none;
 }
 .login_button{
-    display:grid;
-    justify-content: center;
-    align-items: center;
+    width:318px;
+    height:69px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
     margin:15px;
     padding:15px;
-}
-.login{
     border-radius:50px;
     background-color:#0D8828;
     color:#FFFFFF;
     font-weight:bold;
     font-size:24px;
 }
+<!-- test changes
+
+.login{
+    
+}
+
+-->
 
 .width_100{
     width:100%;
