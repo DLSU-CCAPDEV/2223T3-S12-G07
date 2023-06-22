@@ -478,6 +478,7 @@ hr{
     width:64px;
     height:9px;
     justify-content:center;
+    display:flex;
     align-items:center;
     flex-direction:column;
     margin:15px;
