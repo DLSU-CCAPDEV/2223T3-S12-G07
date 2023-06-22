@@ -483,15 +483,17 @@ hr{
     flex-direction:column;
     margin:15px;
     padding:15px;
-}
-<!-- test changes -->
 
-.login_button p{
     border-radius:50px;
     background-color:#0D8828;
     color:#FFFFFF;
     font-weight:bold;
     font-size:24px;
+}
+<!-- test changes -->
+
+.login_button p{
+    
 }
 
 .width_100{
