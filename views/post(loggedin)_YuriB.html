@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Post</title>
+    <link rel="stylesheet" href="./css/pages_with_content.css">
+    <script type="text/javascript" src="../scripts/posts.js"></script>
+  </head>
+  
+  <body onload="profile_redirect();">
+    <div class="page">
+          <div class="header">
+                <span class="animo_hub">AnimoHub</span>
+                <form id ="search">
+                <input type="text" placeholder="search AnimoHub" class="search_bar">
+                <input type="submit" value="Search" class="search_button">
+                </form>
+                <div class="profile_drop_down">
+                    <div class="profile_drop_down_interface">
+                        <div class="profile_picture_bubble JohnDoe"></div>
+                        <div class="user_identity">
+                            John Doe
+                            <p class="user_name">@johnny26</p>
+                       </div>
+                    </div>
+                    <div class="profile_drop_down_options">
+                        <a href="editprofile.html">Edit</a>
+                        <a href="login.html">SignOut</a>
+                    </div>
+                </div>
+          </div>
+        <div class ="lower_body">
+            <!--the nav_bar contains the links to home and trending-->
+            <div class="nav_bar">
+                <a href="home(loggedin).html">Home</a><br>
+                <a href="maintenance_page.html">Trending</a>
+            </div>
+
+            <div class="main_body">
+                <div class="posts">
+                    <div class="posts_header">
+                        <div class="profile_picture_bubble YuriB"></div>
+                        <span class="user_name">Yuri B</span>
+                    </div>
+                    <h3>CCAPDEV</h3>
+                    <p>About to take up CCAPDEV, is it a difficult subject as others say? 
+                        I failed an HTML class back in high school eh, and I'm worried that it might happen again.
+                    </p>
+                    <div class="posts_footer">
+                    <!-- these buttons leading to login.html is temporary-->
+                        <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+                        <div class="actions" >comment</div></a>
+                        <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                        <div class="actions">upvote</div></a>
+                        <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                        <div class="actions">downvote</div></a>
+                    </div>
+                    <div class="comment_section"> 
+                        <div class="comment_feed">
+                            <div class="indiv_comment_container">
+                                <div class="posts_header">
+                                    <div class="profile_picture_bubble Sophia"></div>
+                                    <span class="user_name">Sophia Sanchez</span>
+                                </div>
+                                <p>It's definitely not easy! But you it is well worth the blood and sweat.</p>
+    
+                                <div class="posts_footer">
+                                <!-- these buttons leading to login.html is temporary-->
+                                    <a  onclick="render_replies(this.parentNode.parentNode);"><div class="comment_icon"></div>
+                                    <div class="actions" >reply</div></a>
+                                    <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                                    <div class="actions">upvote</div></a>
+                                    <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                                    <div class="actions">downvote</div></a>
+                                </div>
+                                <div class ="reply_section">
+                                    <div class="reply_feed">
+
+                                    </div>
+                                    <span class="center_align">
+                                        <div class="create_comment">
+                                            <form id ="create_comment_form">
+                                                <textarea name="create_reply_input" placeholder="Write a reply..." id="create_reply_input"></textarea>
+                                                <button type="button" name="create_comment_button" onclick="post_reply(this.parentNode.parentNode.parentNode.parentNode.parentNode)">send</button>
+                                            </form>
+                                        </div>
+                                    </span>
+                                    
+                                </div>
+                                <hr>
+                            </div>
+                            
+
+                        </div>
+                        <span class="center_align width_100">
+                            <div class="create_comment">
+                            <form id="create_comment_form">
+                                <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
+                                <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
+                            </form>
+                        
+                            </div>
+                        </span>     
+    
+                    </div>
+                    
+                    
+                </div>
+                    
+                    
+                
+            </div>
+        </div>
+    </div>
+  </body>
+  
+</html>
