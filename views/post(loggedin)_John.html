@@ -6,7 +6,7 @@
     <script type="text/javascript" src="../scripts/posts.js"></script>
   </head>
   
-  <body>
+  <body onload="profile_redirect();">
     <div class="page">
           <div class="header">
                 <span class="animo_hub">AnimoHub</span>
@@ -55,51 +55,57 @@
                         <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
                         <div class="actions">downvote</div></a>
                     </div>
-                    <div class="comment_section">
-                        <div class="comment_feed"></div>
+                    <div class="comment_section"> 
+                        <div class="comment_feed">
+                            <div class="indiv_comment_container">
+                                <div class="posts_header">
+                                    <div class="profile_picture_bubble YuriB"></div>
+                                    <span class="user_name">Yuri B</span>
+                                </div>
+                                <p>Up!</p>
+                            </div>
+                            <div class="posts_footer">
+                                <!-- these buttons leading to login.html is temporary-->
+                                    <a  onclick="render_replies(this.parentNode.parentNode);"><div class="comment_icon"></div>
+                                    <div class="actions" >reply</div></a>
+                                    <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                                    <div class="actions">upvote</div></a>
+                                    <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                                    <div class="actions">downvote</div></a>
+                            </div>
+                            <div class ="reply_section">
+                                <div class="reply_feed">
+
+                                </div>
+                                <span class="center_align">
+                                    <div class="create_comment">
+                                        <form id ="create_comment_form">
+                                            <textarea name="create_reply_input" placeholder="Write a reply..." id="create_reply_input"></textarea>
+                                            <button type="button" name="create_comment_button" onclick="post_reply(this.parentNode.parentNode.parentNode.parentNode.parentNode)">send</button>
+                                        </form>
+                                    </div>
+                                </span>
+                                <hr>
+                            </div>
+                            
+                        </div>
                         <span class="center_align width_100">
                             <div class="create_comment">
-                                <form id="create_comment_form">
-                                    <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
-                                    <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
-                                </form> 
+                            <form id="create_comment_form">
+                                <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
+                                <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
+                            </form>
+                        
                             </div>
                         </span>     
+    
                     </div>
-                    <hr>
                     
-                    <!--add whole comment here-->
-                    <div class="posts">
-                        <div class="posts_header">
-                            <div class="profile_picture_bubble JohnDoe"></div>
-                            <span class="user_name">Yuri B</span>
-                        </div>
-                        <p>Up!
-                        </p>
-                        <div class="posts_footer">
-                        <!-- these buttons leading to login.html is temporary-->
-                            <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
-                            <div class="actions" >reply</div></a>
-                            <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
-                            <div class="actions">upvote</div></a>
-                            <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
-                            <div class="actions">downvote</div></a>
-                        </div>
-                        <div class="comment_section">
-                            <div class="comment_feed"></div>
-                            <span class="center_align width_100">
-                                <div class="create_comment">
-                                    <form id="create_comment_form">
-                                        <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
-                                        <input type="button" value="post" id="create_comment_button" onclick="post_comment(this.parentNode.parentNode.parentNode.parentNode)">
-                                    </form> 
-                                </div>
-                            </span>     
-                        </div>
-                        <hr>
-                    </div>
                     
                 </div>
+                    
+                    
+                
             </div>
         </div>
     </div>
