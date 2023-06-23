@@ -23,7 +23,7 @@ function render_posts(){
         var posts_header = document.createElement('div');
         posts_header.className = "posts_header";
         var profile_picture_bubble = document.createElement('div');
-        profile_picture_bubble.className = "profile_picture_bubble";
+        profile_picture_bubble.className = "profile_picture_bubble JohnDoe";
         var user_name = document.createElement('span');
         user_name.className = "user_name";
         user_name.innerHTML = "John Doe";
@@ -148,7 +148,7 @@ function post_comment(comment_section){
         var comment_header = document.createElement('div');
         comment_header.className = "posts_header";
         var profile_picture_bubble = document.createElement('div');
-        profile_picture_bubble.className = "profile_picture_bubble";
+        profile_picture_bubble.className = "profile_picture_bubble JohnDoe";
         var user_name = document.createElement('span');
         user_name.className = "user_name";
         user_name.innerHTML = "John Doe";
@@ -239,7 +239,7 @@ function post_reply(reply_section){
         var reply_header = document.createElement('div');
         reply_header.className = "posts_header";
         var profile_picture_bubble = document.createElement('div');
-        profile_picture_bubble.className = "profile_picture_bubble";
+        profile_picture_bubble.className = "profile_picture_bubble JohnDoe";
         var user_name = document.createElement('span');
         user_name.className = "user_name";
         user_name.innerHTML = "John Doe";
@@ -315,5 +315,29 @@ function render_downvote(button){
         downvote = button.querySelector('.downvote_icon_true');
         downvote.setAttribute("class","downvote_icon");
         text.style.color = "#797878";
+    }
+}
+
+function profile_redirect(){
+    var John = document.getElementsByClassName('JohnDoe');
+    var Miguel = document.getElementsByClassName('Miguel');
+    var Sophia = document.getElementsByClassName('Sophia');
+    var Yuri = document.getElementsByClassName('YuriB');
+    var Xavier = document.getElementsByClassName('Xavier');
+    
+    for(John of John){
+        John.addEventListener("click",(evt)=>{window.location.href = "profile_page.html";});
+    }
+    for(Miguel of Miguel){
+        Miguel.addEventListener("click",(evt)=>{window.location.href = "profile_page_Miguel.html";});
+    }
+    for(Sophia of Sophia){
+        Sophia.addEventListener("click",(evt)=>{window.location.href = "profile_page_Sophia.html";});
+    }
+    for(Yuri of Yuri){
+        Yuri.addEventListener("click",(evt)=>{window.location.href = "profile_page_YuriB.html";});
+    }
+    for(Xavier of Xavier){
+        Xavier.addEventListener("click",(evt)=>{window.location.href = "profile_page_Xavier.html";});
     }
 }

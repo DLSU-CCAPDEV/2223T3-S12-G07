@@ -14,6 +14,12 @@ body{
     align-items: center;
     width:55%;
 }
+.center_justify{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 a.link{
     color:#0D8828;
 }
@@ -210,4 +216,10 @@ textarea{
     font-size:12px;
     font-weight:bold;
     margin:2px;
+}
+.announcement{
+    font-size:large;
+    font-weight:bold;
+    color:#FFFFFF;
+    text-align: center;
 }

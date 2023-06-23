@@ -510,3 +510,56 @@ hr{
     align-items: flex-start;
     width:100%;
 }
+
+.JohnDoe{
+    background-image:url("../../assets/profile_pictures/john_doe.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+.YuriB{
+    background-image:url("../../assets/profile_pictures/yuri_b.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+.Miguel{
+    background-image:url("../../assets/profile_pictures/miguel_ohara.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+.Sophia{
+    background-image:url("../../assets/profile_pictures/sophia_sanchez.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+.Xavier{
+    background-image:url("../../assets/profile_pictures/xavier_mendez.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+
+.JD_cover{
+    background-image:url("../../assets/profile_pictures/John.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+.Miguel_cover{
+    background-image:url("../../assets/profile_pictures/Miguel.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+.Xavier_cover{
+    background-image:url("../../assets/profile_pictures/Xavier.png");
+    background-size:cover;
+    background-color:none;
+}
+
+.Yuri_cover{
+    background-image:url("../../assets/profile_pictures/Yuri.jpeg");
+    background-size:cover;
+    background-color:none;
+}
+.Sophia_cover{
+    background-image:url("../../assets/profile_pictures/Sophia.jpeg");
+    background-size:cover;
+    background-color:none;
+}
