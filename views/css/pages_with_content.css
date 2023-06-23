@@ -563,3 +563,17 @@ hr{
     background-size:cover;
     background-color:none;
 }
+.login_icon{
+    background-image: url(../../assets/icons/login.svg);
+    background-size:cover;
+    height:12px;
+    width:12px;
+    margin:5px;
+}
+
+.informative_text{
+    color:#797878;
+    font-size:11px;
+    width:100%;
+    text-align: center;
+}
