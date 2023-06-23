@@ -115,7 +115,6 @@ function render_posts(){
         post.style.flexDirection = "column";
     }
 }
-
 function render_comments(post){
     var comment = post.querySelector('.comment_section');
     if(comment.style.display =="flex"){
@@ -136,6 +135,7 @@ function render_replies(post){
         comment.style.alignItems = "flex-end";
     }
 }
+
 function post_comment(comment_section){
     var comment = comment_section.querySelector('#create_comment_input');
     if(comment.value != ""){

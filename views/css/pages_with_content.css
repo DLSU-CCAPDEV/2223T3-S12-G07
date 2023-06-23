@@ -578,6 +578,14 @@ hr{
     width:100%;
     text-align: center;
 }
+a.informative_text{
+    text-justify: center;
+    text-align: center;
+    text-decoration: none;
+}
+a >.informative_text:hover{
+    color:#403D3D;
+}
 .post_link{
     text-decoration: none;
     width:100%;
