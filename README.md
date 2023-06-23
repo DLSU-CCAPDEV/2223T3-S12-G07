@@ -13,9 +13,11 @@ Phase 1 features:
 *profile page redirection: you can visit the profile page of users by clicking on their profile picture
 *home(visitor) : this forum is public and you can view the posts shared here without having an account but you cannot post content as a visitor
 *signout : you can sign out after log in
+*
 
 
-limitations:
+Limitations:
+
 *search_user : since there is no database yet, this feature has not yet been implemented
 *log in: you can log in as long as the inputs pass the email and password verification, 
         however there is only one default user as of now which is "John Doe" since 

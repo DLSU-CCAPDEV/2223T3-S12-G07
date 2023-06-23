@@ -326,7 +326,7 @@ function profile_redirect(){
     var Xavier = document.getElementsByClassName('Xavier');
     
     for(John of John){
-        John.addEventListener("click",(evt)=>{window.location.href = "profile_page.html";});
+        John.addEventListener("click",(evt)=>{window.location.href = "profile_page_John.html";});
     }
     for(Miguel of Miguel){
         Miguel.addEventListener("click",(evt)=>{window.location.href = "profile_page_Miguel.html";});
