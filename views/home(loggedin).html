@@ -5,7 +5,7 @@
         <script type="text/javascript" src="../scripts/posts.js"></script>
     </head>
 
-    <body onload="profile_redirect();">
+    <body onload="profile_redirect(); render_posts();">
         <div class="page">
             <div class="header">
                   <span class="animo_hub">AnimoHub</span>
@@ -35,7 +35,20 @@
                 </div>
                 <div class="main_body">
                       <!--this is where the POSTS start-->
-  
+                      <div class="create_posts">
+                            
+                        <form>
+                            <div class="profile_picture_bubble JohnDoe"></div>
+                            <a href="create_post_home.html">
+                            <input type="text" placeholder="What's on your mind?"><br>
+                            <input type="submit" value="POST">
+                            </a>
+                        </form>
+                    </div>
+                    <div id="new_post">
+                        <!--this is where the new posts will be created-->
+                    </div>
+                        <!--below here is where existing posts will be rendered-->
                       <!--post#1 (CONTENT FILLED)-->
                       <div class="posts">
                         <a class="post_link" href="post(loggedin)_John.html">
@@ -50,7 +63,8 @@
                         </a>
                               <div class="posts_footer">
                                   <!-- these buttons leading to login.html is temporary-->
-                                  <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+                                  <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button">
+                                    <div class="comment_icon"></div>
                                   <div class="actions" >comment</div></a>
                                   <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
                                   <div class="actions">upvote</div></a>

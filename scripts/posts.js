@@ -341,3 +341,27 @@ function profile_redirect(){
         Xavier.addEventListener("click",(evt)=>{window.location.href = "profile_page_Xavier.html";});
     }
 }
+
+function profile_redirect_visitor(){
+    var John = document.getElementsByClassName('JohnDoe');
+    var Miguel = document.getElementsByClassName('Miguel');
+    var Sophia = document.getElementsByClassName('Sophia');
+    var Yuri = document.getElementsByClassName('YuriB');
+    var Xavier = document.getElementsByClassName('Xavier');
+    
+    for(John of John){
+        John.addEventListener("click",(evt)=>{window.location.href = "profile_page(visitor)_John.html";});
+    }
+    for(Miguel of Miguel){
+        Miguel.addEventListener("click",(evt)=>{window.location.href = "profile_page(visitor)_Miguel.html";});
+    }
+    for(Sophia of Sophia){
+        Sophia.addEventListener("click",(evt)=>{window.location.href = "profile_page(visitor)_Sophia.html";});
+    }
+    for(Yuri of Yuri){
+        Yuri.addEventListener("click",(evt)=>{window.location.href = "profile_page(visitor)_YuriB.html";});
+    }
+    for(Xavier of Xavier){
+        Xavier.addEventListener("click",(evt)=>{window.location.href = "profile_page(visitor)_Xavier.html";});
+    }
+}

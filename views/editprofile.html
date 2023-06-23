@@ -5,7 +5,7 @@
         <script type="text/javascript" src="../scripts/account_validation.js"></script>
         <title>Edit Profile</title>
     </head>
-    <body onload="profile_redirect();">
+    <body>
         <div class="content">
             <div class ="greenHeader">
                 <a id="home_icon" href="profile_page_John.html"></a>
@@ -15,7 +15,7 @@
                 Make Some Changes
             </div>
             <div class ="mainForm">
-                <form id ="edit_profile_form" action="/profile_page.html" onsubmit="edit_profile_validate();">
+                <form id ="edit_profile_form" action="./profile_page_John.html">
                     <label for ="first_name">First Name</label><br>
                     <input type ="text" id ="first_name" name ="first_name"><br>
                     <label for ="last_name">Last name</label><br>
@@ -30,7 +30,7 @@
                     <input type="text" id="contact_number" name="contact_number"><br>
                 
                     <div class="center">
-                        <input type ="submit" value ="SAVE" onclick="edit_profile_validate();"><br>
+                        <input type ="submit" value ="SAVE" onclick="edit_form_validate();"><br>
                     </div>
                 </form>
             </div>

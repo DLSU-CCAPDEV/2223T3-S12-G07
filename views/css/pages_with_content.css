@@ -192,6 +192,7 @@ form a input[type=text]{
     border-radius:100%;
     background-color:#41e996;
     margin-right:5px;
+    position:relative;
     z-index:2;
 }
 .posts{
@@ -516,6 +517,7 @@ hr{
     background-image:url("../../assets/profile_pictures/john_doe.jpeg");
     background-size:cover;
     background-color:none;
+
 }
 .YuriB{
     background-image:url("../../assets/profile_pictures/yuri_b.jpeg");
