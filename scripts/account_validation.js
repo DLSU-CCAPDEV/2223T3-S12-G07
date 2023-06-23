@@ -16,7 +16,7 @@ function password_strength(password){
 
 
 function contact_number_validation(number){
-    var regex = /^((09|\+639)|(|\d{2}|\d{3}))(-|\s)(\d{9}|\d{7})$/;
+    var regex = /((^(\+)(\d){12}$)|(^\d{11}$))/;
     return regex.test(number);
 }
 function login_validation(){
