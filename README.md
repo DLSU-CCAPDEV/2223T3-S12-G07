@@ -13,7 +13,7 @@
 * profile page redirection: you can visit the profile page of users by clicking on their profile picture (works for newly created posts but not for newly made comments/ replies)
 * home(visitor) : this forum is public and you can view the posts shared here without having an account but you cannot post content as a visitor
 * signout : you can sign out after log in
-* view post : a post has a separate page on its own
+* view post : a post has a separate page on its own, different expercience for visitors and registered users
 
 
 ###Limitations:
@@ -27,7 +27,8 @@
 * profile upvotes : There is no dedicated page yet for viewing all the upvoted posts/comments by a user
 * profile downvotes : There is no dedicated page yet for viewing all the downvoted posts/comments by a user
 * view who upvoted/downvoted : The number of downvotes/upvotes are not counted and the user who upvoted/downvoted is not stored
-* can't track if user is logged in : this experience is simulated through hard coded webpages for logged in / visitor versions but a loop hole exists for a visitor to accomplish what a logged in user can do
+* can't track if user is logged in : this experience is simulated through hard coded webpages for logged in / visitor versions but a loop hole exists for a visitor to accomplish what a logged in user can do. For instance, all our current profile pages are viewed a registered users perspective even when visited by a visitor user
+
 
 ***NOTES***
 This repo contains alot of html files and a lot of those files are duplicates to hardcode the users and posts that were used to fill up the forum.

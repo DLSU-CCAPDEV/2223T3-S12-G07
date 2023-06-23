@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Post (Visitor Mode)</title>
+        <link rel="stylesheet" href="./css/pages_with_content.css">
+        <script type="text/javascript" src="../scripts/posts.js"></script>
+  </head>
+  
+  <body>
+      <div class="page">
+          <div class="header">
+              <span class="animo_hub">AnimoHub</span>
+              <form id ="search">
+                <input type="text" placeholder="search AnimoHub" class="search_bar">
+                <input type="submit" value="Search" class="search_button">
+              </form>
+              <a href="login.html">
+                  <div class = "login_button">
+                      Login
+                  </div>
+              </a>
+            </div>
+        </div>
+    <div class ="lower_body">
+        <!--the nav_bar contains the links to home and trending-->
+        <div class="nav_bar">
+            <a href="home(visitor).html">Home</a><br>
+            <a href="maintenance_page.html">Trending</a>
+        </div>
+
+        <div class="main_body">
+            
+            <div class="posts">
+                <div class="posts_header">
+                    <div class="profile_picture_bubble Xavier"></div>
+                    <span class="user_name">Xavier Mendez</span>
+                </div>
+                <h3>Civ Eng -> Game Design</h3>
+                <p>Just shifted from Civil Engineering to Game Design and I have never felt happier. 
+                    I had to endure my calculus classes for a whole year because of my parents' pressure and I was miserable.
+                     It just isn't for me, and that made me realize that I want to pursue my passion for gaming. I have never looked back since. If you are reading this, feeling like you're in a course you don't belong, this is your sign to take a leap of faith.
+                </p>
+                <div class="posts_footer">
+                <!-- these buttons leading to login.html is temporary-->
+                    <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+                    <div class="actions" >comment</div></a>
+                    <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                    <div class="actions">upvote</div></a>
+                    <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                    <div class="actions">downvote</div></a>
+                </div>
+                <div class="comment_section"> 
+                    <div class="comment_feed">
+                        <div class="indiv_comment_container">
+                            <div class="comment_header">
+                                <div class="profile_picture_bubble YuriB"></div>
+                                <span class="user_name">Yuri B</span>
+                            </div>
+                            <p>Welcome to the family bro!! I hope you enjoy game design as I do.</p>
+                        </div>
+                        <div class="posts_footer">
+                            <!-- these buttons leading to login.html is temporary-->
+                                <a  href="./register.html"><div class="login_icon"></div>
+                                <div class="actions" >sign up</div></a>
+                                <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                                <div class="actions">upvote</div></a>
+                                <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                                <div class="actions">downvote</div></a>
+                        </div>
+                        <div class="indiv_comment_container">
+                            <div class="comment_header">
+                                <div class="profile_picture_bubble JohnDoe"></div>
+                                <span class="user_name">John Doe</span>
+                            </div>
+                            <p>I wish you the best of luck!!</p>
+                            </div>
+                        <div class="posts_footer">
+                            <!-- these buttons leading to login.html is temporary-->
+                                <a  href="./register.html"><div class="login_icon"></div>
+                                <div class="actions" >sign up</div></a>
+                                <a onclick="render_upvote(this)"><div class="upvote_icon"></div>
+                                <div class="actions">upvote</div></a>
+                                <a onclick="render_downvote(this)"><div class="downvote_icon"></div>
+                                <div class="actions">downvote</div></a>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+                <p class="informative_text">Join AnimoHub to participate in the discussion and add your insights</p>
+                
+                
+            </div>
+        </div>
+        
+    </div>
+
+    
+      
+  </body>
+  
+</html>

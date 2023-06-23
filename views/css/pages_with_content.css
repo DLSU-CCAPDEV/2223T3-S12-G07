@@ -577,3 +577,11 @@ hr{
     width:100%;
     text-align: center;
 }
+.post_link{
+    text-decoration: none;
+    width:100%;
+    color:black;
+    margin:5px;
+    padding:5px;
+    cursor: default;
+}
