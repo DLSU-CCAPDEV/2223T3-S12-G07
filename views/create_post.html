@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="./css/pages_with_content.css">
         <script type="text/javascript" src="../scripts/posts.js"></script>
     </head>
-    <body onload="submit_post_form()">
+    <body onload="submit_post_form(); profile_redirect();">
         <div class="page">
             <div class="header">
                 <span class="animo_hub">AnimoHub</span>
@@ -15,7 +15,7 @@
                 </form>
                 <div class="profile_drop_down">
                     <div class="profile_drop_down_interface">
-                        <a href="profile_page_John.html"><div class="profile_picture_bubble"></div></a>
+                        <a href="profile_page_John.html"><div class="profile_picture_bubble JohnDoe"></div></a>
                         <div class="user_identity">
                             John Doe
                             <p class="user_name">@johnny26</p>
@@ -29,15 +29,15 @@
             </div>
             <div class="lower_body">
                 <div class="nav_bar">
-                    <a href="home.html">Home</a><br>
-                    <a href="trending.html">Trending</a>
+                    <a href="home(loggedin).html">Home</a><br>
+                    <a href="maintenance_page.html">Trending</a>
                 </div>
                 <div class="main_body post_creation">
                     <div class="feed create_post_feed">
                         <div class="white_box create_post_whitebox">
                             <form id="create_post_form" action="profile_page_John.html" class="flex_col">
                                 <div class="flex_row center_align">
-                                    <div class="profile_picture_bubble"></div>
+                                    <div class="profile_picture_bubble JohnDoe"></div>
                                     <div class="user_identity">
                                         John Doe
                                         <p class="user_name">@johnny26</p>
