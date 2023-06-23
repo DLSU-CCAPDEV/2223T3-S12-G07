@@ -16,12 +16,12 @@ function password_strength(password){
 
 
 function contact_number_validation(number){
-    var regex = /((\+[0-9]{2})|0)[.\- ]?9[0-9]{2}[.\- ]?[0-9]{3}[.\- ]?[0-9]{4}/;
+    var regex = /^((09|\+639)|(|\d{2}|\d{3}))(-|\s)(\d{9}|\d{7})$/;
     return regex.test(number);
 }
 function login_validation(){
     event.preventDefault();
- var  form = document.getElementById("login_form");
+    var  form = document.getElementById("login_form");
     var email = form.email.value;
     var password = form.password.value;
     var remmember = form.remember;
@@ -33,7 +33,6 @@ function login_validation(){
     }else{
         if(!password_strength(password)){
             alert("Please enter a correct password format.");
-            form.password="";
             return false;
         }else{
             form.submit();
@@ -48,6 +47,7 @@ function sign_up_validation(){
     var confirm_password = form.confirm_password.value;
     var contact_number = form.contact_number.value;
     var gate = true;
+    var warning = document.getElementById("warning");
 
     if(!email_validation(email)){
         alert("Please enter correct email format.");
@@ -56,14 +56,12 @@ function sign_up_validation(){
     }
     if(!password_strength(password)){
             alert("Please enter a stronger password.");
+            warning.style.display = "block";
             gate = false;
-            password="";
         }
     if(password != confirm_password){
             alert("Password and confirm password does not match.");
             gate= false;
-            password="";
-            confirm_password="";
     }
     if(contact_number!=""){
         if(!contact_number_validation(contact_number)){

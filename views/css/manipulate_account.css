@@ -223,3 +223,10 @@ textarea{
     color:#FFFFFF;
     text-align: center;
 }
+#warning{
+    display:none;
+    color:#797878;
+    font-size:11px;
+    width:100%;
+    text-align: justify;
+}

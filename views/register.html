@@ -16,21 +16,22 @@
             </div>
             <div class ="mainForm">
                 <form id="sign_up_form" action="./profile_page.html" onsubmit="sign_up_validation();">
-                    <label for ="email">Email</label><br>
+                    <label for ="email">Email<span class="required">*</span></label><br>
                     <input type ="email" id ="email" name ="email" required><br>
-                    <label for ="password">Password</label><br>
+                    <div id="warning">Enter a strong password. Have it atleast 8 characters long with atleast 1 lowercase, 1 uppercase, and 1 digit.<br></div>
+                    <label for ="password">Password<span class="required">*</span></label><br>
                     <input type ="password" id ="password" name ="password" minlength="8" required><br>
-                    <label for="confirm_password">Confirm Password</label><br>
+                    <label for="confirm_password">Confirm Password<span class="required">*</span></label><br>
                     <input type="password" id="confirm_password" name="confirm_password" minlength="8" required><br>
-                    <label for ="username">Username</label><br>
+                    <label for ="username">Username<span class="required">*</span></label><br>
                     <input type ="text" id ="username" name ="username" required><br>
-                    <label for ="idnumber">ID Number</label><br>
+                    <label for ="idnumber">ID Number<span class="required">*</span></label><br>
                     <input type ="text" id ="idnumber" name ="idnumber" required><br>
                     <label for ="contact_number">Contact Number</label><br>
                     <input type ="text" id ="contact_number" name ="contact_number"><br>
-                    <label for="firstname">First Name</label><br>
+                    <label for="firstname">First Name<span class="required">*</span></label><br>
                     <input type="text" id="firstname" name="firstname" required><br>
-                    <label for="lastname">Last Name</label><br>
+                    <label for="lastname">Last Name<span class="required">*</span></label><br>
                     <input type="text" id="lastname" name="lastname" required><br>
                     <div class="center">
                         <input type ="submit" value ="REGISTER"><br>
