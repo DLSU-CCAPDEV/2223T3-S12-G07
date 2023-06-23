@@ -83,7 +83,7 @@ function edit_profile_validate(){
 
     if(contact_number!=""){
         if(!contact_number_validation(contact_number)){
-            alert("Please enter a correct contact number format.");
+            alert("Please enter a correct contact number format. (+639xxxxxxxxxx 09xxxxxxxxx) ");
             form.contact_number="";
             return false;
         }
