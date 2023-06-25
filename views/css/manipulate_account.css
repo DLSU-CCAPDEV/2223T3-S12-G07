@@ -6,7 +6,7 @@ body{
     justify-content: center;
     align-items: center;
 
-    background-color:#0D8828;
+    background-image:url("../../assets/icons/background.jpeg")
 }
 .content{
     display:flex;
@@ -43,7 +43,6 @@ input[type=submit]:hover{
     
 }
 .greenHeader{
-    background-color: #0D8828;
     display:flex;
     align-items: center;
     width:100%;
@@ -220,9 +219,13 @@ textarea{
 .announcement{
     font-size:large;
     font-weight:bold;
-    color:#FFFFFF;
+    color:black;
     text-align: center;
 }
+a.announcement:hover{
+    color:#11ADC9;
+}
+
 #warning{
     display:none;
     color:#797878;

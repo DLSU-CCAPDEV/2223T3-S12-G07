@@ -24,15 +24,14 @@ function login_validation(){
     var  form = document.getElementById("login_form");
     var email = form.email.value;
     var password = form.password.value;
-    var remmember = form.remember;
+    var remember = form.remember;
 
     if(!email_validation(email)){
         alert("Please enter correct email format."); 
-        form.email="";
         return false;
     }else{
         if(!password_strength(password)){
-            alert("Please enter a correct password format.");
+            alert("You might have entered a wrong password. Please try again.");
             return false;
         }else{
             form.submit();

@@ -1,7 +1,7 @@
-# 2223T3-S12-G07
-##Forum Web application
+# 2223T3-S12-G07#
+##Forum Web application##
 
-###Phase 1 features: 
+###Phase 1 features: ###
 
 * email validation:xx@xx.com
 * password validation : password must be atleast 8 characters long and have atleast 1 capitalized, 1 lowercase, and 1 digit with no special characters
@@ -16,7 +16,7 @@
 * view post : a post has a separate page on its own, different expercience for visitors and registered users
 
 
-###Limitations:
+###Limitations:###
 
 * search_user : since there is no database yet, this feature has not yet been implemented
 * log in: you can log in as long as the inputs pass the email and password verification, 

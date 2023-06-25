@@ -15,7 +15,7 @@
                 Make Some Changes
             </div>
             <div class ="mainForm">
-                <form id ="edit_profile_form" action="./profile_page_John.html">
+                <form id ="edit_profile_form" action="./profile_page_John.html" onsubmit="edit_profile_validate();">
                     <label for ="first_name">First Name</label><br>
                     <input type ="text" id ="first_name" name ="first_name"><br>
                     <label for ="last_name">Last name</label><br>
@@ -30,7 +30,7 @@
                     <input type="text" id="contact_number" name="contact_number"><br>
                 
                     <div class="center">
-                        <input type ="submit" value ="SAVE" onclick="edit_form_validate();"><br>
+                        <input type ="submit" value ="SAVE"><br>
                     </div>
                 </form>
             </div>
