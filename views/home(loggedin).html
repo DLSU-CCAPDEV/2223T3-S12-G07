@@ -1,11 +1,12 @@
 <!DOCTYPE html>
+<html>
     <head>
         <title>Home Page</title>
         <link rel="stylesheet" href="./css/pages_with_content.css">
         <script type="text/javascript" src="../scripts/posts.js"></script>
     </head>
 
-    <body onload="profile_redirect(); render_posts();">
+    <body onload="render_posts();profile_redirect();">
         <div class="page">
             <div class="header">
                   <span class="animo_hub">AnimoHub</span>
@@ -100,7 +101,6 @@
                               </p>
                         </a>
                               <div class="posts_footer">
-                                  <!-- these buttons leading to login.html is temporary-->
                                   <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
                                   <div class="actions" >comment</div></a>
                                   <a onclick="render_upvote(this)"><div class="upvote_icon"></div>

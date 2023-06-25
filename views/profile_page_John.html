@@ -5,7 +5,7 @@
         <script type="text/javascript" src="../scripts/posts.js"></script>
         <title>Profile Page</title>
     </head>
-    <body onload="profile_redirect(); render_posts();">
+    <body onload="render_posts();render_edit_profile();profile_redirect();">
         <div class="page">
             <div class="header">
                 <span class="animo_hub">AnimoHub</span>
@@ -17,7 +17,7 @@
                     <div class="profile_drop_down_interface">
                         <a href="profile_page_John.html"><div class="profile_picture_bubble JohnDoe"></div></a>
                         <div class="user_identity">
-                            John Doe
+                            <div>John Doe</div>
                             <p class="user_name">@johnny26</p>
                        </div>
                     </div>
@@ -69,14 +69,14 @@
                                 </a>
                             </form>
                         </div>
-                        <div id="new_post">
+                        <div id="new_post" >
                             <!--this is where the posts will be rendered-->
                         </div>
                         <div class="posts">
                             <a class="post_link" href="post(loggedin)_John.html">
                             <div class="posts_header">
                                 <div class="profile_picture_bubble JohnDoe"></div>
-                                <span class="user_name">John Doe</span>
+                                <span class="user_name jd">John Doe</span>
                             </div>
                             <h3>LF Animusika VIP tickets</h3>
                             <p>Anyone selling their VIP tickets? Really wanted to see Zild and Munimuni perform. 

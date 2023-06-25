@@ -87,4 +87,36 @@ function edit_profile_validate(){
             return false;
         }
     }
+    //submit form and apply update (since there is no backend yet, this will be the temporary solution
+    //where the changes disappers
+    const formData = new FormData(form);
+    const params = new URLSearchParams(formData);
+    var filePath1 = "";
+    var filePath2 = "";
+    if (form.profile_picture.files.length > 0)
+        filePath1 = URL.createObjectURL(form.profile_picture.files[0]);
+    if (form.cover_photo.files.length > 0)
+        filePath2 = URL.createObjectURL(form.cover_photo.files[0]);
+    const GetURL = `${form.action}?${params.toString()}+&profile_picture1=${filePath1}+&cover_photo1=${filePath2}`;
+    console.log(GetURL);
+
+    const fetchOptions = {
+        method: form.method,
+        body:formData
+      };
+      
+    fetch(GetURL, fetchOptions);
+    window.location = GetURL;
+}
+
+function image_upload_preview(event, id){
+    var output = document.getElementById(`${id}`);
+    filePath = URL.createObjectURL(event.target.files[0]);
+    output.style.backgroundImage= `url(${filePath})`;
+    output.onload = function() {
+      URL.revokeObjectURL(output.style.backgroundImage) // free memory
+    }
+    output.style.display="block";
+   var unhide = document.getElementById(`${id}_br`);
+   unhide.style.display="block";
 }

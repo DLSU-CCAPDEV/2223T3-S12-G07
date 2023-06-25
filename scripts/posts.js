@@ -7,11 +7,12 @@ function submit_post_form(){
     // Convert to raw query string
     const GetURL = `${form.action}?${params.toString()}`;
     console.log(GetURL);
-        window.location = GetURL;
+    window.location = GetURL;
     });
 }
 function render_posts(){
     var post =document.querySelector('#new_post');
+    post.style.display = "block";
     queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     var post_title = urlParams.get('post_create_title');
@@ -228,6 +229,7 @@ function post_comment(comment_section){
         comment_feed.appendChild(indiv_comment_container);
     }else
         alert("Please enter a comment");
+        profile_redirect();
 }
 function post_reply(reply_section){
     var reply = reply_section.querySelector('textarea');
@@ -279,6 +281,7 @@ function post_reply(reply_section){
         reply_feed.appendChild(reply_footer);
         reply_feed.appendChild(hr);
     }
+    profile_redirect();
 }
 function render_upvote(button){
     var upvote = button.querySelector('.upvote_icon');
@@ -364,4 +367,50 @@ function profile_redirect_visitor(){
     for(Xavier of Xavier){
         Xavier.addEventListener("click",(evt)=>{window.location.href = "profile_page(visitor)_Xavier.html";});
     }
+}
+
+
+
+function render_edit_profile(){
+    var queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var firstName= urlParams.get('first_name');
+    var lastName= urlParams.get('last_name');
+    var profile_picture= urlParams.get('profile_picture1');
+    var cover_photo= urlParams.get('cover_photo1');
+    var bio= urlParams.get('bio');
+    var contact_number= urlParams.get('contact_number');
+    var new_first_name="John";
+    var new_last_name="Doe";
+    if(firstName!=null&&firstName!=""){
+        new_first_name=firstName;
+    }
+    if(lastName!=null&&lastName!=""){
+        new_last_name=lastName;
+    }
+    var name = new_first_name+" "+new_last_name;
+    
+    if(bio!=null&&bio!=""){
+        var aboutMe = document.getElementsByClassName('about_me')
+        aboutMe_p = aboutMe[0].getElementsByTagName('p');
+        aboutMe_p[0].innerHTML = bio;
+    }
+    var profileNames = document.getElementsByClassName('name');
+    var profileNames_small = document.getElementsByClassName('user_identity')[0].getElementsByTagName('div');
+    var profileNames_smallest = document.getElementsByClassName('user_name jd');
+    profileNames[0].innerHTML = name;
+    profileNames_small[0].innerHTML = name;
+    for (pf of profileNames_smallest){
+        pf.innerHTML = name;
+    }
+    //limitations of a frontend phase project, the  browser does not allow loading local files
+    /*if(cover_photo!=null&&cover_photo!=""){
+        var coverPhoto = document.getElementsByClassName('cover_photo');
+        coverPhoto[0].style.backgroundImage = `url(${cover_photo})`;
+    }
+    if(profile_picture!=null&&profile_picture!=""){
+        var profilePicture = document.getElementsByClassName('profile_picture');
+        profilePicture[0].style.backgroundImage = `url(${profile_picture})`;
+    }
+*/
 }

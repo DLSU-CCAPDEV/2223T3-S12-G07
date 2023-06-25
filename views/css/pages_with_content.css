@@ -393,6 +393,7 @@ input[type=text] .search_bar{
     display:flex;
     flex-direction: column;
     align-content:center;
+    overflow:hidden;
     
 }
 a{
