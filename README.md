@@ -14,6 +14,8 @@
 * home(visitor) : this forum is public and you can view the posts shared here without having an account but you cannot post content as a visitor
 * signout : you can sign out after log in
 * view post : a post has a separate page on its own, different expercience for visitors and registered users
+* image preview : can view what your profile picture or cover photo will look like whhile in edditing the profile. 
+* can apply the  updated name/ about me / of the user (john dee is the default)
 
 
 ###Limitations:###
