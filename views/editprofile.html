@@ -15,18 +15,18 @@
                 Make Some Changes
             </div>
             <div class ="mainForm">
-                <form id ="edit_profile_form" action="profile_page_John.html" onsubmit="edit_profile_validate();" method="post">
+                <form id ="edit_profile_form" action="profile_page_John.html" onsubmit="edit_profile_validate();">
                     <label for ="first_name">First Name</label><br>
                     <input type ="text" id ="first_name" name ="first_name"><br>
                     <label for ="last_name">Last name</label><br>
                     <input type ="text" id ="last_name" name ="last_name"><br>
                     <label for="profile_picture">Profile Picture</label><br>
                     <input type="file" id ="profile_picture" name ="profile_picture" accept="image/*" onchange="image_upload_preview(event,'prof_pic');"><br>
-                    <div id="prof_pic"  ></div>
+                    <img id="prof_pic"  >
                     <div id="prof_pic_br"><br></div>
                     <label for="cover_photo">Cover Photo</label><br>
                     <input type="file" id ="cover_photo" name ="cover_photo" accept="image/*" onchange="image_upload_preview(event,'cov_pic');"><br>
-                    <div id="cov_pic"  ></div>
+                    <img id="cov_pic"  >
                     <div id="cov_pic_br"><br></div>
                     <label for="bio">About Yourself</label><br>
                     <textarea id="bio" name="bio" rows="8" cols="100"></textarea><br>

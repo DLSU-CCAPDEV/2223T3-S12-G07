@@ -64,17 +64,22 @@ function sign_up_validation(){
     }
     if(contact_number!=""){
         if(!contact_number_validation(contact_number)){
-            alert("Please enter a correct contact number format.");
+            alert("Please enter a correct contact number format. (+639xxxxxxxxxx 09xxxxxxxxx) ");
             form.contact_number="";
             gate = false;
         }
     }
-    if(gate)
-        form.submit();
+    if(gate){
+        const formData = new FormData(form);
+        const params = new URLSearchParams(formData);
+        const GetURL = `${form.action}?${params.toString()}`;
+        console.log(GetURL);
+        window.location = GetURL;
+    }
     else
         return false;
 }
-
+var globalUrl="&prof_pic=&cov_pic=";
 function edit_profile_validate(){
     event.preventDefault();
     var form = document.getElementById("edit_profile_form");
@@ -87,17 +92,10 @@ function edit_profile_validate(){
             return false;
         }
     }
-    //submit form and apply update (since there is no backend yet, this will be the temporary solution
-    //where the changes disappers
     const formData = new FormData(form);
     const params = new URLSearchParams(formData);
-    var filePath1 = "";
-    var filePath2 = "";
-    if (form.profile_picture.files.length > 0)
-        filePath1 = URL.createObjectURL(form.profile_picture.files[0]);
-    if (form.cover_photo.files.length > 0)
-        filePath2 = URL.createObjectURL(form.cover_photo.files[0]);
-    const GetURL = `${form.action}?${params.toString()}+&profile_picture1=${filePath1}+&cover_photo1=${filePath2}`;
+    const GetURL = `${form.action}?${params.toString()}&${globalUrl}`;//;
+    
     console.log(GetURL);
 
     const fetchOptions = {
@@ -107,14 +105,25 @@ function edit_profile_validate(){
       
     fetch(GetURL, fetchOptions);
     window.location = GetURL;
+
 }
 
 function image_upload_preview(event, id){
     var output = document.getElementById(`${id}`);
     filePath = URL.createObjectURL(event.target.files[0]);
+    const reader = new FileReader();
+    reader.addEventListener("load", () =>{
+        var urlParams = new URLSearchParams(globalUrl);
+
+        urlParams.set(id, window.encodeURI(reader.result));
+        globalUrl = urlParams.toString();
+        console.log(globalUrl);
+
+    });
+    reader.readAsDataURL(event.target.files[0]);
     output.style.backgroundImage= `url(${filePath})`;
     output.onload = function() {
-      URL.revokeObjectURL(output.style.backgroundImage) // free memory
+      URL.revokeObjectURL(output.style.backgroundImage)// free memory
     }
     output.style.display="block";
    var unhide = document.getElementById(`${id}_br`);

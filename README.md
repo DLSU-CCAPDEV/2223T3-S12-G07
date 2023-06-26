@@ -15,7 +15,7 @@
 * signout : you can sign out after log in
 * view post : a post has a separate page on its own, different expercience for visitors and registered users
 * image preview : can view what your profile picture or cover photo will look like whhile in edditing the profile. 
-* can apply the  updated name/ about me / of the user (john dee is the default)
+* can apply the  updated name/ about me / profile picture / cover photo of the user (john dee is the default)
 
 
 ###Limitations:###

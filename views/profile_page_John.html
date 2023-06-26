@@ -5,7 +5,7 @@
         <script type="text/javascript" src="../scripts/posts.js"></script>
         <title>Profile Page</title>
     </head>
-    <body onload="render_posts();render_edit_profile();profile_redirect();">
+    <body onload="render_posts();if(!render_edit_profile()){render_register_profile();}profile_redirect();">
         <div class="page">
             <div class="header">
                 <span class="animo_hub">AnimoHub</span>
@@ -15,7 +15,7 @@
                 </form>
                 <div class="profile_drop_down">
                     <div class="profile_drop_down_interface">
-                        <a href="profile_page_John.html"><div class="profile_picture_bubble JohnDoe"></div></a>
+                        <a href="profile_page_John.html"><div class="profile_picture_bubble"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"></div></a>
                         <div class="user_identity">
                             <div>John Doe</div>
                             <p class="user_name">@johnny26</p>
@@ -36,9 +36,9 @@
             <div class="main_body">
                 <!--profile_header consists of two rows-->
                 <div class="profile_header">
-                    <div class="cover_photo JD_cover"></div>
+                    <div class="cover_photo"><img class="cover_photo_img" src="../assets/profile_pictures/John.jpeg"></div>
                     <div class="profile_details">
-                        <div class="profile_picture JohnDoe"></div>
+                        <div class="profile_picture"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"></div>
                         <div class="name">John Doe</div>
                         <div class="edit"></div>
                     </div>
@@ -62,7 +62,7 @@
                         <div class="create_posts">
                             
                             <form>
-                                <div class="profile_picture_bubble JohnDoe"></div>
+                                <div class="profile_picture_bubble"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"> </div>
                                 <a href="create_post.html">
                                 <input type="text" placeholder="What's on your mind?"><br>
                                 <input type="submit" value="POST">
@@ -74,7 +74,7 @@
                         </div>
                         <div class="posts">
                             <div class="posts_header">
-                                <div class="profile_picture_bubble JohnDoe"></div>
+                                <div class="profile_picture_bubble"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"></div>
                                 <a class="post_link" href="post(loggedin)_John.html">
                                 <span class="user_name jd">John Doe</span>
                             </div>

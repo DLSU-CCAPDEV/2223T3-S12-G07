@@ -235,8 +235,8 @@ a.announcement:hover{
 }
 
 #prof_pic{
-    width:40px;
-    height:40px;
+    width:64px;
+    height:64px;
     border-radius:100%;
     background-size: cover;
     justify-content: center;
@@ -249,12 +249,13 @@ a.announcement:hover{
 
 #cov_pic{
     width:100%;
-    height:60px;
+    height:150px;
     border-radius:5px;
     background-size: cover;
     justify-content: center;
     background-color:#11ADC9;
     display:none;
+    object-fit:cover;
 
 }
 #prof_pic_br{
