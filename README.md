@@ -1,7 +1,7 @@
-# 2223T3-S12-G07#
-##Forum Web application##
+# 2223T3-S12-G07 #
+## Forum Web application ##
 
-###Phase 1 features: ###
+### Phase 1 features: ###
 
 * email validation:xx@xx.com
 * password validation : password must be atleast 8 characters long and have atleast 1 capitalized, 1 lowercase, and 1 digit with no special characters
@@ -18,7 +18,7 @@
 * can apply the  updated name/ about me / profile picture / cover photo of the user (john dee is the default)
 
 
-###Limitations:###
+### Limitations: ###
 
 * search_user : since there is no database yet, this feature has not yet been implemented
 * log in: you can log in as long as the inputs pass the email and password verification, 
@@ -31,6 +31,18 @@
 * view who upvoted/downvoted : The number of downvotes/upvotes are not counted and the user who upvoted/downvoted is not stored
 * can't track if user is logged in : this experience is simulated through hard coded webpages for logged in / visitor versions but a loop hole exists for a visitor to accomplish what a logged in user can do. For instance, all our current profile pages are viewed a registered users perspective even when visited by a visitor user
 
+
+### FLOW of navigation ###
+
+## START ##
+* either register / login / home (visitor)
+
+* register  -  profile_page_JohnDoe(loggedin) after registering,  home(visitor) after clicking the mascot sheep (not registered)
+* login - profile_page_JohnDoe(loggedin) after login,  home(visitor) after clicking the mascot sheep (not logged in)
+* home (visitor) - can lead to profile_page(visitor) by clicking the profile pictures, post pages when clicking on the posts, log in and register pages
+* profile page - can lead to post page  or home
+* unimplemented features : { trending, search, profile[comments, upvotes,downvotes] } will lead to maintenance page
+* mainteance page signs out the user and leads to home(visitor)
 
 ***NOTES***
 This repo contains alot of html files and a lot of those files are duplicates to hardcode the users and posts that were used to fill up the forum.
