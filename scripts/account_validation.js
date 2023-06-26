@@ -31,7 +31,7 @@ function login_validation(){
         return false;
     }else{
         if(!password_strength(password)){
-            alert("You might have entered a wrong password. Please try again.");
+            alert("You might have entered a wrong password. Please try again. Hint: atleast 8 letters, atleast 1 uppercase, atleast 1 lowercase, atleast 1 number and no special characters.");
             return false;
         }else{
             form.submit();
