@@ -1,8 +1,8 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const hbs = require('hbs');
-const routes = require('./routes/routes.js');
-
+//const routes = require('./routes/routes.js');
+dotenv.config();
 const app = express();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;

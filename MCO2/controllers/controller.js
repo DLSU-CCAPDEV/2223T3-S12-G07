@@ -1,5 +1,5 @@
 const controller = {
-    geetIndex: function(req, res){
+    getIndex: function(req, res){
         res.render('index');
     }
 }
