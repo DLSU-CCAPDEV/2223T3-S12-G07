@@ -13,10 +13,31 @@ var UserSchema = new mongoose.Schema({
         type: String,
         required : true
     },
+    email:{
+        type: String,
+        required: true
+    },
+    contactNumber:{
+        type:String,
+        required: false
+    },
+    idNumber:{
+        type: String,
+        required: true
+    },
     password:{
         type: String,
         required: true
     },
+    posts:{
+        type: String,
+        required: false
+    },
+    comments: {
+        type: Stirng,
+        required: false
+    }
+
 });
 
 module.exports = mongoose.model('User', UserSchema);
