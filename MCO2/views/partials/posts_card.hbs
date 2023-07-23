@@ -1,23 +1,24 @@
     
-    <div class="posts">
+    <div class="posts" id="{{_id}}">
         <div class="posts_header">
             <div class="profile_picture_bubble"><img class="profile_pic_img"></div>
                 <a class="post_link" href="post(loggedin)_John.html">
-                    <span class="user_name">{{date}}</span>
+                    <span class="user_name">@{{username}}</span>
         </div>
         <h3>{{title}}</h3>
         <p>{{content}}
         </p>
+        </a>
         <div class="posts_footer">
             <!-- this buttons leading to login.html is temporary-->
-            <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+            <a class="comment_button"><div class="comment_icon"></div>
                 <div class="actions">comment</div>
             </a>
-            <a onclick="render_upvote(this)">
+            <a class="upvote_button">
                 <div class="upvote_icon"></div>
-                <div class="actions">upvote</div>
+                <div class="actions">{{#if upvotes}}{{count upvotes}} upvotes{{else}}upvote{{/if}}</div>
             </a>
-            <a onclick="render_downvote(this)">
+            <a class="downvote_button">
                 <div class="downvote_icon"></div>
                 <div class="actions">downvote</div>
             </a>
@@ -27,12 +28,20 @@
                         <!-- comments -->     
             </div>
             <span class="center_align width_100">
+                {{#if flag}}
                 <div class="create_comment">
                     <form id="create_comment_form">
                         <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
                         <input type="button" value="post" id="create_comment_button">
                     </form>
                 </div>
+                {{else}}
+                <a href="register.html">
+                    <div class="informative_text text_center">
+                     Join AnimoHub to participate in the discussion and add your insights
+                    </div>
+                </a>
+                {{/if}}
             </span>     
         </div>
     </div>

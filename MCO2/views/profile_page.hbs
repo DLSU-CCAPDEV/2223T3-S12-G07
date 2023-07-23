@@ -2,42 +2,17 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/pages_with_content.css">
-
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/feed.js"></script>
         <title>Profile Page</title>
     </head>
     <body>
         <div class="page">
-            <div class="header">
-                <span class="animo_hub">AnimoHub</span>
-                <form id ="search">
-                    <input type="text" placeholder="search AnimoHub" class="search_bar">
-                    <input type="submit" value="Search" class="search_button">
-                </form>
-                <div class="profile_drop_down">
-                    {{#with data}}
-                    <div class="profile_drop_down_interface">
-                        <a href='profile_page?userName={{userName}}'>
-                            <div class="profile_picture_bubble">
-                            </div>
-                        </a>
-                        <div class="user_identity">
-                            <div>{{firstName}} {{lastName}}</div>
-                            <p class="user_name">@{{userName}}</p>
-                       </div>
-                    </div>
-                    <div class="profile_drop_down_options">
-                        <a href="editprofile">Edit</a>
-                        <a href="login">SignOut</a>
-                    </div>
-                </div>
-            </div>
-
+            {{>header details=this}}
+            <!-- header-->
             <div class ="lower_body">
             <!--the nav_bar contains the links to home and trending-->
-                <div class="nav_bar">
-                    <a href="home">Home</a><br>
-                    <a href="maintenance_page.html">Trending</a>
-                </div>
+                {{>general_nav_bar}}
                 <div class="main_body">
                     <!--profile_header consists of two rows-->
                     <div class="profile_header">
@@ -48,26 +23,21 @@
                             <div class="profile_picture">
                                 <img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg">
                             </div>
+                            {{#with data}}
                             <div class="name">{{firstName}} {{lastName}}</div>
                             <div class="edit"></div>
                         </div>
                         <hr id ="profile_header_break">
                     </div>
                     <div class="main_lower_body">
-                        <div class="profile_nav_bar">
-                            <a href="post(loggedin)_John.html">Posts</a>
-                            <a href="maintenance_page.html">Comments</a>
-                            <a href="maintenance_page.html">Upvotes</a>
-                            <a href="maintenance_page.html">downvotes</a>
-                        </div>
+                        {{>profile_nav_bar}}
                         <div class="feed">
-                            <div class="about_me">
-                                <h3>About Me</h3>
-                                <hr>
-                                <p>ID121 | Currently taking up BS in Computer Science - Major in Software Technology | 
-                                    Loves walks, dogs, and traveling
-                                </p>
-                            </div>
+                                {{#if about_me}}
+                                {{> about_me about_me=about_me}}
+                                {{/if}}
+                            {{/with}}
+                            {{#if flag}}
+                            {{#if user}}
                             <div class="create_posts">
                                 
                                 <form>
@@ -78,12 +48,15 @@
                                     </a>
                                 </form>
                             </div>
-                            
+                            {{/if}}
+                            {{/if}}
                                 <!--this is where the posts will be rendered-->
                             <div id="new_posts">
+                                {{#with data}}
                                 {{#each posts }}
                                 {{> posts_card this}}
                                 {{/each}}
+                                {{/with}}
                             </div>
                             
                         </div>
@@ -91,6 +64,5 @@
                 </div>
             </div>
         </div>
-        {{/with}}
     </body>
 </html>

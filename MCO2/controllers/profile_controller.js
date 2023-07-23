@@ -11,8 +11,26 @@ const profileController ={
         var query = {userName: user};
         var projection = 'userName firstName lastName posts comments';
         var data = await db.findOne(User, query, projection);
-        console.log(data.projection);
-        res.render('profile_page',{data: data});
+        var details = {}
+        req.session.prev_page = 'profile_page';
+        if(req.session.flag){
+            details.flag = true;
+            data.posts.forEach(function(post){
+                post.flag = req.session.flag;
+            });
+            console.log(data.posts);
+            details.data = data;
+            console.log(data);
+            if(req.session.user.userName == user){
+                details.user = true;
+            }else
+                details.user = false;
+        }else{
+            details.flag = false;
+            details.user = false;
+        }
+       
+        res.render('profile_page',details);
     },
     postComment: async function(req, res){
         var username = req.body.username;
@@ -33,7 +51,7 @@ const profileController ={
         if(response != null){
             var user_response = await db.updateOne(User, {username: username}, {$push: {comments: comment}});
             if (user_response != null){
-                res.render('profile', details);
+                res.render('profile_page', details);
             } else{
                 res.render('error');
             }

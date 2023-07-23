@@ -1,0 +1,18 @@
+<div class="profile_drop_down">
+                    {{#with data}}
+                    <div class="profile_drop_down_interface">
+                        <a href='profile_page?userName={{userName}}'>
+                            <div class="profile_picture_bubble">
+                            </div>
+                        </a>
+                        <div class="user_identity">
+                            <div>{{firstName}} {{lastName}}</div>
+                            <p class="user_name">@{{userName}}</p>
+                       </div>
+                    </div>
+                    <div class="profile_drop_down_options">
+                        <a href="editprofile">Edit</a>
+                        <a href="login">SignOut</a>
+                    </div>
+                    {{/with}}
+</div>

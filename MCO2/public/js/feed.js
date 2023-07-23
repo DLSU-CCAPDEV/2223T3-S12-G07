@@ -1,8 +1,53 @@
+
+
 $(document).ready(function(){
-    
+    function render_comments(post){
+        var comment = post.children('.comment_section');
+        console.log(comment);
+        if(comment.css('display') =="flex"){
+            comment.css('display',"none");
+        }else{
+            comment.css('display',"flex");
+            comment.css('flexDirection' ,"column");
+            comment.css('alignItems' , "flex-end");
+        }
+    }
+    function render_replies(post){
+        var comment = post.querySelector('.reply_section');
+        if(comment.style.display =="flex"){
+            comment.style.display= "none";
+        }else{
+            comment.style.display="flex";
+            comment.style.flexDirection = "column";
+            comment.style.alignItems = "flex-end";
+        }
+    }
+
+    $('a.comment_button').click(function(){
+        var post = $(this).parent().parent();
+        console.log(post.attr('id'));
+        render_comments(post); 
+
+    });
+
+    $('.upvote_button').click( async function(){
+        var id = $(this).attr('id');
+        id = id.slice(6);
+        $.get('/getUpvote', {id: id}, function(data){
+
+        });
+    });
+
+    $('.downvote_button').click(async function(){
+        var id = $(this).attr('id');
+        id = id.slice(8);
+        $.get('/getDownvote', {id: id}, function(data){
+
+        });
+    });
 });
 
-/* 
+
 function render_upvote(button){
     var upvote = button.querySelector('.upvote_icon');
     var text = button.querySelector('.actions');
@@ -40,4 +85,3 @@ function render_downvote(button){
         text.style.color = "#797878";
     }
 }
-*/

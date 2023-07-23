@@ -1,7 +1,11 @@
-const Reply = require('../models/ReplyModel.js');
-const Comment = require('../models/CommentModel.js');
-const Post = require('../models/PostModel.js');
+const User = require('../models/UserModel.js');
 
 $document.ready(function(){
+
+    function redirectProfile(){
+        $('.profile_picture_bubble').click(function(){
+            window.location.href = '/profile_page?userName='+$(this).attr('id');
+        });
+    }
     
 });

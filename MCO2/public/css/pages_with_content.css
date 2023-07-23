@@ -234,35 +234,35 @@ form a input[type=text]{
     width:60px;
 }
 .comment_icon{
-    background-image: url(../../assets/icons/comment_icon.svg);
+    background-image: url(/images/comment_icon.svg);
     background-size:cover;
     height:12px;
     width:12px;
     margin:5px;
 }
 .upvote_icon{
-    background-image: url(../../assets/icons/upvote.svg);
+    background-image: url(/images/upvote.svg);
     background-size:cover;
     height:12px;
     width:12px;
     margin:5px;
 }
 .upvote_icon_true{
-    background-image: url(../../assets/icons/upvote_true.svg);
+    background-image: url(/images/upvote_true.svg);
     background-size:cover;
     height:12px;
     width:12px;
     margin:5px;
 }
 .downvote_icon{
-    background-image: url(../../assets/icons/downvote.svg);
+    background-image: url(/images/downvote.svg);
     background-size:cover;
     height:12px;
     width:12px;
     margin:5px;
 }
 .downvote_icon_true{
-    background-image: url(../../assets/icons/downvote_true.svg);
+    background-image: url(/images/downvote_true.svg);
     background-size:cover;
     height:12px;
     width:12px;
