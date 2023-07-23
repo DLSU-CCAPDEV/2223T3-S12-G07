@@ -1,0 +1,39 @@
+    
+    <div class="posts">
+        <div class="posts_header">
+            <div class="profile_picture_bubble"><img class="profile_pic_img"></div>
+                <a class="post_link" href="post(loggedin)_John.html">
+                    <span class="user_name">{{date}}</span>
+        </div>
+        <h3>{{title}}</h3>
+        <p>{{content}}
+        </p>
+        <div class="posts_footer">
+            <!-- this buttons leading to login.html is temporary-->
+            <a  onclick="render_comments(this.parentNode.parentNode);" class="action_button"><div class="comment_icon"></div>
+                <div class="actions">comment</div>
+            </a>
+            <a onclick="render_upvote(this)">
+                <div class="upvote_icon"></div>
+                <div class="actions">upvote</div>
+            </a>
+            <a onclick="render_downvote(this)">
+                <div class="downvote_icon"></div>
+                <div class="actions">downvote</div>
+            </a>
+        </div>
+        <div class="comment_section">       
+            <div class="comment_feed">
+                        <!-- comments -->     
+            </div>
+            <span class="center_align width_100">
+                <div class="create_comment">
+                    <form id="create_comment_form">
+                        <textarea placeholder="Write a comment..." id="create_comment_input" name ="create_comment_input"></textarea>
+                        <input type="button" value="post" id="create_comment_button">
+                    </form>
+                </div>
+            </span>     
+        </div>
+    </div>
+
