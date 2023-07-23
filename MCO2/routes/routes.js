@@ -13,6 +13,13 @@ app.get('/signup', signupController.getSignUp);
 
 app.post('/signup', signupController.postSignUp); //form id in register.hbs should be signup
 
+app.get('/checkUsername', signupController.getCheckUsername);
+app.get('/checkEmail', signupController.getCheckEmail);
+app.get('/checkIdNumber', signupController.getCheckIdNumber);
+
 app.get('/login', loginController.getLogin)
 
 app.post('/login', signupController.postLogin);
+
+app.get('/profile', profileController.getProfile);
+

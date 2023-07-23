@@ -26,6 +26,14 @@ var CommentSchema = new mongoose.Schema({
     content:{
         type: String,
         required: true
+    },
+    upvotes:{
+        type: Array,
+        required: false
+    },
+    downvotes:{
+        type: Array,
+        required: false
     }
 });
 

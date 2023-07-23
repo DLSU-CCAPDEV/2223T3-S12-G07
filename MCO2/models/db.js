@@ -7,7 +7,7 @@ const mongoose = require('mongoose');
 const User = require('./UserModel.js');
 
 // ccapdev-mongoose is the name of the database
-const url = process.env.MONGODB_URL;
+const url = process.env.DATABASE_URL;
 
 // additional connection options
 const options = {
@@ -17,7 +17,6 @@ const options = {
 
 // defines an object which contains necessary database functions
 const database = {
-
     /*
         connects to database
     */
@@ -25,7 +24,6 @@ const database = {
         await mongoose.connect(url, options);
         console.log('Connected to: ' + url);
     },
-
     /*
         inserts a single `doc` to the database based on the model `model`
     */
@@ -39,7 +37,6 @@ const database = {
     insertMany: async function(model, docs) {
         return await model.insertMany(docs);
     },
-
     /*
         searches for a single document based on the model `model`
         filtered through the object `query`

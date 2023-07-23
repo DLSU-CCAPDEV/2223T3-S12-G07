@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 
-var UserSchema = new mongoose.Schema({
+var PostSchema = new mongoose.Schema({
     username:{
         type : String,
         require : true
@@ -26,13 +26,13 @@ var UserSchema = new mongoose.Schema({
         required: true
     },
     upvotes:{
-        type: Number,
-        required: true
+        type: Array,
+        required: false
     },
     downvotes:{
-        type: Number,
-        required: true
+        type: Array,
+        required: false
     }
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Post', PostSchema);

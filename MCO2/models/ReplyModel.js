@@ -1,43 +1,36 @@
 var mongoose = require('mongoose');
-
-var UserSchema = new mongoose.Schema({
-    firstName:{
+var ReplySchema = new mongoose.Schema({
+    author_replier:{
         type : String,
         require : true
     },
-    lastName:{
+    replied_to:{
         type: String,
         required: true
     },
-    userName:{
-        type: String,
-        required : true
+    date:{
+        type: Date,
+        required: true
     },
-    email:{
+    id:{
         type: String,
         required: true
     },
-    contactNumber:{
-        type:String,
-        required: false
+    level:{
+        type: Number,
+        required: true
     },
-    idNumber:{
+    content:{
         type: String,
         required: true
     },
-    password:{
-        type: String,
-        required: true
-    },
-    posts:{
+    upvotes:{
         type: Array,
         required: false
     },
-    comments: {
+    downvotes:{
         type: Array,
         required: false
     }
-
 });
-
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Reply', ReplySchema);
