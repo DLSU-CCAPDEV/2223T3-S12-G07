@@ -3,13 +3,13 @@ const controller = require('../controllers/controller.js');
 const signupController = require('../controllers/signup_controller.js');
 const profileController = require('../controllers/profile_controller.js');
 const loginController = require('../controllers/login_controller.js');
+const homeController = require('../controllers/home_controller.js');
 
 const app = express();
 
 app.get('/favicon.ico', controller.getFavicon);
-
 app.get('/', controller.getIndex);
-
+app.get('/home',homeController.getHome);
 app.get('/signup', signupController.getSignUp);
 
 app.post('/signup', signupController.postSignUp); //form id in register.hbs should be signup

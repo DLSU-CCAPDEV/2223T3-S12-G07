@@ -6,7 +6,7 @@ body{
     justify-content: center;
     align-items: center;
 
-    background-image:url("../../assets/icons/background.jpeg")
+    background-image:url("/images/background.jpeg")
 }
 .content{
     display:flex;
@@ -190,21 +190,21 @@ textarea{
 }
 
 #menu_icon{
-    background-image: url(../../assets/icons/menu.svg);
+    background-image: url(/images/menu.svg);
     background-size: cover;
     height:100px;
     width:100px;
 }
 
 #home_icon{
-    background-image: url(../../assets/icons/home.svg);
+    background-image: url(/images/home.svg);
     background-size: cover;
     height:100px;
     width:100px;
    
 }
 #home_icon:hover{
-    background-image: url(../../assets/icons/home_hover.svg);
+    background-image: url(/images/home_hover.svg);
     background-size: cover;
     height:100px;
     width:100px;

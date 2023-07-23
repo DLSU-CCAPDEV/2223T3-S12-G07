@@ -3,7 +3,7 @@ const User = require('../models/UserModel.js');
 const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
 const Reply = require('../models/ReplyModel.js');
-const { render } = require('express/lib/response.js');
+
 
 const profileController ={
     getProfile: function(req, res){

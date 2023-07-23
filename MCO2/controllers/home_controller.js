@@ -2,17 +2,13 @@ const db = require('../models/db.js');
 const User = require('../models/UserModel.js');
 const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
-
-const controller = {
-    getIndex: function(req, res){
-        res.render('login');
+const Reply = require('../models/ReplyModel.js');
+const homeController ={
+    getHome: function(req, res){
+        res.render('home');
     },
-
     
+        
+};
 
-    getFavicon: function(req, res){
-        res.status(204);
-    },
-}
-
-module.exports = controller;
+module.exports = homeController;
