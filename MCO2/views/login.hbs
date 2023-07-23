@@ -2,22 +2,15 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/manipulate_account.css">
-        <script type="text/javascript" src="../scripts/account_validation.js"></script>
         <title>Login</title>
     </head>
     <body>
         <div class="content">
-            <div class ="greenHeader">
-                <a id="home_icon" href="home"></a>
-            </div>
-            <div class ="titleBox">
-                <br>
-                Log In to your Account
-            </div>
+            {{> signin_header title = "Login to your Account"}}
             <div class ="mainForm">
                 <form id ="login"  method="post">
-                    <label for ="email" required>Email</label><br>
-                    <input type ="email" id ="email" name ="email"><br>
+                    <label for ="username" required>Username</label><br>
+                    <input type ="text" id ="username" name ="username"><br>
                     <label for ="password" required>Password</label><br>
                     <input type ="password" id ="password" name ="password"><br>
                     <input type ="checkbox" id ="remember_me" name ="remember_me" value="remember_me">

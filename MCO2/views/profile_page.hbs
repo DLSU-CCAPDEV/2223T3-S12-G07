@@ -2,10 +2,10 @@
 <html>
     <head>
         <link rel="stylesheet" href="./css/pages_with_content.css">
-        <script type="text/javascript" src="../scripts/posts.js"></script>
+
         <title>Profile Page</title>
     </head>
-    <body onload="render_posts();if(!render_edit_profile()){render_register_profile();}profile_redirect();">
+    <body>
         <div class="page">
             <div class="header">
                 <span class="animo_hub">AnimoHub</span>
@@ -14,23 +14,28 @@
                 <input type="submit" value="Search" class="search_button">
                 </form>
                 <div class="profile_drop_down">
+                {{#with data}}
+                {{userName}}
                     <div class="profile_drop_down_interface">
-                        <a href="/profile_page/{{full_name}}"><div class="profile_picture_bubble"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"></div></a>
+                        <a href='profile_page?userName={{userName}}'>
+                        <div class="profile_picture_bubble">
+                        </div></a>
                         <div class="user_identity">
-                            <div>{{profile_name}}</div>
-                            <p class="user_name">@{{profile_username}}</p>
+                            <div>{{firstName}} {{lastName}}</div>
+                            <p class="user_name">@{{userName}}</p>
                        </div>
                     </div>
                     <div class="profile_drop_down_options">
-                        <a href="editprofile.html">Edit</a>
-                        <a href="login.html">SignOut</a>
+                        <a href="editprofile">Edit</a>
+                        <a href="login">SignOut</a>
                     </div>
                 </div>
             </div>
+
         <div class ="lower_body">
             <!--the nav_bar contains the links to home and trending-->
             <div class="nav_bar">
-                <a href="home(loggedin).html">Home</a><br>
+                <a href="home">Home</a><br>
                 <a href="maintenance_page.html">Trending</a>
             </div>
             <div class="main_body">
@@ -39,7 +44,7 @@
                     <div class="cover_photo"><img class="cover_photo_img" src="../assets/profile_pictures/John.jpeg"></div>
                     <div class="profile_details">
                         <div class="profile_picture"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"></div>
-                        <div class="name">{{profile_name}}</div>
+                        <div class="name">{{firstName}} {{lastName}}</div>
                         <div class="edit"></div>
                     </div>
                     <hr id ="profile_header_break">
@@ -76,7 +81,7 @@
                             <div class="posts_header">
                                 <div class="profile_picture_bubble"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"></div>
                                 <a class="post_link" href="post(loggedin)_John.html">
-                                <span class="user_name jd">profile_name</span>
+                                <span class="user_name">{{userName}}</span>
                             </div>
                             <h3>LF Animusika VIP tickets</h3>
                             <p>Anyone selling their VIP tickets? Really wanted to see Zild and Munimuni perform. 
@@ -112,5 +117,6 @@
             </div>
             
         </div>
+        {{/with}}
     </body>
 </html>

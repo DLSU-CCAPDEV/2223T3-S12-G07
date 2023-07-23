@@ -10,13 +10,14 @@ const signupController = {
     postSignUp: async function (req, res) {
         //initiate values from the req.body
         var firstName = req.body.firstName;
+        var userName = req.body.username;
         var lastName = req.body.lastName;
         var password= req.body.password;
         var email= req.body.email;
         var contactNumber ="";
-        if(req.body.contactNumber != null)
-            contactNumber= req.body.contactNumber;
-        var idNumber= req.body.idNumber;
+        if(req.body.contact_number != null)
+            contactNumber= req.body.contact_number;
+        var idNumber= req.body.idnumber;
 
 
         var user = {
@@ -33,7 +34,7 @@ const signupController = {
         var response = await db.insertOne(User, user);
 
         if(response != null)
-            res.redirect('/profile?username='+userName);
+            res.redirect('/profile_page?userName='+userName);
         else
             res.render('error');
     },

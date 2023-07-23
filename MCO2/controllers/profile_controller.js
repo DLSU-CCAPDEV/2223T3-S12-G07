@@ -6,25 +6,13 @@ const Reply = require('../models/ReplyModel.js');
 
 
 const profileController ={
-    getProfile: function(req, res){
-        var user = req.query.username;
-        var query = {username: user};
-        var projection = 'username firstName lastName posts comments';
-        db.findOne(User, query, projection, function(result){
-            if(result != null){
-                var details = {
-                    username: result.username,
-                    firstName: result.firstName,
-                    lastName: result.lastName,
-                    posts: result.posts,
-                    comments: result.comments
-                };
-                res.render('profile', details);
-            }
-            else{
-                res.render('error');
-            }
-        });
+    getProfile: async function(req, res){
+        var user = req.query.userName;
+        var query = {userName: user};
+        var projection = 'userName firstName lastName posts comments';
+        var data = await db.findOne(User, query, projection);
+        console.log(data.projection);
+        res.render('profile_page',{data: data});
     },
     postComment: async function(req, res){
         var username = req.body.username;

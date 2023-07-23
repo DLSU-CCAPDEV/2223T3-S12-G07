@@ -7,13 +7,7 @@
     </head>
     <body>
         <div class="content">
-            <div class ="greenHeader">
-                <a id="home_icon" href="profile_page_John.html"></a>
-            </div>
-            <div class ="titleBox">
-                <br>
-                Make Some Changes
-            </div>
+            {{>signin_header title="Make Some Changes" link='profile_page?username={{username}}'+}}
             <div class ="mainForm">
                 <form id ="edit_profile_form" action="profile_page_John.html" onsubmit="edit_profile_validate();">
                     <label for ="first_name">First Name</label><br>

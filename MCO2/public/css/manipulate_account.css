@@ -226,12 +226,17 @@ a.announcement:hover{
     color:#11ADC9;
 }
 
-#warning{
+.warning{
     display:none;
     color:#797878;
     font-size:11px;
     width:100%;
     text-align: justify;
+}
+
+#submit:disabled{
+    cursor:not-allowed;
+    background-color:#065217;
 }
 
 #prof_pic{

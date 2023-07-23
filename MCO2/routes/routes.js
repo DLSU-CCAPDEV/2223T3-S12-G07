@@ -10,9 +10,9 @@ const app = express();
 app.get('/favicon.ico', controller.getFavicon);
 app.get('/', controller.getIndex);
 app.get('/home',homeController.getHome);
-app.get('/signup', signupController.getSignUp);
+app.get('/register', signupController.getSignUp);
 
-app.post('/signup', signupController.postSignUp); //form id in register.hbs should be signup
+app.post('/register', signupController.postSignUp); //form id in register.hbs should be signup
 
 app.get('/checkUsername', signupController.getCheckUsername);
 app.get('/checkEmail', signupController.getCheckEmail);
@@ -22,6 +22,6 @@ app.get('/login', loginController.getLogin)
 
 app.post('/login', loginController.postLogin);
 
-app.get('/profile', profileController.getProfile);
+app.get('/profile_page', profileController.getProfile);
 
 module.exports = app;

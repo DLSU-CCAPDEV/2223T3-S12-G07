@@ -2,43 +2,39 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/css/manipulate_account.css">
-        <script type="text/javascript" src="../scripts/account_validation.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/signup.js"></script>
         <title>Register</title>
     </head>
     <body>
         <div class="content">
-            <div class ="greenHeader">
-                <a id="home_icon" href="home(visitor).html"></a>
-            </div>
-            <div class ="titleBox">
-                <br>
-                Create New Account
-            </div>
+            {{> signin_header title="Create New Account"}}
             <div class ="mainForm">
                 <form id="signup" method="post">
-                    <label for ="firstName">Email<span class="required">*</span></label><br>
+                    <label for ="firstName">First Name<span class="required">*</span></label><br>
                     <input type ="text" id ="firstName" name ="firstName" required><br>
-                    <label for ="lastName">Email<span class="required">*</span></label><br>
+                    <label for ="lastName">Last Name<span class="required">*</span></label><br>
                     <input type ="text" id ="lastName" name ="lastName" required><br>
                     <label for ="email">Email<span class="required">*</span></label><br>
                     <input type ="email" id ="email" name ="email" required><br>
-                    <div id="warning">Enter a strong password. Have it atleast 8 characters long with atleast 1 lowercase, 1 uppercase, and 1 digit and no special characters.<br><br></div>
+                    <div id="warning_email" class="warning">Please enter correct email format.<br><br></div>
                     <label for ="password">Password<span class="required">*</span></label><br>
                     <input type ="password" id ="password" name ="password" minlength="8" required><br>
+                    <div id="warning_password" class="warning">Enter a strong password. Have it atleast 8 characters long with atleast 1 lowercase, 1 uppercase, and 1 digit and no special characters.<br><br></div>
                     <label for="confirm_password">Confirm Password<span class="required">*</span></label><br>
                     <input type="password" id="confirm_password" name="confirm_password" minlength="8" required><br>
+                    <div id="warning_confirm_password" class="warning">Passwords do not match.<br><br></div>
                     <label for ="username">Username<span class="required">*</span></label><br>
                     <input type ="text" id ="username" name ="username" required><br>
+                    <div id="warning_username" class="warning">Username is already taken.<br><br></div>
                     <label for ="idnumber">ID Number<span class="required">*</span></label><br>
                     <input type ="text" id ="idnumber" name ="idnumber" required><br>
+                    <div id="warning_idnumber" class="warning">ID Number is already taken.<br><br></div>
                     <label for ="contact_number">Contact Number</label><br>
                     <input type ="text" id ="contact_number" name ="contact_number"><br>
-                    <label for="firstname">First Name<span class="required">*</span></label><br>
-                    <input type="text" id="firstname" name="firstname" required><br>
-                    <label for="lastname">Last Name<span class="required">*</span></label><br>
-                    <input type="text" id="lastname" name="lastname" required><br>
+                    <div id="warning_contact_number" class="warning">Please enter a correct contact number format. (+639xxxxxxxxxx | 09xxxxxxxxx).<br><br></div>
                     <div class="center">
-                        <input type ="submit" value ="REGISTER"><br>
+                        <input type ="submit" value ="REGISTER" id = "submit"><br>
                         <div class="register_login_footer">Already have an account? <a href="/login">Log In</a></div>
                     </div>
                 </form>
