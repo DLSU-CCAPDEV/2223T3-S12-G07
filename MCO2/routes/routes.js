@@ -4,6 +4,7 @@ const signupController = require('../controllers/signup_controller.js');
 const profileController = require('../controllers/profile_controller.js');
 const loginController = require('../controllers/login_controller.js');
 const homeController = require('../controllers/home_controller.js');
+const postController = require('../controllers/post_controller.js');
 
 const app = express();
 
@@ -23,5 +24,8 @@ app.get('/login', loginController.getLogin)
 app.post('/login', loginController.postLogin);
 
 app.get('/profile_page', profileController.getProfile);
+
+app.get('/create_post', postController.getCreatePost);
+app.post('/create_post', postController.postCreatePost);
 
 module.exports = app;

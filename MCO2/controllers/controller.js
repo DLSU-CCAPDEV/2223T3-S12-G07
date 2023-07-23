@@ -5,10 +5,10 @@ const Comment = require('../models/CommentModel.js');
 
 const controller = {
     getIndex: function(req, res){
-        res.render('login');
+        res.redirect('login');
     },
 
-    
+
 
     getFavicon: function(req, res){
         res.status(204);

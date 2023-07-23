@@ -21,10 +21,6 @@ var PostSchema = new mongoose.Schema({
         type: Array,
         required: false
     },
-    id:{
-        type: String,
-        required: true
-    },
     upvotes:{
         type: Array,
         required: false

@@ -19,10 +19,6 @@ var CommentSchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    id:{
-        type: String,
-        required: true
-    },
     content:{
         type: String,
         required: true

@@ -12,10 +12,6 @@ var ReplySchema = new mongoose.Schema({
         type: Date,
         required: true
     },
-    id:{
-        type: String,
-        required: true
-    },
     level:{
         type: Number,
         required: true

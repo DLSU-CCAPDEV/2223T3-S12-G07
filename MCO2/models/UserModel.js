@@ -36,7 +36,11 @@ var UserSchema = new mongoose.Schema({
     comments: {
         type: Array,
         required: false
-    }
+    },
+    aboutMe:{
+        type: String,
+        required: false
+    },
 
 });
 
