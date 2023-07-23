@@ -74,4 +74,4 @@ const signupController = {
 
 };
 
-mpodule.exports = signupController;
+module.exports = signupController;

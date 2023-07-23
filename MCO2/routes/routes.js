@@ -2,6 +2,7 @@ const express = require('express');
 const controller = require('../controllers/controller.js');
 const signupController = require('../controllers/signup_controller.js');
 const profileController = require('../controllers/profile_controller.js');
+const loginController = require('../controllers/login_controller.js');
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.get('/checkIdNumber', signupController.getCheckIdNumber);
 
 app.get('/login', loginController.getLogin)
 
-app.post('/login', signupController.postLogin);
+app.post('/login', loginController.postLogin);
 
 app.get('/profile', profileController.getProfile);
 
+module.exports = app;

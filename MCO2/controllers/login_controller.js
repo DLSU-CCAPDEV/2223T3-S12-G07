@@ -14,7 +14,7 @@ const loginController ={
         if(result != null){
             res.redirect('/profile?username='+username);
         }   else{
-           // res.render('error');
+            res.status(404).render('error');
         }
     },
 };

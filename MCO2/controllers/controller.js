@@ -5,7 +5,7 @@ const Comment = require('../models/CommentModel.js');
 
 const controller = {
     getIndex: function(req, res){
-        res.render('index');
+        res.render('login');
     },
 
 

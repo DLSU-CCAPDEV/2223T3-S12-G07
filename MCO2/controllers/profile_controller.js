@@ -2,6 +2,7 @@ const db = require('../models/db.js');
 const User = require('../models/UserModel.js');
 const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
+const Reply = require('../models/ReplyModel.js');
 const { render } = require('express/lib/response.js');
 
 const profileController ={
@@ -80,23 +81,27 @@ const profileController ={
             res.render('error');
         }
     },
-    checkUpvoted: async function (post, username){
-        var result = await post.upvotes.includes(username)
+    getCheckUpvoted: async function (req, res){
+        var object = req.query.object;
+        var username = req.query.username;
+        var result = await object.upvotes.includes(username)
         if(result)
-            return true;
+            res.send(true);
         else
-            return false;
+            res.send(false);
     },
-
-    upvotePost: async function(Model, object, username){
-        var response = await db.updateOne(Post, {id: object.id }, {$push: {upvotes: username}});
+    postUpvoteContent: async function(req ,res){
+        var Model = req.body.model;
+        var username = req.body.username;
+        var object = req.body.object;
+        var response = await db.updateOne(Model, {id: object.id }, {$push: {upvotes: username}});
         if(response != null){
             db.updateOne(User, {username: username}, {$pull: {downvotes: object.id}});
         } else{
             return false;
         }
     },
-    downvoteReply: async function(req, res){
+    postDownvoteContent: async function(req, res){
         var response = await db.updateOne(Post, {id: object.id }, {$push: {upvotes: username}});
         if(response != null){
             db.updateOne(User, {username: username}, {$pull: {downvotes: object.id}});
