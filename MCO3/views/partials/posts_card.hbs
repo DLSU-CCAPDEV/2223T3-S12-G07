@@ -1,0 +1,63 @@
+    
+    <div class="posts" id="{{_id}}">
+        <div class="posts_header">
+            <div class="profile_picture_bubble">
+                <img class="profile_pic_img">
+            </div>
+                <a class="post_link" href="post?postid={{id}}">
+                    <span class="user_name">
+                        @{{username}}
+                    </span>
+        </div>
+        <h3>
+            {{title}}
+        </h3>
+        <p>
+            {{content}}
+        </p>
+                </a>
+        <div class="posts_footer">
+            <!-- this buttons leading to login.html is temporary-->
+            <a class="comment_button">
+                <div class="comment_icon"></div>
+                <div class="actions">comment</div>
+            </a>
+            <a class="upvote_button" id="upvote_posts_{{_id}}">
+                <div class="upvote_icon"></div>
+                <div class="actions">{{#if upvotes}}{{count upvotes}} upvotes{{else}}upvote{{/if}}</div>
+            </a>
+            <a class="downvote_button" id="downvote_posts_{{_id}}">
+                <div class="downvote_icon"></div>
+                <div class="actions">downvote</div>
+            </a>
+        </div>
+        <div class="comment_section">       
+            <div class="comment_feed">
+                        <!-- comments -->    
+                        {{#if comments}}
+                        {{#each comments}}
+                        {{> comment this}}
+                        {{/each}}
+                        {{/if}}
+
+            </div>
+            <span class="center_align width_100">
+
+                {{#if flag}}
+                <div class="create_comment">
+                    <form id="create_comment_form_{{_id}}" class="create_comment_form" method="post">
+                        <textarea placeholder="Write a comment..." id="create_comment_input_{{_id}}" name ="create_comment_input_{{_id}}"></textarea>
+                        <input type="button" value="post" id="create_comment_button_{{_id}}"class="create_comment_button">
+                    </form>
+                </div>
+                {{else}}
+                <a href="register">
+                    <div class="informative_text text_center">
+                     Join AnimoHub to participate in the discussion and add your insights
+                    </div>
+                </a>
+                {{/if}}
+            </span>     
+        </div>
+    </div>
+

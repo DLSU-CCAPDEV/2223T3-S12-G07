@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/pages_with_content.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/feed.js"></script>
+        <title>Profile Page</title>
+    </head>
+    <body>
+        <div class="page">
+            {{>header details=this}}
+            <!-- header-->
+            <div class ="lower_body">
+            <!--the nav_bar contains the links to home and trending-->
+                {{>general_nav_bar}}
+                <div class="main_body">
+                    <!--profile_header consists of two rows-->
+                    <div class="profile_header">
+                        <div class="cover_photo">
+                            <img class="cover_photo_img" src="../assets/profile_pictures/John.jpeg">
+                        </div>
+                        <div class="profile_details">
+                            <div class="profile_picture">
+                                <img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg">
+                            </div>
+                            {{#with data}}
+                            <div class="name">{{firstName}} {{lastName}}</div>
+                            <div class="edit"></div>
+                        </div>
+                        <hr id ="profile_header_break">
+                    </div>
+                    <div class="main_lower_body">
+                        {{>profile_nav_bar}}
+                        <div class="feed">
+                                {{#if about_me}}
+                                {{> about_me about_me=about_me}}
+                                {{/if}}
+                            {{/with}}
+                            {{#if flag}}
+                            {{#if user}}
+                            <div class="create_posts">
+                                
+                                <form>
+                                    {{#with data}}
+                                    <div class="profile_picture_bubble"><img class="profile_pic_img" src="../assets/profile_pictures/john_doe.jpeg"> </div>
+                                    <a href="create_post?userName={{userName}}&lastName={{lastName}}&firstName={{firstName}}">
+                                    <input type="text" placeholder="What's on your mind?"><br>
+                                    <input type="submit" value="POST">
+                                    </a>
+                                    {{/with}}
+                                </form>
+                            </div>
+                            {{/if}}
+                            {{/if}}
+                                <!--this is where the posts will be rendered-->
+                            <div id="new_posts">
+                                {{#with data}}
+                                {{#each posts }}
+                                {{> posts_card this}}
+                                {{/each}}
+                                {{/with}}
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

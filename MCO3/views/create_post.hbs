@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create a post</title>
+        <link rel="stylesheet" type="text/css" href="./css/pages_with_content.css">
+    </head>
+    <body>
+        <div class="page">
+            <div class="header">
+                <span class="animo_hub">AnimoHub</span>
+                <form id ="search">
+                <input type="text" placeholder="search AnimoHub" class="search_bar">
+                <input type="submit" value="Search" class="search_button">
+                </form>
+                <div class="profile_drop_down">
+                    <div class="profile_drop_down_interface">
+                        <a href="profile_page?userName={{userName}}"><div class="profile_picture_bubble"></div></a>
+                        <div class="user_identity">
+                            {{firstName}} {{lastName}}
+                            <p class="user_name">@{{uesrName}}</p>
+                       </div>
+                    </div>
+                    <div class="profile_drop_down_options">
+                        <a href="editprofile">Edit</a>
+                        <a href="login">SignOut</a>
+                    </div>
+                </div>
+            </div>
+            <div class="lower_body">
+                <div class="nav_bar">
+                    <a href="home(loggedin).html">Home</a><br>
+                    <a href="maintenance_page.html">Trending</a>
+                </div>
+                <div class="main_body post_creation">
+                    <div class="feed create_post_feed">
+                        <div class="white_box create_post_whitebox">
+                            <form id="create_post" method="post" class="flex_col">
+                                <div class="flex_row center_align">
+                                    <div class="profile_picture_bubble JohnDoe"></div>
+                                    <div class="user_identity">
+                                        {{firstName}} {{lastName}}
+                                        <p class="user_name">@{{userName}}</p>
+                                    </div>  
+                                </div>
+                                <hr>
+                                <textarea placeholder="title" id="title" name="title" required></textarea>
+                                <textarea placeholder="content" id="content" name="content" ></textarea>
+                                <input type="hidden" id="userName" name="userName" value="{{userName}}">
+                                <input type="submit" value="Post" class="post_button">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

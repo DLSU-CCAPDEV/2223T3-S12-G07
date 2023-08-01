@@ -1,0 +1,44 @@
+<div class="indiv_comment_container" id="{{_id}}">
+                                <div class="posts_header">
+                                    <div class="profile_picture_bubble Sophia"></div>
+                                    <span class="user_name">{{author}}</span>
+                                </div>
+
+                                <p>{{content}}</p>
+    
+                                <div class="posts_footer">
+                                <!-- these buttons leading to login.html is temporary-->
+                                    <a  class="reply_button">
+                                    <div class="comment_icon"></div>
+                                    <div class="actions" >reply</div>
+                                    </a>
+                                    <a class="upvote_button" id="upvote_comment_{{_id}}">
+                                    <div class="upvote_icon"></div>
+                                    <div class="actions">upvote</div>
+                                    </a>
+                                    <a class="downvote_button" id ="downvote_comment_{{_id}}">
+                                    <div class="downvote_icon"></div>
+                                    <div class="actions">downvote</div>
+                                    </a>
+                                </div>
+                                
+                                <div class ="reply_section">
+                                    <div class="reply_feed">
+                                        {{#if replies}}
+                                            {{#each replies}}
+                                                {{> reply this}}
+                                            {{/each}}
+                                        {{/if}}
+                                    </div>
+                                    <span class="center_align">
+                                        <div class="create_comment">
+                                            <form id ="create_reply_form_{{_id}}" method="post">
+                                                <textarea name="create_reply_input_{{_id}}" placeholder="Write a reply..." id="create_reply_input_{{_id}}"></textarea>
+                                                <button type="button" name="create_reply_button_{{_id}}" class="create_reply_button">send</button>
+                                            </form>
+                                        </div>
+                                    </span>
+                                    
+                                </div>
+                                <hr>
+</div>

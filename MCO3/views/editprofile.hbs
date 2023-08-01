@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/manipulate_account.css">
+        <script type="text/javascript" src="../scripts/account_validation.js"></script>
+        <title>Edit Profile</title>
+    </head>
+    <body>
+        <div class="content">
+            {{>signin_header title="Make Some Changes" link='profile_page?username={{username}}'+}}
+            <div class ="mainForm">
+                <form id ="edit_profile_form" action="profile_page_John.html" onsubmit="edit_profile_validate();">
+                    <label for ="first_name">First Name</label><br>
+                    <input type ="text" id ="first_name" name ="first_name"><br>
+                    <label for ="last_name">Last name</label><br>
+                    <input type ="text" id ="last_name" name ="last_name"><br>
+                    <label for="profile_picture">Profile Picture</label><br>
+                    <input type="file" id ="profile_picture" name ="profile_picture" accept="image/*" onchange="image_upload_preview(event,'prof_pic');"><br>
+                    <img id="prof_pic"  >
+                    <div id="prof_pic_br"><br></div>
+                    <label for="cover_photo">Cover Photo</label><br>
+                    <input type="file" id ="cover_photo" name ="cover_photo" accept="image/*" onchange="image_upload_preview(event,'cov_pic');"><br>
+                    <img id="cov_pic"  >
+                    <div id="cov_pic_br"><br></div>
+                    <label for="bio">About Yourself</label><br>
+                    <textarea id="bio" name="bio" rows="8" cols="100"></textarea><br>
+                    <label for="contact_number">Contact Number</label><br>
+                    <input type="text" id="contact_number" name="contact_number"><br>
+                
+                    <div class="center">
+                        <input type ="submit" value ="SAVE"><br>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

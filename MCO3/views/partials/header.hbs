@@ -1,0 +1,34 @@
+<div class="header">
+    <span class="animo_hub">AnimoHub</span>
+    <form id ="search">
+        <input type="text" placeholder="search AnimoHub" class="search_bar">
+        <input type="submit" value="Search" class="search_button">
+    </form>
+                <!--profile drop down-->
+        {{#if flag}}
+         {{#with data}}
+            <div class="profile_drop_down">
+                <div class="profile_drop_down_interface">
+                    <a href='profile_page?userName={{userName}}'>
+                        <div class="profile_picture_bubble">
+                        </div>
+                     </a>
+                    <div class="user_identity">
+                        <div>{{firstName}} {{lastName}}</div>
+                        <p class="user_name">@{{userName}}</p>
+                    </div>
+                </div>
+                <div class="profile_drop_down_options">
+                    <a href="editprofile">Edit</a>
+                    <a href="logout?redirectTo=login">SignOut</a>
+                </div>
+            </div>
+            {{/with}}
+            {{else}}
+            <a href="login">
+                  <div class = "login_button">
+                      Login
+                  </div>
+              </a>
+            {{/if}}
+</div>
