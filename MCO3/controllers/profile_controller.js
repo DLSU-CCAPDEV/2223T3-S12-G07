@@ -6,6 +6,7 @@ const Reply = require('../models/ReplyModel.js');
 
 const profileController ={
     getProfile: async function(req, res){
+        console.log(req.session.user);
         var user = req.query.userName;
         var query = {userName: user};
         var details = {};

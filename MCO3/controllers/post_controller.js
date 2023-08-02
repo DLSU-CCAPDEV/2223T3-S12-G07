@@ -22,7 +22,7 @@ const postController ={
         var userName = req.body.userName;
         var title = req.body.title;
         var content = req.body.content;
-        var result2, result3 = false;
+        var result2, result3 = null;
         var id = "";
         var date = new Date();
         var post = {
@@ -31,13 +31,14 @@ const postController ={
             content: content,
             date: date,
         };
-        var result = db.insertOne(Post, post);
+        var result = await db.insertOne(Post, post);
+        
         if(result){
-            result2 = db.findOne(Post, post);
+            result2 = await db.findOne(Post, post);
             if(result2){
                  id = result2._id;
                 console.log("id = "+id);
-                result3 = db.updateOne(User,{userName:userName},{$push:{posts:id}});
+                result3 = await db.updateOne(User,{userName:userName},{$push:{posts:id}});
                 if(result3){
                     res.redirect(`/${req.session.prev_page}?userName=${userName}`);
                 }

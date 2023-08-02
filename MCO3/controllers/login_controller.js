@@ -13,12 +13,13 @@ const loginController ={
         var username = req.body.username;
         var password = req.body.password;
         var query = {userName: username};
+        var data={};
         var projection = 'password firstName lastName';
         console.log("button pressed");
 
         var result = await db.findOne(User, query, projection);
         if(result){
-            var data ={
+             data ={
                 userName: username,
                 firstName: result.firstName,
                 lastName: result.lastName,
