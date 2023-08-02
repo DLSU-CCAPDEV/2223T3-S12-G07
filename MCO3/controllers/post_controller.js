@@ -216,71 +216,91 @@ const postController ={
             var post = await db.findOne(Post, {_id:id});
             var result = "";
             var comment = "";
-            if(post!= null)
+            if(req.session.flag){
+                if(post!= null)
                 result = await db.updateOne(User, {userName:name}, {$pull:{posts:id}});
-            
-
-            if(post!=null){
-                if(post.comments != null && post.comments.length>0){
-
-                
-                    for(const x of post.comments){
-                        comment = await db.findOne(Comment, {_id:x});
-                        if(comment!=null){
-                            if(comment.replies.lenght> 0){
-                                for(const y of comment.replies){
-                                    result = await db.updateOne(User, {userName: name}, {$pull:{replies:y}})
-                                    result = await db.deleteOne(Reply, {_id:y});
+                if(post!=null){
+                    if(post.comments != null && post.comments.length>0){
+                        for(const x of post.comments){
+                            comment = await db.findOne(Comment, {_id:x});
+                            if(comment!=null){
+                                if(comment.replies.lenght> 0){
+                                    for(const y of comment.replies){
+                                        result = await db.updateOne(User, {userName: name}, {$pull:{replies:y}})
+                                        result = await db.deleteOne(Reply, {_id:y});
+                                    }
+                                    result = await db.updateOne(User, {userName: name}, {$pull:{comments: x}})
+                                    result = await db.deleteOne(Comment, {_id:x});
                                 }
-                                result = await db.updateOne(User, {userName: name}, {$pull:{comments: x}})
-                                result = await db.deleteOne(Comment, {_id:x});
                             }
                         }
                     }
+                    result = await db.deleteOne(Post, {_id:id});
                 }
-                result = await db.deleteOne(Post, {_id:id});
             }
+            
             res.set('Content-Type', 'application/json');
             res.send({flag:true});
         },
         postDeleteComment: async function(req, res){
-            var id = req.body.id
+            var id = req.body.id;
             var name = req.session.user.userName;
             var comment = await db.findOne(Comement,{_id:id});
             var result = "";
             var reply = ""
-            result = await db.updateOne(User,{userName:name}, {$pull:{comments:id}});
-            result = await db.updateOne(Post,{_id:comment.post}, {$pull:{comments:id}});
-            if(comment!= null){
-                if(comment.replies != null && comment.replies.length > 0){
-                    for(const x of comment.replies){
-                        result = await db.updateOne(User, {userName:name}, {$pull:{replies:x}});
-                        result = await db.deleteOne(Reply, {_id:x});
+            if(req.session.flag){
+                result = await db.updateOne(User,{userName:name}, {$pull:{comments:id}});
+                result = await db.updateOne(Post,{_id:comment.post}, {$pull:{comments:id}});
+                if(comment!= null){
+                    if(comment.replies != null && comment.replies.length > 0){
+                        for(const x of comment.replies){
+                            result = await db.updateOne(User, {userName:name}, {$pull:{replies:x}});
+                            result = await db.deleteOne(Reply, {_id:x});
+                        }
                     }
+                    result = await db.deleteOne(Comment, {_id:id});
                 }
-                result = await db.deleteOne(Comment, {_id:id});
             }
+            
             res.set('Content-Type', 'application/json');
             res.send({flag:true});
         },
         postDeleteReply: async function(req, res){
-            var id = req.body.id
+            var id = req.body.id;
             var name = req.session.user.userName;
             var result = "";
-            result = await db.updateOne(User, {userName:name}, {$pull:{replies:id}});
-            result = await db.updateOne(Comment, {_id:reply.comment}, {$pull:{replies:id}});
-            result = await db.deleteOne(Reply, {_id:id});
+            if(req.session.flag){
+                result = await db.updateOne(User, {userName:name}, {$pull:{replies:id}});
+                result = await db.updateOne(Comment, {_id:reply.comment}, {$pull:{replies:id}});
+                result = await db.deleteOne(Reply, {_id:id});
+            }
             res.set('Content-Type', 'application/json');
             res.send({flag:true});
         },
         postEditPost: async function(req, res){
             
+            var id = req.body.id;
+            var content = req.body.content;
+            if(req.session.flag)
+                await db.updateOne(Post, {_id:id}, {$set:{content:content}});
+            res.set('Content-Type', 'application/json');
+            res.send({flag:true});
         },
         postEditComment: async function(req, res){
-
+            var id = req.body.id;
+            var content = req.body.content;
+            if(req.session.flag)
+                await db.updateOne(Comment, {_id:id}, {$set:{content:content}});
+            res.set('Content-Type', 'application/json');
+            res.send({flag:true});
         },
         postEditReply: async function(req, res){
-
+            var id = req.body.id;
+            var content = req.body.content;
+            if(req.session.flag)
+                 await db.updateOne(Post, {_id:id}, {$set:{content:content}});
+            res.set('Content-Type', 'application/json');
+            res.send({flag:true});
         },
 };
 
