@@ -9,8 +9,6 @@ $(document).ready(function(){
          getVoteData($($downButtons[i]));
    }
     attachEventListeners();
-    
-   
 });
 // helpers
 function attachEventListeners(){
@@ -27,7 +25,7 @@ function attachEventListeners(){
 function getVoteData($button){
     var id =$button.attr('id');
         console.log("upvote or downvote id  = " + id);
-        var details = id.split('_');
+        if(id != null){
         $.get('/checkVote',{id:id}, function(req, res){
             if(res!=null){
                 console.log("req = " + req.upvote);
@@ -38,6 +36,7 @@ function getVoteData($button){
                 }
             }
         });
+    }
 }
 function click_upvote(button){
         var details = render_upvote(button);
