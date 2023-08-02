@@ -33,5 +33,11 @@ app.get('/logout', controller.getLogout);
 app.get('/checkVote', postController.getCheckVote);
 
 app.post('/voteContent', postController.postVoteTally);
+app.post('/deletePost', postController.postDeletePost);
+app.post('/deleteComment', postController.postDeleteComment);
+app.post('/deleteReply', postController.postDeleteReply);
+app.post('/editPost', postController.postEditPost);
+app.post('/editComment', postController.postEditComment);
+app.post('/editReply', postController.postEditReply);
 
 module.exports = app;
