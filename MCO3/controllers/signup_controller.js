@@ -26,34 +26,36 @@ const signupController = {
                 contactNumber= req.body.contact_number;
             var idNumber= req.body.idnumber;
 
-
+            bcrypt.hash(password, saltRounds, async function(err, hash) {
             var user = {
                 firstName: firstName,
                 lastName: lastName,
                 userName: userName,
-                password: password,
+                password: hash,
                 email: email,
                 contactNumber: contactNumber,
                 idNumber: idNumber,
             };
-
-            //create user from the initiated values
-            var response = await db.insertOne(User, user);
-
-            if(response != null){
-                req.session.flag = true;
-                data = {
-                    userName: userName,
-                    firstName: firstName,
-                    lastName: lastName,
-                }
+            await db.insertOne(User, user, function(flag){
+                if(flag){
+                    console.log("User inserted");
+                    data = {
+                        userName: userName,
+                        firstName: firstName,
+                        lastName: lastName,
+                    };
+                    req.session.flag = true;
+                
                 req.session.user = data;
                 res.redirect('/profile_page?userName='+userName);
-            }                
-            else{
-                res.render('register');
-                req.session.flag = false;
-            }
+                }else{
+                    console.log("failed register");
+                    req.session.flag = false;
+                    res.render('register');
+                }
+            })
+        });
+            //create user from the initiated v
         }
             
     },
@@ -62,23 +64,25 @@ const signupController = {
         var username = req.query.username;
         var query = {username: username};
         var projection = 'username';
-        var result = await db.findOne(User, query, projection);
-        if(result != null){
-            res.send(result);
-        }   else{
-            res.send("");
-        }
+        db.findOne(User, query, projection, function(result){
+            if(result != null){
+                res.send(result);
+            }else{
+                res.send("");
+            }
+        });
     },
     getCheckEmail: async function (req, res) {
         var email = req.query.email;
         var query = {email: email};
         var projection = 'email';
-        var result = await db.findOne(User, query, projection);
-        if(result != null){
-            res.send(result);
-        }   else{
-            res.send("");
-        }
+        db.findOne(User, query, projection,function(result){
+            if(result != null){
+                res.send(result);
+            }else{
+                res.send("");
+            }
+        });
     },
     getCheckIdNumber: async function (req, res) {
         var idNumber = req.query.idNumber;

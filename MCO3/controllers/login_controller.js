@@ -13,25 +13,28 @@ const loginController ={
         var password = req.body.password;
         var query = {userName: username};
         var projection = 'password firstName lastName';
-        var result = await db.findOne(User, query, projection);
-        if(result != null){
-            if(result.password == password){
-                data ={
+        db.findOne(User, query, projection, function(result){
+
+            if(result){
+                var data ={
                     userName: username,
                     firstName: result.firstName,
                     lastName: result.lastName,
-                }
-                req.session.user = data;
-                req.session.flag = true;
-                res.redirect('/profile_page?userName='+username);
-            
+                };
+                bcrypt.compare(password, result.password, function(err, equal){
+                    if(equal){
+                        req.session.user = data;
+                        req.session.flag = true;
+                        res.redirect('/profile_page?userName='+username);
+                    }else{
+                        req.session.flag = false;
+                        res.status(404).render('login')
+                    }
+                });
             }else{
-                req.session.flag = false;
-                res.status(404).render('login')
+                res.status(404).render('login');
             }
-        }else{
-            res.status(404).render('login');
-        }
+        });
     },
 };
 
