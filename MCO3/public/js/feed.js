@@ -50,8 +50,11 @@ function click_upvote($button){
         console.log("details = " + details);
         $.post('/voteContent', details,function(req,res){
             if(req.flag){
-                var text = $button.children('.actions');
-                text.text(req.upvotes + 'upvotes');
+                if(req.upvotes != null && req.upvotes > 0){
+                    var text = $button.children('.actions');
+                    text.html(req.upvotes + 'upvotes');
+                }
+               
             }
             
         })   
@@ -62,8 +65,11 @@ function click_downvote(button){
     var details = render_downvote(button);
         $.post('/voteContent', details,function(req,res){
             if(req.flag){
-                var text = button.children('.actions');
-                text.text(req.downvotes + 'downvotes');
+                if(req.downvotes != null && req.downvotes > 0){
+                    var text = button.children('.actions');
+                    text.html(req.downvotes + 'downvotes');
+                }
+                
             }
             
         })

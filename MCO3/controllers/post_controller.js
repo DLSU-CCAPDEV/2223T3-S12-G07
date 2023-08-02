@@ -194,7 +194,12 @@ const postController ={
                         }
                    }
                 }
-                var msg = {upvotes: original_tally.upvotes.length + tally.upvotes, downvotes: original_tally.downvotes+tally.downvotes, flag:true};
+                var up, down = null;
+                if( original_tally.upvotes!=null &&original_tally.upvotes.length > 0)
+                     up = original_tally.upvotes.length + parseInt(tally.upvotes);
+                if(original_tally.downvotes!=null && original_tally.downvotes.length > 0)
+                     down = original_tally.downvotes.length + parseInt(tally.downvotes);
+                var msg = {upvotes: up, down, flag:true};
                 res.set('Content-Type', 'application/json');
                 res.send(msg);
             }else{
