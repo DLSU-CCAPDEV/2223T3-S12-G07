@@ -215,6 +215,7 @@ const postController ={
 
         postDeletePost: async function(req, res){
             var id  =  req.body.id;
+            console.log("delete this id: "+ id);
             var name = req.session.user.userName;
             var post = await db.findOne(Post, {_id:id});
             var result = "";
@@ -248,7 +249,7 @@ const postController ={
         postDeleteComment: async function(req, res){
             var id = req.body.id;
             var name = req.session.user.userName;
-            var comment = await db.findOne(Comement,{_id:id});
+            var comment = await db.findOne(Comment,{_id:id});
             var result = "";
             var reply = ""
             if(req.session.flag){
@@ -272,6 +273,7 @@ const postController ={
             var id = req.body.id;
             var name = req.session.user.userName;
             var result = "";
+            var reply  = await db.findOne(Reply, {_id:id});
             if(req.session.flag){
                 result = await db.updateOne(User, {userName:name}, {$pull:{replies:id}});
                 result = await db.updateOne(Comment, {_id:reply.comment}, {$pull:{replies:id}});

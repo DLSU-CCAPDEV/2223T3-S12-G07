@@ -46,16 +46,17 @@ function edit_post($button){
 function delete_comment($button){
     var id = $button.attr('id');
     //id = delete_post_id or delete_comment_id or delete_reply_id
-    id = id.split('_');
-    var details = {id: id[2], tpye: id[1]};
+    id = id.split('_')[2];
+    var details = {id: id};
     $.post('/deleteComment', details, function(req, res){
         $(`#${id}`).remove();
     });
 }
 function delete_reply($button){
     var id = $button.attr('id');
+    var temp = id;
 //id = delete_post_id or delete_comment_id or delete_reply_id   
-     id = id.split('_');
+     id = id.split('_')[2];
     var details = {id: id};
     $.post('/deleteReply', details, function(req, res){
         $(`#${id}`).remove();
@@ -64,7 +65,7 @@ function delete_reply($button){
 function delete_post($button){
     var id = $button.attr('id');
 //id = delete_post_id or delete_comment_id or delete_reply_id
-    id = id.split('_');
+    id = id.split('_')[2];
     var details = {id: id};
     $.post('/deletePost', details, function(req, res){
         $(`#${id}`).remove();
