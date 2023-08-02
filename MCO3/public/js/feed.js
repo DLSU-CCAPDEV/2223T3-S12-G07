@@ -26,6 +26,37 @@ function attachEventListeners(){
     $('.upvote_button').click(function(){click_upvote($(this))}); 
     $('.downvote_button').click(function(){click_downvote($(this))});
 
+    $('.delete_comment'.click(function(){delete_comment($(this))}));
+    $('.delete_reply'.click(function(){delete_reply($(this))}));
+    $('.delete_post'.click(function(){delete_post($(this))}));
+}
+
+function delete_comment($button){
+    var id = $button.attr('id');
+    //class = post_id or comment_id or reply_id
+    id = id.split('_')[1];
+    var details = {id: id};
+    $.post('/deleteComment', details, function(req, res){
+        $(`#${id}`).remove();
+    });
+}
+function delete_reply($button){
+    var id = $button.attr('id');
+    //class = post_id or comment_id or reply_id
+    id = id.split('_')[1];
+    var details = {id: id};
+    $.post('/deleteReply', details, function(req, res){
+        $(`#${id}`).remove();
+    });
+}
+function delete_post($button){
+    var id = $button.attr('id');
+    //class = post_id or comment_id or reply_id
+    id = id.split('_')[1];
+    var details = {id: id};
+    $.post('/deletePost', details, function(req, res){
+        $(`#${id}`).remove();
+    });
 }
 
 
