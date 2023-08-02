@@ -81,6 +81,36 @@ const postController ={
             res.render('partials/reply',{author: created.author, _id:created._id, content:created.content});
         }},
 
+        getCheckVote: async function(req, res){
+            if(req.session.flag){
+                var user = req.session.user.userName;
+                var id = req.query.id;
+                id = id.split('_');
+                var idNum = id[2];
+                var result = null;
+                var flag = {
+                    downvote: false,
+                    upvote: false
+                };
+                if(id[1]=="posts"){
+                    result = await db.findOne(Post, {_id:idNum});
+                }else if(id[1]=="comments"){
+                    result = await db.findOne(Comment, {_id: idNum});
+                }else{
+                    result = await db.findOne(Reply, {_id:idNum});
+                }
+                if(result != null){
+                    if(result.upvotes.includes(user)){
+                        flag.upvote = true;
+                    }else if(result.downvotes.includes(user)){
+                        flag.downvote = true;
+                    }
+                }
+                res.send(flag);
+            }else{
+                res.send(null);
+            }
+        },
         postVoteTally: async function(req,res){
             var button_id = req.param.button_id;
             button_id = button_id.split('_');

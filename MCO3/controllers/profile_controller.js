@@ -82,35 +82,6 @@ const profileController ={
         
     },
 
-    getCheckUpvoted: async function (req, res){
-        var object = req.query.object;
-        var username = req.query.username;
-        var result = await object.upvotes.includes(username)
-        if(result)
-            res.send(true);
-        else
-            res.send(false);
-    },
-    postUpvoteContent: async function(req ,res){
-        var Model = req.body.model;
-        var username = req.body.username;
-        var object = req.body.object;
-        var response = await db.updateOne(Model, {id: object.id }, {$push: {upvotes: username}});
-        if(response != null){
-            db.updateOne(User, {username: username}, {$pull: {downvotes: object.id}});
-        } else{
-            return false;
-        }
-    },
-    postDownvoteContent: async function(req, res){
-        var response = await db.updateOne(Post, {id: object.id }, {$push: {upvotes: username}});
-        if(response != null){
-            db.updateOne(User, {username: username}, {$pull: {downvotes: object.id}});
-        } else{
-            return false;
-        }
-    },
-
     editProfile: async function(req, res){},
     editContent: async function(req, res){},
 }

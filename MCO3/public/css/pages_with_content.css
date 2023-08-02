@@ -247,12 +247,13 @@ form a input[type=text]{
     width:12px;
     margin:5px;
 }
-.upvote_icon_true{
+.upvote_icon:disabled{
     background-image: url(/images/upvote_true.svg);
     background-size:cover;
     height:12px;
     width:12px;
     margin:5px;
+
 }
 .downvote_icon{
     background-image: url(/images/downvote.svg);
@@ -261,13 +262,14 @@ form a input[type=text]{
     width:12px;
     margin:5px;
 }
-.downvote_icon_true{
+.downvote_icon:disabled{
     background-image: url(/images/downvote_true.svg);
     background-size:cover;
     height:12px;
     width:12px;
     margin:5px;
 }
+
 .comment_section{
     display:none;
     margin:10px;

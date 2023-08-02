@@ -30,6 +30,8 @@ app.post('/postComment', postController.postAddComment);
 app.post('/postReply', postController.postAddReply);
 app.get('/logout', controller.getLogout);
 
+app.get('/checkVote', postController.getCheckVote);
+
 app.post('/voteContent', postController.postVoteTally);
 app.get('/voteTally', postController.getVoteTally);
 module.exports = app;
