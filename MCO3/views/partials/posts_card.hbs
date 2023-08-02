@@ -4,11 +4,17 @@
             <div class="profile_picture_bubble">
                 <img class="profile_pic_img">
             </div>
-                <a class="post_link" href="post?postid={{id}}">
                     <span class="user_name">
                         @{{username}}
                     </span>
+                    <div class= "manipulate_dropdown"/> <img class="image_option" src = "images/options.svg">
+                        <div class="manipulate_dropdown_content">
+                            <div class="edit_content" id = "edit_post_{{_id}}">edit</div>
+                            <div class="delete_post" id = "delete_post_{{_id}}">delete</div>
+                        </div>
+                    </div>
         </div>
+            <a class="post_link" href="post?postid={{_id}}"></a>
         <h3>
             {{title}}
         </h3>

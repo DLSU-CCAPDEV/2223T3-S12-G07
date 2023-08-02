@@ -4,6 +4,7 @@ const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
 
 const controller = {
+
     getIndex: function(req, res){
         res.redirect('login');
     },
@@ -18,6 +19,7 @@ const controller = {
             res.redirect(`/${link}`);
         });
     },
+    
 }
 
 module.exports = controller;

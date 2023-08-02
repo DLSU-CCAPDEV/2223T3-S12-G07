@@ -6,10 +6,13 @@ const Reply = require('../models/ReplyModel.js');
 const postController ={
 
     getCreatePost:async function(req,res){
+        var userName = "";
+        var firstName = "";
+        var lastName = "";
         if(req.session.flag){
-        var userName = req.session.user.userName;
-        var firstName = req.session.user.firstName;
-        var lastName = req.session.user.lastName;
+        userName = req.session.user.userName;
+        firstName = req.session.user.firstName;
+        lastName = req.session.user.lastName;
         res.render('create_post',{userName:userName,firstName:firstName,lastName:lastName});
         }else{
             res.redirect('/login');
@@ -280,28 +283,67 @@ const postController ={
         postEditPost: async function(req, res){
             
             var id = req.body.id;
+            var type = req.body.type;
             var content = req.body.content;
-            if(req.session.flag)
-                await db.updateOne(Post, {_id:id}, {$set:{content:content}});
-            res.set('Content-Type', 'application/json');
-            res.send({flag:true});
+            var title = "";
+            if(req.session.flag){
+                if(type=="post"){
+                    title = req.body.title;
+                    if(title!= null && title != ""){
+                        result = await db.updateOne(Post, {_id:id}, {title:title});
+                    }
+                    if(content!= null && content != ""){
+                        result = await db.updateOne(Post, {_id:id}, {content:content});
+                    }
+                }else if(type =="comment"){
+                    if(content!= null && content != ""){
+                        result = await db.updateOne(Comment, {_id:id}, {content:content});
+                    }
+                }else if(type =="reply"){
+                    if(content!= null && content != ""){
+                        result = await db.updateOne(Reply, {_id:id}, {content:content});
+                }
+            }
+            res.redirect(`/${req.session.prev_page}?userName=${userName}`);
+         }
         },
-        postEditComment: async function(req, res){
-            var id = req.body.id;
-            var content = req.body.content;
-            if(req.session.flag)
-                await db.updateOne(Comment, {_id:id}, {$set:{content:content}});
-            res.set('Content-Type', 'application/json');
-            res.send({flag:true});
+ 
+        getEditPost: async function(req, res){
+            var id = req.query.id;
+            var type = req.query.type;
+            var userName, firstName, lastName, post,comment, reply, title, content = "";
+
+            if(req.session.flag){
+
+                userName = req.session.user.userName;
+                firstName = req.session.user.firstName;
+                lastName = req.session.user.lastName;
+
+                if(type=="post"){
+                    post = await db.findOne(Post, {_id:id});
+                    if(post!=null){
+                        title = post.title;
+                        content = post.content;
+                        res.render('edit_post', {userName:userName, firstName:firstName, lastName:lastName, type: type, post:true, post_details:{title:title, content:content}, id:id});
+                    }
+                }else if(type=="comment"){
+                    comment = await db.findOne(Comment, {_id:id});
+                    if(comment!=null){
+                        content = comment.content;
+                        res.render('edit_post', {userName:userName, firstName:firstName, lastName:lastName, type: type, post:false, content:content, id:id});
+                    }
+                } else if(type =="reply"){
+                    reply = await db.findOne(Reply, {_id:id});
+                    if(reply != null){
+                        content = reply.content;
+                        res.render('edit_post', {userName:userName, firstName:firstName, lastName:lastName, type: type, post:false,content:content, id:id});
+                    }
+                }
+            }else{
+                res.redirect('/');
+            }
         },
-        postEditReply: async function(req, res){
-            var id = req.body.id;
-            var content = req.body.content;
-            if(req.session.flag)
-                 await db.updateOne(Post, {_id:id}, {$set:{content:content}});
-            res.set('Content-Type', 'application/json');
-            res.send({flag:true});
-        },
+    
 };
 
 module.exports = postController;

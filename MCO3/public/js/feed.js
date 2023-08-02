@@ -29,21 +29,30 @@ function attachEventListeners(){
     $('.delete_comment'.click(function(){delete_comment($(this))}));
     $('.delete_reply'.click(function(){delete_reply($(this))}));
     $('.delete_post'.click(function(){delete_post($(this))}));
+
+    $('.edit_content'.click(function(){edit_post($(this))}));
 }
 
+function edit_post($button){
+    var id = $button.attr('id');
+    //id = edit_post_id or edit_comment_id or edit_reply_id
+    id = id.split('_')[2];
+    var details = {id: id};
+    $.get('/editPost', details, function(req, res){});
+}
 function delete_comment($button){
     var id = $button.attr('id');
-    //class = post_id or comment_id or reply_id
-    id = id.split('_')[1];
-    var details = {id: id};
+    //id = delete_post_id or delete_comment_id or delete_reply_id
+    id = id.split('_');
+    var details = {id: id[2], tpye: id[1]};
     $.post('/deleteComment', details, function(req, res){
         $(`#${id}`).remove();
     });
 }
 function delete_reply($button){
     var id = $button.attr('id');
-    //class = post_id or comment_id or reply_id
-    id = id.split('_')[1];
+//id = delete_post_id or delete_comment_id or delete_reply_id   
+     id = id.split('_');
     var details = {id: id};
     $.post('/deleteReply', details, function(req, res){
         $(`#${id}`).remove();
@@ -51,14 +60,13 @@ function delete_reply($button){
 }
 function delete_post($button){
     var id = $button.attr('id');
-    //class = post_id or comment_id or reply_id
-    id = id.split('_')[1];
+//id = delete_post_id or delete_comment_id or delete_reply_id
+    id = id.split('_');
     var details = {id: id};
     $.post('/deletePost', details, function(req, res){
         $(`#${id}`).remove();
     });
 }
-
 
 function getVoteData($button){
     var id =$button.attr('id');

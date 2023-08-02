@@ -216,6 +216,7 @@ form a input[type=text]{
 .posts_header{
     display:flex;
     align-items: center;
+    position:relative;
 }
 .user_name{
     color:#797878;
@@ -524,61 +525,8 @@ hr{
     width:100%;
 }
 
-.JohnDoe{
-    background-image:url("../../assets/profile_pictures/john_doe.jpeg");
-    background-size:cover;
-    background-color:none;
-
-}
-.YuriB{
-    background-image:url("../../assets/profile_pictures/yuri_b.jpeg");
-    background-size:cover;
-    background-color:none;
-}
-.Miguel{
-    background-image:url("../../assets/profile_pictures/miguel_ohara.jpeg");
-    background-size:cover;
-    background-color:none;
-}
-.Sophia{
-    background-image:url("../../assets/profile_pictures/sophia_sanchez.jpeg");
-    background-size:cover;
-    background-color:none;
-}
-.Xavier{
-    background-image:url("../../assets/profile_pictures/xavier_mendez.jpeg");
-    background-size:cover;
-    background-color:none;
-}
-
-.JD_cover{
-    background-image:url("../../assets/profile_pictures/John.jpeg");
-    background-size:cover;
-    background-color:none;
-}
-.Miguel_cover{
-    background-image:url("../../assets/profile_pictures/Miguel.jpeg");
-    background-size:cover;
-    background-color:none;
-}
-.Xavier_cover{
-    background-image:url("../../assets/profile_pictures/Xavier.png");
-    background-size:cover;
-    background-color:none;
-}
-
-.Yuri_cover{
-    background-image:url("../../assets/profile_pictures/Yuri.jpeg");
-    background-size:cover;
-    background-color:none;
-}
-.Sophia_cover{
-    background-image:url("../../assets/profile_pictures/Sophia.jpeg");
-    background-size:cover;
-    background-color:none;
-}
 .login_icon{
-    background-image: url(../../assets/icons/login.svg);
+    background-image: url(images/login.svg);
     background-size:cover;
     height:12px;
     width:12px;
@@ -606,4 +554,43 @@ a >.informative_text:hover{
     margin:5px;
     padding:5px;
     cursor: default;
+}
+
+.manipulate_dropdown {
+    position: absolute;
+    right:0px;
+    display: inline-block;
+    height:16px;
+  }
+  .image_option{
+    background-size:cover;
+    height:90%;
+    width:12px;
+    position : absolute;
+  }
+  
+.manipulate_dropdown_content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 25px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    color:#797878;
+    font-size:11px;
+  }
+  
+.manipulate_dropdown:hover .manipulate_dropdown_content {
+    display: block;
+    
+}
+.edit_content:hover{
+    color:#403D3D;
+    border-bottom: 1px solid #41e996;
+
+}
+.delete_post:hover{
+    color:#403D3D;
+    border-bottom: 1px solid #e94141;
 }

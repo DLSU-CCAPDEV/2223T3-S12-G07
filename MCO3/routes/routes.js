@@ -36,8 +36,6 @@ app.post('/voteContent', postController.postVoteTally);
 app.post('/deletePost', postController.postDeletePost);
 app.post('/deleteComment', postController.postDeleteComment);
 app.post('/deleteReply', postController.postDeleteReply);
-app.post('/editPost', postController.postEditPost);
-app.post('/editComment', postController.postEditComment);
-app.post('/editReply', postController.postEditReply);
+app.post('/edit_post', postController.postEditPost);
 
 module.exports = app;
