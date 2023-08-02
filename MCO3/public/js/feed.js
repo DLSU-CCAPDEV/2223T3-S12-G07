@@ -26,19 +26,22 @@ function attachEventListeners(){
     $('.upvote_button').click(function(){click_upvote($(this))}); 
     $('.downvote_button').click(function(){click_downvote($(this))});
 
-    $('.delete_comment'.click(function(){delete_comment($(this))}));
-    $('.delete_reply'.click(function(){delete_reply($(this))}));
-    $('.delete_post'.click(function(){delete_post($(this))}));
+    $('.delete_comment').click(function(){delete_comment($(this))});
+    $('.delete_reply').click(function(){delete_reply($(this))});
+    $('.delete_post').click(function(){delete_post($(this))});
 
-    $('.edit_content'.click(function(){edit_post($(this))}));
+    $('.edit_content').click(function(){edit_post($(this))});
 }
 
 function edit_post($button){
     var id = $button.attr('id');
+    console.log("you clicked edit");
     //id = edit_post_id or edit_comment_id or edit_reply_id
-    id = id.split('_')[2];
-    var details = {id: id};
-    $.get('/editPost', details, function(req, res){});
+    id = id.split('_');
+    console.log("id = " + id);
+    var details = {id: id[2], type: id[1]};
+    var queryString = 
+    $button.attr('href',)
 }
 function delete_comment($button){
     var id = $button.attr('id');

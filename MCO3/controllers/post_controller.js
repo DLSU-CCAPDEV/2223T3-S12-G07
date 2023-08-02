@@ -281,7 +281,7 @@ const postController ={
             res.send({flag:true});
         },
         postEditPost: async function(req, res){
-            
+            console.log("edit post");
             var id = req.body.id;
             var type = req.body.type;
             var content = req.body.content;
@@ -305,40 +305,44 @@ const postController ={
                 }
             }
             res.redirect(`/${req.session.prev_page}?userName=${userName}`);
-         }
+        }
         },
  
         getEditPost: async function(req, res){
             var id = req.query.id;
             var type = req.query.type;
-            var userName, firstName, lastName, post,comment, reply, title, content = "";
-
+            var content = req.query.content;
+            var title, query ="";
+            var post = req.query.post;
+            if(type == "post"){
+                title = req.query.title;
+            }
             if(req.session.flag){
-
                 userName = req.session.user.userName;
                 firstName = req.session.user.firstName;
                 lastName = req.session.user.lastName;
-
-                if(type=="post"){
-                    post = await db.findOne(Post, {_id:id});
-                    if(post!=null){
-                        title = post.title;
-                        content = post.content;
-                        res.render('edit_post', {userName:userName, firstName:firstName, lastName:lastName, type: type, post:true, post_details:{title:title, content:content}, id:id});
+                if(type == "post")
+                    query ={
+                        userName: userName,
+                        firstName: firstName,
+                        lastName: lastName,
+                        type: type,
+                        title: title,
+                        content: content,
+                        id: id,
+                        post: post
                     }
-                }else if(type=="comment"){
-                    comment = await db.findOne(Comment, {_id:id});
-                    if(comment!=null){
-                        content = comment.content;
-                        res.render('edit_post', {userName:userName, firstName:firstName, lastName:lastName, type: type, post:false, content:content, id:id});
+                else
+                    query = {
+                        userName: userName,
+                        firstName: firstName,
+                        lastName: lastName,
+                        type: type,
+                        content: content,
+                        id: id,
                     }
-                } else if(type =="reply"){
-                    reply = await db.findOne(Reply, {_id:id});
-                    if(reply != null){
-                        content = reply.content;
-                        res.render('edit_post', {userName:userName, firstName:firstName, lastName:lastName, type: type, post:false,content:content, id:id});
-                    }
-                }
+                res.render('edit_post', query);
+                
             }else{
                 res.redirect('/');
             }

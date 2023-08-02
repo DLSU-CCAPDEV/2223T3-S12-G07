@@ -43,15 +43,13 @@
                                     </div>  
                                 </div>
                                 <hr>
-                                <input type="hidden" id="postID" name="postID" value="{{id}}">
+                                <input type="hidden" id="id" name="id" value="{{id}}">
                                 <input type="hidden" id="type" name ="type" value = "{{type}}">
                                 {{#if post}}
-                                <textarea placeholder="title" id="title" name="title" value = "{{title}}" ></textarea>
-                                <textarea placeholder="content" id="content" name="content" value="{{content}}" ></textarea>
-                                {{/with}}
+                                <textarea placeholder="{{title}}" id="title" name="title" value = "{{title}}" ></textarea>
+                                <textarea placeholder="{{content}}" id="content" name="content" value="{{content}}" ></textarea>
                                 {{else}}
-                                <textarea placeholder="content" id="content" name="content" value="{{cotent}}"></textarea>
-                                <input type="hidden" id="userName" name="userName" value="{{userName}}">
+                                <textarea placeholder="{{content}}" id="content" name="content" value="{{content}}"></textarea>
                                 {{/if}}
                                 <input type="submit" value="Post" class="post_button">
                             </form>

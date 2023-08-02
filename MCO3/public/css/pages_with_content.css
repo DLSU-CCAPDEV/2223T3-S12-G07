@@ -590,7 +590,8 @@ a >.informative_text:hover{
     border-bottom: 1px solid #41e996;
 
 }
-.delete_post:hover{
+.delete_button:hover{
     color:#403D3D;
     border-bottom: 1px solid #e94141;
+    cursor:pointer;
 }
