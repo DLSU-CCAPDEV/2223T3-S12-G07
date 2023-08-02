@@ -24,23 +24,23 @@ const profileController ={
             {
                 for (const i of data.posts) {
                     comments = [];
-                    console.log("postID = " + i);
+            //        console.log("postID = " + i);
                     post =  await db.findOne(Post, {_id: i});
-                    console.log("post "+post);
+               //     console.log("post "+post);
                     if(post!= null){
                         if(post.comments != null && post.comments.length > 0){
                             for(const j of post.comments){
                                 replies = [];
-                                console.log("commentId = " + j);
+                         //       console.log("commentId = " + j);
                                 comment = await db.findOne(Comment, {_id: j});
                                 if(comment != null){
-                                    console.log("comment = " + comment)
+                      //              console.log("comment = " + comment)
                                     if(comment.replies != null && comment.replies.length>0){
                                         for(const h of comment.replies){
-                                            console.log("replyId = " + h);
+                                    //        console.log("replyId = " + h);
                                             reply = await db.findOne(Reply, {_id: h});
                                             if(reply != null){
-                                                console.log("reply = " + reply);
+                          //                      console.log("reply = " + reply);
                                                 replies.push(reply);
                                             }
                                         }
@@ -52,12 +52,12 @@ const profileController ={
                             post.comments = comments;
                         }
                         posts.push(post);
-                        console.log("post = " + post);
+               //         console.log("post = " + post);
                     }
                 }
             }
             data.posts = posts;
-            console.log("data.posts = "+data.posts);
+          //  console.log("data.posts = "+data.posts);
             if(req.session.flag){
                 if(data.posts.length > 0 && data.posts != null){
                     data.posts.flag = data.posts.map(function(post){
@@ -66,7 +66,7 @@ const profileController ={
                 }
                 details.flag = true;
                 details.data = data;
-                console.log(" data with flag = "+ details);
+           //     console.log(" data with flag = "+ details);
     
                 if(req.session.user.userName == user){
                     details.user = true;
@@ -76,7 +76,7 @@ const profileController ={
                 details.flag = false;
                 details.user = false;
             }
-           console.log(req.session.flag);
+         //  console.log(req.session.flag);
             res.render('profile_page',details);
         }
         

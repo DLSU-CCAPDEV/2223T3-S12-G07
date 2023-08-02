@@ -87,6 +87,7 @@ const postController ={
                 var id = req.query.id;
                 id = id.split('_');
                 var idNum = id[2];
+                console.log(idNum);
                 var result = null;
                 var flag = {
                     downvote: false,
@@ -100,12 +101,14 @@ const postController ={
                     result = await db.findOne(Reply, {_id:idNum});
                 }
                 if(result != null){
-                    if(result.upvotes.includes(user)){
+                    if(result.upvotes.includes(user) && id[0] =="upvote"){
                         flag.upvote = true;
-                    }else if(result.downvotes.includes(user)){
+                    }else if(result.downvotes.includes(user) && id[0] =="downvote"){
                         flag.downvote = true;
                     }
                 }
+                console.log(flag);
+                res.set('Content-Type', 'application/json');
                 res.send(flag);
             }else{
                 res.send(null);
