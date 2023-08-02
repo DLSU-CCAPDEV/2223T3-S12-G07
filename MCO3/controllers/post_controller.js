@@ -22,6 +22,8 @@ const postController ={
         var userName = req.body.userName;
         var title = req.body.title;
         var content = req.body.content;
+        var result2, result3 = false;
+        var id = "";
         var date = new Date();
         var post = {
             username: userName,
@@ -29,12 +31,18 @@ const postController ={
             content: content,
             date: date,
         };
-        var result = await db.insertOne(Post, post);
-        var id = await db.findOne(Post,post);
-        id._id = id._id.toString();
-        if(result != null){
-            await db.updateOne(User,{userName:userName},{$push:{posts:id._id}});
-            res.redirect(`/${req.session.prev_page}?userName=${userName}`);
+        var result = db.insertOne(Post, post);
+        if(result){
+            result2 = db.findOne(Post, post);
+            if(result2){
+                 id = result2._id;
+                console.log("id = "+id);
+                result3 = db.updateOne(User,{userName:userName},{$push:{posts:id}});
+                if(result3){
+                    res.redirect(`/${req.session.prev_page}?userName=${userName}`);
+                }
+                    
+                }
         }
     },
 

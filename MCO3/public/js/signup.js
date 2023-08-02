@@ -12,6 +12,7 @@ $(document).ready(function(){
     $('#email').keyup(function(){
         var email = $('#email').val();
         $.get('/checkEmail/',{email: email}, function(data){
+            console.log("data = " + data.email);
             if(data.email == email){
                 $('#warning_email').css('display','block');
                 $('#email').css('background-color','red');

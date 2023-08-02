@@ -1,6 +1,8 @@
 const db = require("../models/db.js");
 const User = require("../models/UserModel.js");
-
+// import module `bcrypt`
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 const signupController = {
 
     getSignUp:  function (req, res) {
@@ -36,9 +38,9 @@ const signupController = {
                 contactNumber: contactNumber,
                 idNumber: idNumber,
             };
-            await db.insertOne(User, user, function(flag){
-                if(flag){
-                    console.log("User inserted");
+            var result = await db.insertOne(User,user);
+            if(result!=null){
+                console.log("User inserted");
                     data = {
                         userName: userName,
                         firstName: firstName,
@@ -48,48 +50,47 @@ const signupController = {
                 
                 req.session.user = data;
                 res.redirect('/profile_page?userName='+userName);
-                }else{
+            }else{
                     console.log("failed register");
                     req.session.flag = false;
                     res.render('register');
-                }
-            })
+            }
+
         });
             //create user from the initiated v
         }
             
     },
 
-    getCheckUsername: async function (req, res) {
+    getCheckUsername:  async function (req, res) {
         var username = req.query.username;
-        var query = {username: username};
+        var query = {userName: username};
         var projection = 'username';
-        db.findOne(User, query, projection, function(result){
-            if(result != null){
-                res.send(result);
-            }else{
-                res.send("");
-            }
-        });
+        var result = await db.findOne(User, query, projection);
+        if(result){
+            res.send(result);
+        }else{
+            res.send("");
+        }
     },
-    getCheckEmail: async function (req, res) {
+    getCheckEmail:  async function (req, res) {
         var email = req.query.email;
         var query = {email: email};
         var projection = 'email';
-        db.findOne(User, query, projection,function(result){
-            if(result != null){
-                res.send(result);
-            }else{
-                res.send("");
-            }
-        });
+        var result = await db.findOne(User, query, projection);
+        if(result){
+            res.send(result);
+        }else{
+            res.send("");
+        }
+
     },
     getCheckIdNumber: async function (req, res) {
         var idNumber = req.query.idNumber;
         var query = {idNumber: idNumber};
         var projection = 'idNumber';
         var result = await db.findOne(User, query, projection);
-        if(result != null){
+        if(result){
             res.send(result);
         }   else{
             res.send("");
