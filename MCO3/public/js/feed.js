@@ -1,16 +1,21 @@
 
-
 $(document).ready(function(){
+
     var $upButtons = document.getElementsByClassName('upvote_button');
     var $downButtons = document.getElementsByClassName('downvote_button');
     console.log($upButtons);
-   for (var i in $upButtons){
+    
+    //check upvoted comments
+   for (let i = 0; i <$upButtons.length; i++){
          getVoteData($($upButtons[i]));
          getVoteData($($downButtons[i]));
    }
+
     attachEventListeners();
 });
+
 // helpers
+
 function attachEventListeners(){
     console.log("attaching event listeners");
 
@@ -22,6 +27,8 @@ function attachEventListeners(){
     $('.downvote_button').click(function(){click_downvote($(this))});
 
 }
+
+
 function getVoteData($button){
     var id =$button.attr('id');
         console.log("upvote or downvote id  = " + id);
@@ -38,19 +45,27 @@ function getVoteData($button){
         });
     }
 }
-function click_upvote(button){
-        var details = render_upvote(button);
+function click_upvote($button){
+        var details = render_upvote($button);
+        console.log("details = " + details);
         $.post('/voteContent', details,function(req,res){
-            var text = button.children('.actions');
-            text.text(res.upvotes + 'upvotes');
+            if(req.flag){
+                var text = $button.children('.actions');
+                text.text(req.upvotes + 'upvotes');
+            }
+            
         })   
     
 }
 function click_downvote(button){
+    console.log(button.attr('id'));
     var details = render_downvote(button);
         $.post('/voteContent', details,function(req,res){
-            var text = button.children('.actions');
-            text.text(res.downvotes + 'downvotes');
+            if(req.flag){
+                var text = button.children('.actions');
+                text.text(req.downvotes + 'downvotes');
+            }
+            
         })
 }
 function create_comment(button){
@@ -67,6 +82,7 @@ function create_comment(button){
             date: date,
         }
         $.post('/postComment',details, function(data){
+
             console.log(data);
             data.flag= true;
             var $feed = comment_section.find('.comment_feed')
@@ -79,6 +95,7 @@ function create_comment(button){
             var $downvote = $comment.find('.downvote_button');
             $downvote.click(click_downvote($downvote));
             button.siblings("textarea").val("");
+
         });
 }
 function create_reply(button){

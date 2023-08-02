@@ -3,9 +3,8 @@ const User = require('../models/UserModel.js');
 const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
 const Reply = require('../models/ReplyModel.js');
-const app = require('../routes/routes.js');
-const { getCheckIdNumber } = require('./signup_controller.js');
 const postController ={
+
     getCreatePost:async function(req,res){
         if(req.session.flag){
         var userName = req.session.user.userName;
@@ -100,11 +99,14 @@ const postController ={
                 }else{
                     result = await db.findOne(Reply, {_id:idNum});
                 }
-                if(result != null){
+                if(result!= null && result.upvotes.length > 0){
                     if(result.upvotes.includes(user) && id[0] =="upvote"){
                         flag.upvote = true;
-                    }else if(result.downvotes.includes(user) && id[0] =="downvote"){
-                        flag.downvote = true;
+                    }
+                }
+                if(result!= null && result.downvotes.length>0){
+                    if(result.downvotes.includes(user) && id[0] =="downvote"){
+                            flag.downvote = true;
                     }
                 }
                 console.log(flag);
@@ -114,49 +116,91 @@ const postController ={
                 res.send(null);
             }
         },
-        postVoteTally: async function(req,res){
-            var button_id = req.param.button_id;
-            button_id = button_id.split('_');
-            var idNum = button_id[2];
-            var tally = req.param.votes;
-            var original_tally = {};
-            var result =""
-            if(button_id[1]=="posts"){
-                original_tally = await db.findOne(Post,{_id:idNum});
-                result = await db.updateOne(Post,{_id:idNum}, {$set: {downvotes: original_tally.downvotes+tally.downvotes, upvotes: original_tally.upvotes+tally.upvotes}});
-                if(result!=null){
-                    res.render();
-                }
-            }else if(button_id[1]=="comments"){
-                original_tally = await db.findOne(Comment,{_id:idNum});
-                result = await db.updateOne(Comment, {_id:idNum}, {$set: {downvotes: original_tally.downvotes+tally.downvotes, upvotes: original_tally.upvotes+tally.upvotes}});
-            }else{
-                original_tally = await db.findOne(Reply, {_id: idNum});
-                result = await db. updateOne(Reply, {_id:idNum}, {$set: {downvotes: original_tally.downvotes+tally.downvotes, upvotes: original_tally.upvotes+tally.upvotes}});
-            }
-            total = {downvotes: original_tally.downvotes + tally.downvotes, upvotes: original_tally.upvotes + tally.upvotes, button_id: button_id[1]+'_'+getCheckIdNumber};
-            res.send(total);
-        },
 
-        getVoteTally:async function(req,res){
-            var button_id= req.body.button_id;
-            button_id = button_id.split('_');
-            console.log(button_id);
-            var idNum = button_id[2];
-            var model = button_id[1];
-            var original_tally={};
-            if(button_id[1]=="posts"){
-                original_tally = await db.findOne(Post,{_id:idNum});
-                if(result!=null){
-                    res.render();
+        postVoteTally: async function(req,res){
+            if(req.session.flag){
+                var name = req.session.user.userName;
+                var button_id = req.body.button_id;
+                button_id = button_id.split('_');
+                var idNum = button_id[2];
+                var tally = {downvotes: req.body.downvotes, upvotes: req.body.upvotes};
+                var original_tally = {};
+                var result =""
+                console.log("button id = " + button_id);
+                if(button_id[1]=="posts"){
+                    original_tally = await db.findOne(Post,{_id:idNum},"upvotes downvotes");
+                    if(tally.upvotes >0){
+                        if(!original_tally.upvotes.includes(name)){
+                            result = await db.updateOne(Post,{_id:idNum}, {$push:{upvotes: name}});
+                        }
+                    }
+                   if(tally.downvotes > 0){
+                        if(!original_tally.downvotes.includes(name)){
+                            result = await db.updateOne(Post, {_id:idNum}, {$push:{downvotes: name}});
+                        }
+                   }
+                   if(tally.downvotes < 0){
+                        if(original_tally.downvotes.includes(name)){
+                            result = await db.updateOne(Post, {_id:idNum}, {$pull:{downvotes:name}});
+                        }
+                   }
+                   if(tally.upvotes < 0 ){
+                        if(original_tally.upvotes.includes(name)){
+                            result = await db.updateOne(Post,{_id:idNum}, {$pull:{upvotes:name}});
+                        }
+                   }
+                }else if(button_id[1]=="comments"){
+                    original_tally = await db.findOne(Comment,{_id:idNum});
+                    if(tally.upvotes >0){
+                        if(!original_tally.upvotes.includes(name)){
+                            result = await db.updateOne(Comment,{_id:idNum}, {$push:{upvotes: name}});
+                        }
+                    }
+                   if(tally.downvotes > 0){
+                        if(!original_tally.downvotes.includes(name)){
+                            result = await db.updateOne(Comment, {_id:idNum}, {$push:{downvotes: name}});
+                        }
+                   }
+                   if(tally.downvotes < 0){
+                        if(original_tally.downvotes.includes(name)){
+                            result = await db.updateOne(Comment, {_id:idNum}, {$pull:{downvotes:name}});
+                        }
+                   }
+                   if(tally.upvotes < 0 ){
+                        if(original_tally.upvotes.includes(name)){
+                            result = await db.updateOne(Comment,{_id:idNum}, {$pull:{upvotes:name}});
+                        }
+                   }
+                }else{
+                    original_tally = await db.findOne(Reply, {_id: idNum});
+                    if(tally.upvotes >0){
+                        if(!original_tally.upvotes.includes(name)){
+                            result = await db.updateOne(Reply,{_id:idNum}, {$push:{upvotes: name}});
+                        }
+                    }
+                   if(tally.downvotes > 0){
+                        if(!original_tally.downvotes.includes(name)){
+                            result = await db.updateOne(Reply, {_id:idNum}, {$push:{downvotes: name}});
+                        }
+                   }
+                   if(tally.downvotes < 0){
+                        if(original_tally.downvotes.includes(name)){
+                            result = await db.updateOne(Reply, {_id:idNum}, {$pull:{downvotes:name}});
+                        }
+                   }
+                   if(tally.upvotes < 0 ){
+                        if(original_tally.upvotes.includes(name)){
+                            result = await db.updateOne(Reply,{_id:idNum}, {$pull:{upvotes:name}});
+                        }
+                   }
                 }
-            }else if(button_id[1]=="comments"){
-                original_tally = await db.findOne(Comment,{_id:idNum});
+                var msg = {upvotes: original_tally.upvotes.length + tally.upvotes, downvotes: original_tally.downvotes+tally.downvotes, flag:true};
+                res.set('Content-Type', 'application/json');
+                res.send(msg);
             }else{
-                original_tally = await db.findOne(Reply, {_id: idNum});
+            res.set('Content-Type', 'application/json');
+            res.send({flag:false});
             }
-            total = {downvotes: original_tally.downvotes + tally.downvotes, upvotes: original_tally.upvotes + tally.upvotes,button_id: button_id[1]+'_'+getCheckIdNumber};
-            res.render(send);
         },
 };
 
