@@ -4,6 +4,7 @@
         <link rel="stylesheet" type="text/css" href="/css/manipulate_account.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script type="text/javascript" src="/js/signup.js"></script>
+        <script type="text/javascript" src="/js/validator.min.js"></script>
         <title>Register</title>
     </head>
     <body>
@@ -13,28 +14,28 @@
                 <form id="signup" method="post">
                     <label for ="firstName">First Name<span class="required">*</span></label><br>
                     <input type ="text" id ="firstName" name ="firstName" required><br>
-                    <div id="warning_firstName" class="warning">{{firstName_error}}<br><br></div>
+                    <div id="warning_firstName" class="warning"><br><br></div>
                     <label for ="lastName">Last Name<span class="required">*</span></label><br>
                     <input type ="text" id ="lastName" name ="lastName" required><br>
-                    <div id="warning_lastName" class="warning">{{lastName_error}}<br><br></div>
+                    <div id="warning_lastName" class="warning"><br><br></div>
                     <label for ="email">Email<span class="required">*</span></label><br>
                     <input type ="email" id ="email" name ="email" required><br>
-                    <div id="warning_email" class="warning">{{email_error}}<br><br></div>
+                    <div id="warning_email" class="warning"><br><br></div>
                     <label for ="password">Password<span class="required">*</span></label><br>
                     <input type ="password" id ="password" name ="password" minlength="8" required><br>
-                    <div id="warning_password" class="warning">{{password_error}}<br><br></div>
+                    <div id="warning_password" class="warning"><br><br></div>
                     <label for="confirm_password">Confirm Password<span class="required">*</span></label><br>
                     <input type="password" id="confirm_password" name="confirm_password" minlength="8" required><br>
-                    <div id="warning_confirm_password" class="warning">{{confirm_pssword_error}}.<br><br></div>
+                    <div id="warning_confirm_password" class="warning">.<br><br></div>
                     <label for ="username">Username<span class="required">*</span></label><br>
                     <input type ="text" id ="username" name ="username" required><br>
-                    <div id="warning_username" class="warning">{{username_error}}<br><br></div>
+                    <div id="warning_username" class="warning"><br><br></div>
                     <label for ="idnumber">ID Number<span class="required">*</span></label><br>
                     <input type ="text" id ="idnumber" name ="idnumber" required><br>
-                    <div id="warning_idnumber" class="warning">{{idnumber_error}}<br><br></div>
+                    <div id="warning_idnumber" class="warning"><br><br></div>
                     <label for ="contact_number">Contact Number</label><br>
                     <input type ="text" id ="contact_number" name ="contact_number"><br>
-                    <div id="warning_contact_number" class="warning">{{contact_number_error}}.<br><br></div>
+                    <div id="warning_contact_number" class="warning"><br><br></div>
                     <div class="center">
                         <input type ="submit" value ="REGISTER" id = "submit"><br>
                         <div class="register_login_footer">Already have an account? <a href="/login">Log In</a></div>

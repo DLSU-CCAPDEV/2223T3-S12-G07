@@ -18,7 +18,6 @@ const signupController = {
                 alert('You have been logged out from active sessions');
             });
         }else{
-            var errors = validationResult(req);
             
                 var firstName = req.body.firstName;
                 var userName = req.body.username;
@@ -67,9 +66,10 @@ const signupController = {
     getCheckUsername:  async function (req, res) {
         var username = req.query.username;
         var query = {userName: username};
-        var projection = 'username';
+        var projection = 'userName';
         var result = await db.findOne(User, query, projection);
         if(result){
+            console.log(result.userName + " "+ query);
             res.send(result);
         }else{
             res.send("");
