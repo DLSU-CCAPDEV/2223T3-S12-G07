@@ -150,15 +150,15 @@ $(document).ready(function(){
         var regex = /^[0-9]+$/;
         var isValidRegex = regex.test(idNum);
 
-        if(isValidLength) {
-           if(isValidRegex){
+        if(isValidRegex) {
+           if(isValidLength){
                 $.get('/checkIDNumber', {idNumber: idNum}, function (result) {
 
                     // if the value of `idNum` does not exists in the database
                     if(result.idNumber != idNum) {
                         if(field.is($('#idnumber'))){
                             // remove the error message in `idNumError`
-                            $('#warning_idnumber').text('');
+                            $('#warning_idnumber').text('ID Number should contain 8 digits.');
                             $('#warning_idnumber').css('display','none');
                             $('#idnumber').css('background-color','transparent');
                         }
@@ -176,8 +176,8 @@ $(document).ready(function(){
                 });
             }else{
                 //display regex error
-                if(field.is($('#idnumber'))){
-                    $('#warning_idnumber').text('ID Number should only consist of numerical characters');
+                if(field.is($('#idnumber'))){ //
+                    $('#warning_idnumber').text('');
                     $('#warning_idnumber').css('display','block');
                     $('#idnumber').css('background-color','red');
                 }
@@ -188,7 +188,7 @@ $(document).ready(function(){
         }else {
             if(field.is($('#idnumber'))){
                 // display appropriate error message in `idNumError`
-                $('#warning_idnumber').text('ID Number should contain 8 digits.');
+                $('#warning_idnumber').text('ID Number should only consist of numerical characters.');
                 $('#warning_idnumber').css('display','block');
                 $('#idnumber').css('background-color','red');
 
@@ -294,41 +294,50 @@ function validateField(field, fieldName, error) {
 
     var value = validator.trim(field.val());
     var empty = validator.isEmpty(value);
-
-    // if the value of `field` is empty
-    if(empty) {
-
-        field.prop('value', '');
-        // display approriate error message in `error`
-        error.text(fieldName + 'should not be empty.');
-        error.css('display','block');
-    }
-
-    // else if the value of `field` is not empty
-    else{
-        // remove the error message in `error`
-        error.text('');
-        error.css('display','none');
+ 
+    console.log(field.val().split(' ').length);
+    if(field.val().split(' ').length>1 && !field.is($('#firstName')) && !field.is($('#lastName'))){
+            error.text(`${fieldName}  should not contain a space character.`);
+            error.css('display','block');
+            field.prop('value',value.split(" ").join(""));
     
+        
+    }else{
+        // if the value of `field` is empty
+        if(empty) {
 
-    // call isFilled() function to check if all field are filled
-    var filled = isFilled();
-    var validPassword = isValidPassword(field);
-    var validCPass = isValidConfirmPassword(field);
-    var validCNum = isValidContactNumber(field);
+            field.prop('value', '');
+            // display approriate error message in `error`
+            error.text(`${fieldName}  should not be empty.`);
+            error.css('display','block');
+        }
 
-    isValidID(field, function (validID) {
-        console.log("recursion: validID");
-        isValidEmail(field, function(validEmail){
-            console.log("recursion: isValidEmail");
-            isValidUserName(field, function(validUser){
-                console.log("recursion: isvalid username");
-                if(filled && validPassword &&  validCPass &&validCNum  && validUser && validID && validEmail){
-                    $('#submit').prop('disabled', false);
-                }else
-                    $('#submit').prop('disabled', true);
+        // else if the value of `field` is not empty
+        else{
+            // remove the error message in `error`
+            error.text('');
+            error.css('display','none');
+        
+
+            // call isFilled() function to check if all field are filled
+            var filled = isFilled();
+            var validPassword = isValidPassword(field);
+            var validCPass = isValidConfirmPassword(field);
+            var validCNum = isValidContactNumber(field);
+
+            isValidID(field, function (validID) {
+                console.log("recursion: validID");
+                isValidEmail(field, function(validEmail){
+                    console.log("recursion: isValidEmail");
+                    isValidUserName(field, function(validUser){
+                        console.log("recursion: isvalid username");
+                        if(filled && validPassword &&  validCPass &&validCNum  && validUser && validID && validEmail){
+                            $('#submit').prop('disabled', false);
+                        }else
+                            $('#submit').prop('disabled', true);
+                    });
+                });
             });
-        });
-    });
-}
+        }
+    }
 }
