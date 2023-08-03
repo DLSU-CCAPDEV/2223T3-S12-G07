@@ -7,14 +7,16 @@ const homeController ={
     getHome: async function(req, res){
         var details={}
         var posts = await db.findMany(Post, {});
+        var tempPost = [];
         var comments = [];
         var comment = null;
         var replies = [];
         var reply = null;
-
+        console.log("username" + req.session.user.userName +" flag = "+ req.session.flag);
         if(posts != null && posts.length > 0){
             for(const post of posts){
                 comments = []
+
                 if(post.comments != null && post.comments.length > 0){
                     for(const i of post.comments){
                         replies = []
@@ -24,23 +26,39 @@ const homeController ={
                                 for(const j of comment.replies){
                                     reply = await db.findOne(Reply, {_id: j});
                                     if(reply != null){
+                                        if(req.session.flag){
+                                            reply.flag=true;
+                                            if(req.session.user.userName == post.username)
+                                                reply.user = true;
+                                        }
                                         replies.push(reply);
                                     }
                                 }
                                 comment.replies = replies;
                             }
+                            if(req.session.flag){
+                                comment.flag=true;
+                                if(req.session.user.userName == post.username)
+                                    comment.user = true;
+                            }
                             comments.push(comment);
                         }
                     }
+    
                     post.comments = comments;
+                    
                 }
+                if(req.session.flag){
+                    post.flag=true;
+                    if(req.session.user.userName == post.username)
+                        post.user = true;
+                }
+                tempPost.push(post);
             }
         }
         
         if(req.session.flag){
-            posts.flag = posts.map(function(post){
-                post.flag = true;
-            });
+            
             details.flag = true;
             details.user= true;
             data = {
@@ -48,7 +66,7 @@ const homeController ={
                 firstName : req.session.user.firstName,
                 lastName : req.session.user.lastName,  
             }
-            details.posts = posts;
+            details.posts = tempPost;
             details.data = data;
         }else{
             details.flag=false;
