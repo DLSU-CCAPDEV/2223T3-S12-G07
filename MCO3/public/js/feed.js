@@ -10,7 +10,6 @@ $(document).ready(function(){
          getVoteData($($upButtons[i]));
          getVoteData($($downButtons[i]));
    }
-
     attachEventListeners();
 });
 
@@ -29,8 +28,9 @@ function attachEventListeners(){
     $('.delete_comment').click(function(){delete_comment($(this))});
     $('.delete_reply').click(function(){delete_reply($(this))});
     $('.delete_post').click(function(){delete_post($(this))});
-
     $('.edit_content').click(function(){edit_post($(this))});
+
+    $('.')
 }
 
 function edit_post($button){
@@ -135,7 +135,7 @@ function create_comment(button){
             console.log(data);
             data.flag= true;
             var $feed = comment_section.find('.comment_feed')
-            feed.append(data);
+            $feed.append(data);
             var $comment = $feed.find(`#${data._id}`);
             var $reply = $comment.find('.create_reply_button');
             $reply.click(create_reply($reply));

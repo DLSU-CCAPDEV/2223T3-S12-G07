@@ -2,12 +2,16 @@
                                 <div class="posts_header">
                                     <div class="profile_picture_bubble Sophia"></div>
                                     <span class="user_name">{{author}}</span>
+                                    {{#if flag}}
+                                    {{#if user}}
                                      <div class= "manipulate_dropdown"/> <img class="image_option" src = "images/options.svg">
                                         <div class="manipulate_dropdown_content">
                                             <a class="edit_content" id = "edit_post_{{_id}}"  href="edit_post?content={{content}}&type=comment&id={{_id}}">edit</a>
                                             <div class="delete_comment delete_button" id = "delete_comment_{{_id}}">delete</div>
                                         </div>
                                     </div>
+                                    {{/if}}
+                                    {{/if}}
                                 </div>
 
                                 <p>{{content}}</p>
@@ -37,12 +41,20 @@
                                         {{/if}}
                                     </div>
                                     <span class="center_align">
+                                        {{#if flag}}
                                         <div class="create_comment">
                                             <form id ="create_reply_form_{{_id}}" method="post">
                                                 <textarea name="create_reply_input_{{_id}}" placeholder="Write a reply..." id="create_reply_input_{{_id}}"></textarea>
                                                 <button type="button" name="create_reply_button_{{_id}}" class="create_reply_button">send</button>
                                             </form>
                                         </div>
+                                        {{else}}
+                                        <a href="register">
+                                            <div class="informative_text text_center">
+                                            Join AnimoHub to participate in the discussion and add your insights
+                                            </div>
+                                        </a>
+                                        {{/if}}
                                     </span>
                                     
                                 </div>

@@ -5,6 +5,7 @@ const profileController = require('../controllers/profile_controller.js');
 const loginController = require('../controllers/login_controller.js');
 const homeController = require('../controllers/home_controller.js');
 const postController = require('../controllers/post_controller.js');
+const signupValidation = require('../controllers/middlewares/signup_middleware.js');
 
 const app = express();
 

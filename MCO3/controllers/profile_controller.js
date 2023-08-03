@@ -42,15 +42,30 @@ const profileController ={
                                             reply = await db.findOne(Reply, {_id: h});
                                             if(reply != null){
                           //                      console.log("reply = " + reply);
+                                                if(req.session.flag){
+                                                    reply.flag=true;
+                                                    if(req.session.user.userName == user)
+                                                        reply.user = true;
+                                                }
                                                 replies.push(reply);
                                             }
                                         }
                                         comment.replies = replies;
                                     }
+                                    if(req.session.flag){
+                                        comment.flag=true;
+                                        if(req.session.user.userName == user)
+                                            comment.user = true;
+                                    }
                                     comments.push(comment);
                                 }
                             }
                             post.comments = comments;
+                        }
+                        if(req.session.flag){
+                            post.flag=true;
+                            if(req.session.user.userName == user)
+                                post.user = true;
                         }
                         posts.push(post);
                //         console.log("post = " + post);
@@ -60,13 +75,16 @@ const profileController ={
             data.posts = posts;
           //  console.log("data.posts = "+data.posts);
             if(req.session.flag){
+                /*
                 if(data.posts.length > 0 && data.posts != null){
                     data.posts.flag = data.posts.map(function(post){
                         post.flag = true;
                     });
                 }
+                */
                 details.flag = true;
                 details.data = data;
+                details.active_user = req.session.user;
            //     console.log(" data with flag = "+ details);
     
                 if(req.session.user.userName == user){

@@ -2,6 +2,7 @@ const db  = require('../models/db.js');
 const User = require('../models/UserModel.js');
 // import module `bcrypt`
 const bcrypt = require('bcrypt');
+
 const loginController ={
     getLogin: function(req, res){
         if(req.session.flag){
@@ -19,14 +20,13 @@ const loginController ={
 
         var result = await db.findOne(User, query, projection);
         if(result){
-             data ={
-                userName: username,
-                firstName: result.firstName,
-                lastName: result.lastName,
-            };
-            console.log("user found via username : "+ data);
             bcrypt.compare(password, result.password,function(err, equal){
                 if(equal){
+                    data ={
+                        userName: username,
+                        firstName: result.firstName,
+                        lastName: result.lastName,
+                    };
                     req.session.user = data;
                     req.session.flag = true;
                     res.redirect('/profile_page?userName='+username);

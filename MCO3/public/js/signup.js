@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+
+    //todo: display warning message if username exists
     $('#username').keyup(function(){
         var username = $('#username').val();
         $.get('/checkUsername/',{username: username}, function(data){
@@ -27,6 +29,7 @@ $(document).ready(function(){
     });
     
     $('#idnumber').keyup(function(){
+        //serverside 
         var idNumber = $('#idnumber').val();
         $.get('/checkIdNumber/',{idNumber: idNumber}, function(data){
             if(data.idNumber == idNumber){
