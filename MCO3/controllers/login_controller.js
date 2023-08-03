@@ -2,7 +2,6 @@ const db  = require('../models/db.js');
 const User = require('../models/UserModel.js');
 // import module `bcrypt`
 const bcrypt = require('bcrypt');
-const { validationResult } = require('express-validator');
 const loginController ={
     getLogin: function(req, res){
         if(req.session.flag){
@@ -11,9 +10,6 @@ const loginController ={
             res.render('login');
     },
     postLogin: async function(req, res){
-        var errors = validationResult(req);
-        if(errors.isEmpty()){
-
         
         var username = req.body.username;
         var password = req.body.password;
@@ -42,13 +38,6 @@ const loginController ={
 
         }else{
             res.status(404).render('login');
-        }}else{
-            var details = {};
-            errors = errors.errors;
-            for(i=0;i<errors.length;i++){
-                details[errors[i].param+'_error'] = errors[i].msg;
-            }
-            res.render('login', details);
         }
     },
 };

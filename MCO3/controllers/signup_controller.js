@@ -3,7 +3,6 @@ const User = require("../models/UserModel.js");
 // import module `bcrypt`
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-const { validationResult } = require('express-validator');
 const signupController = {
 
     getSignUp:  function (req, res) {
@@ -20,7 +19,7 @@ const signupController = {
             });
         }else{
             var errors = validationResult(req);
-            if(errors.isEmpty()){
+            
                 var firstName = req.body.firstName;
                 var userName = req.body.username;
                 var lastName = req.body.lastName;
@@ -60,15 +59,7 @@ const signupController = {
                 }
 
                 });
-                //create user from the initiated v
-            }else{
-                errors = errors.errors;
-                var details = {};
-                for (i = 0;i <errors.length;i++){
-                    details[errors[i].param+'_error'] = errors[i].msg;
-                }
-                res.render('register', details);
-            }
+            
         }
             
     },
