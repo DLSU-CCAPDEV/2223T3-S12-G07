@@ -54,7 +54,15 @@ const validation = {
         ];
 
         return validation;
-    }
+    },
+
+    loginValidation:function(){
+        //TODO: make sure these two fields are not empty and that password follows the correct regex
+        var validation = [
+            //check 'username'
+            //check 'password' 
+        ];
+    },
 }
 
 /*

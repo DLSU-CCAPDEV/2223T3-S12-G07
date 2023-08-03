@@ -5,7 +5,7 @@ const profileController = require('../controllers/profile_controller.js');
 const loginController = require('../controllers/login_controller.js');
 const homeController = require('../controllers/home_controller.js');
 const postController = require('../controllers/post_controller.js');
-const signupValidation = require('../controllers/middlewares/signup_middleware.js');
+const validation = require('../controllers/middlewares/signup_middleware.js');
 
 const app = express();
 
@@ -14,7 +14,7 @@ app.get('/', controller.getIndex);
 app.get('/home',homeController.getHome);
 app.get('/register', signupController.getSignUp);
 
-app.post('/register', signupController.postSignUp); //form id in register.hbs should be signup
+app.post('/register', validation.signupValidation() ,signupController.postSignUp); //form id in register.hbs should be signup
 
 app.get('/checkUsername', signupController.getCheckUsername);
 app.get('/checkEmail', signupController.getCheckEmail);
@@ -22,7 +22,7 @@ app.get('/checkIdNumber', signupController.getCheckIdNumber);
 
 app.get('/login', loginController.getLogin)
 
-app.post('/login', loginController.postLogin);
+app.post('/login', validation.loginValidation(), loginController.postLogin);
 
 app.get('/profile_page', profileController.getProfile);
 app.get('/create_post', postController.getCreatePost);
