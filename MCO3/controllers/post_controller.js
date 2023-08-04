@@ -37,7 +37,6 @@ const postController ={
             result2 = await db.findOne(Post, post);
             if(result2){
                  id = result2._id;
-                console.log("id = "+id);
                 result3 = await db.updateOne(User,{userName:userName},{$push:{posts:id}});
                 if(result3){
                     res.redirect(`/${req.session.prev_page}?userName=${userName}`);
@@ -61,7 +60,6 @@ const postController ={
         var result = await db.insertOne(Comment, comment);
         if(result != null){
             var created = await db.findOne(Comment,comment);
-            console.log("created: "+created);
             if(created != null){
                 result = await db.updateOne(Post,{_id:post},{$push:{comments:created._id}});
                 if(result != null){
@@ -78,7 +76,6 @@ const postController ={
             res.status(404).send(null);
     },
     postAddReply: async function(req,res){
-        console.log("add reply function called");
         var  author = req.session.user.userName;
         var content = req.body.content;
         var date = req.body.date;
@@ -137,7 +134,6 @@ const postController ={
             var id = req.query.id;
             id = id.split('_');
             var idNum = id[2];
-            console.log(idNum);
             var result = null;
             var flag = {
                 downvote: false,
@@ -160,7 +156,6 @@ const postController ={
                         flag.downvote = true;
                 }
             }
-            console.log(flag);
             res.set('Content-Type', 'application/json');
             res.send(flag);
         }else{
@@ -178,7 +173,6 @@ const postController ={
             var tally = {downvotes: req.body.downvotes, upvotes: req.body.upvotes};
             var original_tally = {};
             var result ="";
-            console.log("button id = " + button_id);
             if(button_id[1]=="posts"){
                 original_tally = await db.findOne(Post,{_id:idNum},"upvotes downvotes");
                 if(original_tally){
@@ -270,7 +264,6 @@ const postController ={
 
         postDeletePost: async function(req, res){
             var id  =  req.body.id;
-            console.log("delete this id: "+ id);
             var name = req.session.user.userName;
             var post = await db.findOne(Post, {_id:id});
             var result = "";
@@ -338,7 +331,6 @@ const postController ={
             res.send({flag:true});
         },
         postEditPost: async function(req, res){
-            console.log("edit post");
             var id = req.body.id;
             var type = req.body.type;
             var content = req.body.content;
@@ -421,7 +413,7 @@ const postController ={
                                 reply = await db.findOne(Reply, {_id:j});
                                 if(reply!=null){
                                     if(req.session.flag){
-                                        if(req.session.user.userName = reply.author){
+                                        if(req.session.user.userName == reply.author){
                                             reply.user = true
                                         }
                                     }
@@ -432,7 +424,7 @@ const postController ={
                         }
                         if(req.session.flag){
                             comment.flag= true;
-                            if(req.session.user.userName = comment.author){
+                            if(req.session.user.userName == comment.author){
                                 comment.user = true
                             }
                         }
@@ -442,20 +434,16 @@ const postController ={
                 post.comments = comments;
                 if(req.session.flag){
                     post.flag= true;
-                    if(req.session.user.userName = post.author){
+                    if(req.session.user.userName == post.author){
                         post.user = true
                     }
                 }
-
                 if(req.session.flag){
-                    active_user = {
+                    var active_user = {
                         userName: req.session.user.userName,
                         firstName: req.session.user.firstName,
                         lastName: req.session.user.lastName,
                     }
-                    var active_user = false;
-                    if(req.session.user.userName = post.author)
-                        active_user = true;
                     res.render('post', { posts: post, flag: true, active_user: active_user});
                 }else{
                     res.render('post', { posts: post, flag: false});

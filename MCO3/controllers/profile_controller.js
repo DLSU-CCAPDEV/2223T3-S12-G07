@@ -6,7 +6,6 @@ const Reply = require('../models/ReplyModel.js');
 
 const profileController ={
     getProfile: async function(req, res){
-        console.log(req.session.user);
         var user = req.query.userName;
         var query = {userName: user};
         var details = {};
@@ -18,30 +17,23 @@ const profileController ={
         var comment = null;
         var post = null;
         var data = await db.findOne(User, query);
-        console.log("req session created : " + req.session.flag);
         if(data != null)
         {
             if(data.posts != null && data.posts.length > 0)
             {
                 for (const i of data.posts) {
                     comments = [];
-            //        console.log("postID = " + i);
                     post =  await db.findOne(Post, {_id: i});
-               //     console.log("post "+post);
                     if(post!= null){
                         if(post.comments != null && post.comments.length > 0){
                             for(const j of post.comments){
                                 replies = [];
-                         //       console.log("commentId = " + j);
                                 comment = await db.findOne(Comment, {_id: j});
                                 if(comment != null){
-                      //              console.log("comment = " + comment)
                                     if(comment.replies != null && comment.replies.length>0){
                                         for(const h of comment.replies){
-                                    //        console.log("replyId = " + h);
                                             reply = await db.findOne(Reply, {_id: h});
                                             if(reply != null){
-                          //                      console.log("reply = " + reply);
                                                 if(req.session.flag){
                                                     reply.flag=true;
                                                     if(req.session.user.userName == user)
@@ -68,18 +60,15 @@ const profileController ={
                                 post.user = true;
                         }
                         posts.push(post);
-               //         console.log("post = " + post);
                     }
                 }
             }
             data.posts = posts;
-          //  console.log("data.posts = "+data.posts);
             if(req.session.flag){
 
                 details.flag = true;
                 details.data = data;
                 details.active_user = req.session.user;
-           //     console.log(" data with flag = "+ details);
     
                 if(req.session.user.userName == user){
                     details.user = true;
@@ -89,10 +78,8 @@ const profileController ={
                 details.flag = false;
                 details.user = false;
             }
-         //  console.log(req.session.flag);
             res.render('profile_page',details);
         }
-        //user does not exist
     },
 }
 

@@ -41,7 +41,6 @@ const signupController = {
                 };
                 var result = await db.insertOne(User, user);
                 if(result!=null){
-                    console.log("User inserted");
                         data = {
                             userName: userName,
                             firstName: firstName,
@@ -52,7 +51,6 @@ const signupController = {
                     req.session.user = data;
                     res.redirect('/profile_page?userName='+userName);
                 }else{
-                        console.log("failed register");
                         req.session.flag = false;
                         res.render('register');
                 }
@@ -69,7 +67,6 @@ const signupController = {
         var projection = 'userName';
         var result = await db.findOne(User, query, projection);
         if(result){
-            console.log(result.userName + " "+ query);
             res.send(result);
         }else{
             res.send("");

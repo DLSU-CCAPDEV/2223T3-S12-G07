@@ -17,7 +17,6 @@ const loginController ={
         var query = {userName: username};
         var data={};
         var projection = 'password firstName lastName';
-        console.log("button pressed");
 
         var result = await db.findOne(User, query, projection);
         if(result){
