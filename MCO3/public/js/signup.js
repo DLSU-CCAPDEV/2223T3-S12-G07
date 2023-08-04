@@ -304,7 +304,7 @@ function validateField(field, fieldName, error) {
         
     }else{
         // if the value of `field` is empty
-        if(empty) {
+        if(empty && !field.is($('#contact_number'))) {
 
             field.prop('value', '');
             // display approriate error message in `error`

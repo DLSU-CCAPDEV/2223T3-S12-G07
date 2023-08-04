@@ -15,7 +15,7 @@ $(document).ready(function(){
 // helpers
 
 function attachEventListeners(){
-
+   // $('.profile_picture_bubble').click(function(){});
     $('a.reply_button').click( function(){render_replies($(this).parent().parent())});
     $('.create_reply_button').click(function(){create_reply($(this))});
     $('.create_comment_button').click(function(){create_comment($(this))});
@@ -27,8 +27,12 @@ function attachEventListeners(){
     $('.delete_reply').click(function(){delete_reply($(this))});
     $('.delete_post').click(function(){delete_post($(this))});
 }
-
-
+/*
+function redirectProfile(button){
+    //profile picture id should have username
+    window.location.href = '/profile_page?userName='+$(button).attr('id');
+}
+*/
 function delete_comment($button){
 
     var id = $button.attr('id');
