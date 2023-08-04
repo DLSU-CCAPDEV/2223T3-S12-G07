@@ -7,25 +7,28 @@
     </head>
     <body>
         <div class="content">
-            {{>signin_header title="Make Some Changes" link='profile_page?username={{username}}'+}}
+            {{>signin_header title="Make Some Changes" link='profile_page?username={{userName}}'}}
             <div class ="mainForm">
-                <form id ="edit_profile_form" action="profile_page_John.html" onsubmit="edit_profile_validate();">
+                <form id ="edit_profile_form" method ='post'>
                     <label for ="first_name">First Name</label><br>
-                    <input type ="text" id ="first_name" name ="first_name" placeholder="{{firstname}}"><br>
+                    <input type ="text" id ="first_name" name ="first_name" placeholder="{{firstName}}" value="{{firstName}}"><br>
+                    <p id="warning_firstName" class = "warning"></p>
                     <label for ="last_name">Last name</label><br>
-                    <input type ="text" id ="last_name" name ="last_name" placeholder="{{lastname}}"><br>
+                    <input type ="text" id ="last_name" name ="last_name" placeholder="{{lastName}}" value="{{lastName}}"><br>
+                    <p id="warning_lastName" class = "warning"></p>
                     <label for="profile_picture">Profile Picture</label><br>
-                    <input type="file" id ="profile_picture" name ="profile_picture" accept="image/*" onchange="image_upload_preview(event,'prof_pic');"><br>
+                    <input type="file" id ="profile_picture" name ="profile_picture" accept="image/*" ><br>
                     <img id="prof_pic"  >
                     <div id="prof_pic_br"><br></div>
                     <label for="cover_photo">Cover Photo</label><br>
-                    <input type="file" id ="cover_photo" name ="cover_photo" accept="image/*" onchange="image_upload_preview(event,'cov_pic');"><br>
+                    <input type="file" id ="cover_photo" name ="cover_photo" accept="image/*"><br>
                     <img id="cov_pic"  >
                     <div id="cov_pic_br"><br></div>
                     <label for="bio">About Yourself</label><br>
-                    <textarea id="bio" name="bio" rows="8" cols="100"></textarea><br>
+                    <textarea id="bio" name="bio" rows="20" cols="100" {{#if aboutMe}} placeholder="{{aboutMe}}" value="{{aboutMe}}" {{/if}}></textarea><br>
                     <label for="contact_number">Contact Number</label><br>
                     <input type="text" id="contact_number" name="contact_number"><br>
+                    <p id="warning_contact_number" class = "warning"></p>
                 
                     <div class="center">
                         <input type ="submit" value ="SAVE"><br>

@@ -39,5 +39,6 @@ app.post('/deleteComment', postController.postDeleteComment);
 app.post('/deleteReply', postController.postDeleteReply);
 app.post('/edit_post', postController.postEditPost);
 app.get('/edit_post', postController.getEditPost);
-
+app.get('/editprofile', profileController.getEditProfile);
+app.post('/editprofile', profileController.postEditProfile);
 module.exports = app;

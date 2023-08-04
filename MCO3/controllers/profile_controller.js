@@ -81,6 +81,44 @@ const profileController ={
             res.render('profile_page',details);
         }
     },
+
+    getEditProfile: async function(req, res){
+        if(req.session.flag){
+            var username = req.session.user.userName;
+            var projection = "userName firstName lastName aboutMe contact_number";
+            var user = await db.findOne(User, {userName: username}, projection);
+            console.log('from get: '+ user);
+            res.render('editprofile',user);
+        }else{
+            res.redirect('/');
+        }
+
+    },
+
+    postEditProfile: async function(req, res){
+        if(req.session.flag){
+            var username = req.session.user.userName;
+            var user = await db.findOne(User, {userName: username});
+            var firstName = req.body.first_name;
+            var lastName = req.body.last_name;  
+            var contactNumber = req.body.contact_number;
+            var aboutMe = req.body.bio;
+
+            query = {
+                firstName: firstName,
+                lastName: lastName,
+                contact_number: contactNumber,
+                aboutMe: aboutMe,
+                userName: username,
+            };
+            console.log(query);
+            await db.updateOne(User, {userName: username}, {$set:query});
+            res.redirect('/profile_page?userName='+username);
+        }else{
+            //error
+            res.redirect(`/${req.session.prev_page}?userName=${userName}`);
+        }
+    },
 }
 
 module.exports = profileController;

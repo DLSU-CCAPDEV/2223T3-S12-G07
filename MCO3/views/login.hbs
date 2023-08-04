@@ -20,7 +20,9 @@
                      <p id="warning_password" class = "warning"></p>
                     <input type ="checkbox" id ="remember_me" name ="remember_me" value="remember_me">
                     <label for ="remember_me" class="remember_text">Remember Me</label>
-
+                    {{#if isMatch}}
+                    <p class="warning">Username and Password didn't match.</p>
+                    {{/if}}
                     <div class="center">
                         <br>
                         <input type ="submit" value ="LOG IN"><br>
