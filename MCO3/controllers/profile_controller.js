@@ -18,7 +18,7 @@ const profileController ={
         var comment = null;
         var post = null;
         var data = await db.findOne(User, query);
-
+        console.log("req session created : " + req.session.flag);
         if(data != null)
         {
             if(data.posts != null && data.posts.length > 0)
@@ -75,13 +75,7 @@ const profileController ={
             data.posts = posts;
           //  console.log("data.posts = "+data.posts);
             if(req.session.flag){
-                /*
-                if(data.posts.length > 0 && data.posts != null){
-                    data.posts.flag = data.posts.map(function(post){
-                        post.flag = true;
-                    });
-                }
-                */
+
                 details.flag = true;
                 details.data = data;
                 details.active_user = req.session.user;
@@ -98,11 +92,8 @@ const profileController ={
          //  console.log(req.session.flag);
             res.render('profile_page',details);
         }
-        
+        //user does not exist
     },
-
-    editProfile: async function(req, res){},
-    editContent: async function(req, res){},
 }
 
 module.exports = profileController;

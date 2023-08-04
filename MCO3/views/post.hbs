@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Home Page</title>
+        <title>Post Page</title>
         <link rel="stylesheet" href="./css/pages_with_content.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script type="text/javascript" src="/js/feed.js"></script>
@@ -9,11 +9,16 @@
     <body >
         <div class="page">
             {{>header details=this}}
+            <div class ="lower_body">
+                <!--the nav_bar contains the links to home and trending-->
+                <div class="nav_bar">
+                    <a href="home">Home</a><br>
+                    <a href="error">Trending</a>
+                </div>
+                <div class="main_body">
 
-                    <div id="new_post" {{#if posts}} style="display:block;"{{/if}}>
-                        {{#each posts}}
-                            {{>posts_card this}}
-                        {{/each}}
+                    <div id="posts_card">
+                            {{>posts_card posts}}
                     </div>   
                 </div>
             </div>

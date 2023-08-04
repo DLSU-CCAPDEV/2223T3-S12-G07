@@ -21,7 +21,7 @@ app.get('/checkIdNumber', signupController.getCheckIdNumber);
 app.get('/login', loginController.getLogin)
 
 app.post('/login', loginController.postLogin);
-
+app.get('/post', postController.getViewPost);
 app.get('/profile_page', profileController.getProfile);
 app.get('/create_post', postController.getCreatePost);
 app.post('/create_post', postController.postCreatePost);

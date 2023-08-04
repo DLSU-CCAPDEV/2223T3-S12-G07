@@ -290,7 +290,7 @@ form a input[type=text]{
 .create_comment{
     width:90%;
     height:30px;
-    background-color: #FFFFFF;
+    background-color: #0D8828;
     margin:10px;
     padding:15px;
     border-radius:5px;
@@ -308,10 +308,7 @@ form a input[type=text]{
     width:70%;
     height:100%
 }
-.create_comment form input[type=button]{
-    border-radius:100%;
 
-}
 .create_comment:hover{
     border: 1px solid #403D3D;
 }
@@ -598,4 +595,9 @@ a >.informative_text:hover{
     color:#403D3D;
     border-bottom: 1px solid #e94141;
     cursor:pointer;
+}
+.post_card{
+    width: 65%;
+    justify-content: center;
+
 }

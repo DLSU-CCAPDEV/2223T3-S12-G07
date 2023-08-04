@@ -12,8 +12,7 @@ const homeController ={
         var comment = null;
         var replies = [];
         var reply = null;
-        console.log("username" + req.session.user.userName +" flag = "+ req.session.flag);
-        if(posts != null && posts.length > 0){
+        if(posts != null && posts.length > 0){ 
             for(const post of posts){
                 comments = []
 
@@ -50,13 +49,13 @@ const homeController ={
                 }
                 if(req.session.flag){
                     post.flag=true;
-                    if(req.session.user.userName == post.userName)
+                    if(req.session.user.userName == post.username)
                         post.user = true;
                 }
                 tempPost.push(post);
             }
         }
-        
+        console.log("tempost =  " + tempPost);
         if(req.session.flag){
             
             details.flag = true;
@@ -69,13 +68,15 @@ const homeController ={
             details.posts = tempPost;
             details.data = data;
         
-                details.active_user = req.session.user;
+            details.active_user = req.session.user;
+            req.session.prev_page = 'home';
+            res.render('home',details);
         }else{
             details.flag=false;
-            details.posts = posts;
+            details.posts = tempPost;
+            req.session.prev_page = 'home';
+            res.render('home',details);
         }
-        req.session.prev_page = 'home';
-        res.render('home',details);
     },
 };
 

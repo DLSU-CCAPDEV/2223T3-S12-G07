@@ -28,8 +28,6 @@ function attachEventListeners(){
     $('.delete_comment').click(function(){delete_comment($(this))});
     $('.delete_reply').click(function(){delete_reply($(this))});
     $('.delete_post').click(function(){delete_post($(this))});
-    $('.edit_content').click(function(){edit_post($(this))});
-
 }
 
 
@@ -83,7 +81,7 @@ function click_upvote($button){
     console.log("upvote button clicked after ");
     var details = render_upvote($button);
     console.log("details = " + details);
-    $.post('/voteContent', details,function(req,res){
+    $.post('/voteContent', details,function(req){
         if(req.flag){
             if(req.upvotes != null && req.upvotes > 0){
                 var text = $button.children('.actions');
@@ -99,7 +97,7 @@ function click_downvote(button){
     console.log("downvote button clicked");
     console.log(button.attr('id'));
     var details = render_downvote(button);
-    $.post('/voteContent', details,function(req,res){
+    $.post('/voteContent', details,function(req){
         if(req.flag){
             if(req.downvotes != null && req.downvotes > 0){
                 var text = button.children('.actions');
@@ -134,10 +132,14 @@ function create_comment(button){
                     console.log("data id "+ data._id);
                     var $reply = $comment.find('.create_reply_button');
                     $reply.on("click", function(){create_reply($reply)});
+                    var $toggle_reply = $comment.find('a.reply_button');
+                    $toggle_reply.on("click", function(){render_replies($toggle_reply.parent().parent())});
                     var $upvote = $comment.find('.upvote_button');
                     $upvote.on("click", function(){click_upvote($upvote)});
                     var $downvote = $comment.find('.downvote_button');
                     $downvote.on("click",function(){click_downvote($downvote)});
+                    var $delete_comment = $comment.find('.delete_comment');
+                    $delete_comment.on("click", function(){delete_comment($delete_comment)});
                     button.siblings("textarea").val("");
                 });
             }
@@ -159,19 +161,24 @@ function create_reply(button){
 
         $.post('/postReply',details, function(data){
             if(data!=null){
-                console.log(object);
-                $.get('/getReply', data._id, function(object){
+                $.get('/getReply', {id:data._id}, function(object){
                     var $feed = reply_section.find('.reply_feed');
                     $feed.append(object);
+                    console.log("reply data id "+ data._id);
                     var $reply = $feed.find(`#${data._id}`);
+                   
                     var $upvote = $reply.find('.upvote_button');
-                    $upvote.click(click_upvote($upvote));
+                    console.log("replix" + $reply);
+                    $upvote.on("click",function(){click_upvote($upvote)});
                     var $downvote = $reply.find('.downvote_button');
-                    $downvote.click(click_downvote($downvote));
+                    $downvote.on("click",function(){click_downvote($downvote)});
+                    var $delete_reply = $reply.find('.delete_reply');
+                    $delete_reply.on("click", function(){delete_reply($delete_reply)});
                     button.siblings("textarea").val("");
                 });
             }
         });
+
 }
 function render_comments(post){
     var comment = post.children('.comment_section');

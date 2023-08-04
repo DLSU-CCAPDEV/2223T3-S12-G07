@@ -9,6 +9,7 @@ const loginController ={
         }else
             res.render('login');
     },
+    
     postLogin: async function(req, res){
         
         var username = req.body.username;
@@ -27,17 +28,18 @@ const loginController ={
                         firstName: result.firstName,
                         lastName: result.lastName,
                     };
+
                     req.session.user = data;
                     req.session.flag = true;
                     res.redirect('/profile_page?userName='+username);
                 }else{
                     req.session.flag = false;
-                    res.status(404).render('login')
+                    res.render('login')
                 }
             });
 
         }else{
-            res.status(404).render('login');
+            res.render('login');
         }
     },
 };
