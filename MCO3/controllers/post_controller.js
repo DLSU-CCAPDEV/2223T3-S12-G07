@@ -63,15 +63,22 @@ const postController ={
             var created = await db.findOne(Comment,comment);
             console.log("created: "+created);
             if(created != null){
-                result1 = await db.updateOne(Post,{_id:post},{$push:{comments:created._id}});
-                if(result1 != null)
-                    result2 = await db.updateOne(User,{userName:author},{$push:{comments:created._id}});
-                    if(result2 !=null)
-                        res.render('partials/comment',{author: created.author, _id:created._id, content:created.content});
+                result = await db.updateOne(Post,{_id:post},{$push:{comments:created._id}});
+                if(result != null){
+                    result = await db.updateOne(User,{userName:author},{$push:{comments:created._id}});
+                    if(result !=null){
+                        res.set('Content-Type', 'application/json');
+                        res.send(created);
+                    }
+                }
+            }else{
+                res.status(404).send(null);
             }
-        }
+        }else
+            res.status(404).send(null);
     },
     postAddReply: async function(req,res){
+        console.log("add reply function called");
         var  author = req.session.user.userName;
         var content = req.body.content;
         var date = req.body.date;
@@ -89,8 +96,40 @@ const postController ={
             await db.updateOne(Comment,{_id:comment},{$push:{replies:created._id}});
             await db.updateOne(User,{userName:author},{$push:{replies:created._id}});
             created._id = created._id.toString();
-            res.render('partials/reply',{author: created.author, _id:created._id, content:created.content});
-        }},
+            res.set('Content-Type', 'application/json');
+            res.send(created);
+        }else
+            res.status(404).send(null);
+
+    },
+    getAddComment: async function(req,res){
+        if(req.session.flag){
+            var id = req.query.id;
+            var created = await db.findOne(Comment,{_id:id});
+            var author = created.author;
+            if(req.session.user.userName == author){
+                res.render('partials/comment',{author: created.author, _id:created._id, content:created.content, flag: true, user: true});
+            }else{
+                res.render('partials/comment',{author: created.author, _id:created._id, content:created.content, flag: true, user: false});
+            }
+        }else{
+            res.render('partials/comment',{author: created.author, _id:created._id, content:created.content, flag: false, user: false});
+        }
+    },
+    getAddReply: async function(req,res){
+        if(req.session.flag){
+            var id = req.query.id;
+            var created = await db.findOne(Reply,{_id:id});
+            var author = created.author;
+            if(req.session.user.userName == author){
+                res.render('partials/comment',{author: created.author, _id:created._id, content:created.content, flag: true, user: true});
+            }else{
+                res.render('partials/comment',{author: created.author, _id:created._id, content:created.content, flag: true, user: false});
+            }
+        }else{
+            res.render('partials/comment',{author: created.author, _id:created._id, content:created.content, flag: false, user: false});
+        }
+    },
 
         getCheckVote: async function(req, res){
             if(req.session.flag){
@@ -141,17 +180,18 @@ const postController ={
                 console.log("button id = " + button_id);
                 if(button_id[1]=="posts"){
                     original_tally = await db.findOne(Post,{_id:idNum},"upvotes downvotes");
-                    if(tally.upvotes >0){
-                        if(!original_tally.upvotes.includes(name)){
-                            result = await db.updateOne(Post,{_id:idNum}, {$push:{upvotes: name}});
+                    if(original_tally){
+                        if(tally.upvotes >0){
+                            if(!original_tally.upvotes.includes(name)){
+                                result = await db.updateOne(Post,{_id:idNum}, {$push:{upvotes: name}});
+                            }
                         }
-                    }
                    if(tally.downvotes > 0){
                         if(!original_tally.downvotes.includes(name)){
                             result = await db.updateOne(Post, {_id:idNum}, {$push:{downvotes: name}});
                         }
                    }
-                   if(tally.downvotes < 0){
+                   if(tally < 0){
                         if(original_tally.downvotes.includes(name)){
                             result = await db.updateOne(Post, {_id:idNum}, {$pull:{downvotes:name}});
                         }
@@ -161,14 +201,16 @@ const postController ={
                             result = await db.updateOne(Post,{_id:idNum}, {$pull:{upvotes:name}});
                         }
                    }
-                }else if(button_id[1]=="comments"){
+                }
+            }else if(button_id[1]=="comment"){
                     original_tally = await db.findOne(Comment,{_id:idNum});
+                    if(original_tally){
                     if(tally.upvotes >0){
                         if(!original_tally.upvotes.includes(name)){
                             result = await db.updateOne(Comment,{_id:idNum}, {$push:{upvotes: name}});
                         }
                     }
-                   if(tally.downvotes > 0){
+                   if(tally.downvotes.length > 0){
                         if(!original_tally.downvotes.includes(name)){
                             result = await db.updateOne(Comment, {_id:idNum}, {$push:{downvotes: name}});
                         }
@@ -183,16 +225,19 @@ const postController ={
                             result = await db.updateOne(Comment,{_id:idNum}, {$pull:{upvotes:name}});
                         }
                    }
+                }
+                
                 }else{
 
                     original_tally = await db.findOne(Reply, {_id: idNum});
+                    if(original_tally){
                     if(tally.upvotes >0){
                         if(!original_tally.upvotes.includes(name)){
                             result = await db.updateOne(Reply,{_id:idNum}, {$push:{upvotes: name}});
                         }
                     }
                    if(tally.downvotes > 0){
-                        if(!original_tally.downvotes.includes(name)){
+                        if(original_tally && !original_tally.downvotes.includes(name)){
                             result = await db.updateOne(Reply, {_id:idNum}, {$push:{downvotes: name}});
                         }
                    }
@@ -205,7 +250,7 @@ const postController ={
                         if(original_tally.upvotes.includes(name)){
                             result = await db.updateOne(Reply,{_id:idNum}, {$pull:{upvotes:name}});
                         }
-                   }
+                   }}
                 }
 
                 var up, down = null;
@@ -221,6 +266,7 @@ const postController ={
             res.send({flag:false});
             }
         },
+        
 
         postDeletePost: async function(req, res){
             var id  =  req.body.id;
@@ -232,7 +278,7 @@ const postController ={
             if(req.session.flag){
                 if(post!= null)
                 result = await db.updateOne(User, {userName:name}, {$pull:{posts:id}});
-                if(post!=null){
+                if(result!=null){
                     if(post.comments != null && post.comments.length>0){
                         for(const x of post.comments){
                             comment = await db.findOne(Comment, {_id:x});

@@ -1,17 +1,18 @@
 <div class="indiv_comment_container" id="{{_id}}">
+    
                                 <div class="posts_header">
                                     <div class="profile_picture_bubble Sophia"></div>
                                     <span class="user_name">{{author}}</span>
-                                    {{#if flag}}
+                             
                                     {{#if user}}
-                                     <div class= "manipulate_dropdown"/> <img class="image_option" src = "images/options.svg">
+                                     <div class= "manipulate_dropdown"> <img class="image_option" src = "images/options.svg">
                                         <div class="manipulate_dropdown_content">
                                             <a class="edit_content" id = "edit_post_{{_id}}"  href="edit_post?content={{content}}&type=comment&id={{_id}}">edit</a>
                                             <div class="delete_comment delete_button" id = "delete_comment_{{_id}}">delete</div>
                                         </div>
                                     </div>
                                     {{/if}}
-                                    {{/if}}
+                            
                                 </div>
 
                                 <p>{{content}}</p>

@@ -217,6 +217,7 @@ form a input[type=text]{
     display:flex;
     align-items: center;
     position:relative;
+    width:90%;
 }
 .user_name{
     color:#797878;
@@ -282,6 +283,9 @@ form a input[type=text]{
     margin:10px;
     padding:15px;
     width:90%;
+}
+.reply_container{
+    
 }
 .create_comment{
     width:90%;
@@ -558,7 +562,7 @@ a >.informative_text:hover{
 
 .manipulate_dropdown {
     position: absolute;
-    right:0px;
+    right:5px;
     display: inline-block;
     height:16px;
   }

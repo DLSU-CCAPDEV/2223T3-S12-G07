@@ -26,6 +26,8 @@ app.get('/profile_page', profileController.getProfile);
 app.get('/create_post', postController.getCreatePost);
 app.post('/create_post', postController.postCreatePost);
 app.post('/postComment', postController.postAddComment);
+app.get('/getReply', postController.getAddReply);
+app.get('/getComment', postController.getAddComment);
 app.post('/postReply', postController.postAddReply);
 app.get('/logout', controller.getLogout);
 

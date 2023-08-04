@@ -7,25 +7,23 @@
                     <span class="user_name">
                         @{{username}}
                     </span>
-                    {{#if flag}}
                     {{#if user}}
-                    <div class= "manipulate_dropdown"/> <img class="image_option" src = "images/options.svg">
+                    <div class= "manipulate_dropdown"> <img class="image_option" src = "images/options.svg">
                         <div class="manipulate_dropdown_content">
                             <a class="edit_content" id = "edit_post_{{_id}}"  href="edit_post?content={{content}}&type=post&post=true&id={{_id}}&title={{title}}">edit</a>
                             <a class="delete_post delete_button" id = "delete_post_{{_id}}">delete</a>
                         </div>
                     </div>
                     {{/if}}
-                    {{/if}}
-        </div>
-            <a class="post_link" href="post?postid={{_id}}"></a>
-        <h3>
-            {{title}}
-        </h3>
-        <p>
-            {{content}}
-        </p>
-                </a>
+            </div>
+            <a class="post_link" href="post?postid={{_id}}">
+            <h3>
+                {{title}}
+            </h3>
+            <p>
+                {{content}}
+            </p>
+                    </a>
         <div class="posts_footer">
             <!-- this buttons leading to login.html is temporary-->
             <a class="comment_button">

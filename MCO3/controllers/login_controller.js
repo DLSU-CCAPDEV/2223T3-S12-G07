@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 const loginController ={
     getLogin: function(req, res){
         if(req.session.flag){
-            res.redirect('/profile_page?userName='+req.session.userName);
+            res.redirect('/profile_page?userName='+req.session.user.userName);
         }else
             res.render('login');
     },

@@ -28,7 +28,7 @@ const homeController ={
                                     if(reply != null){
                                         if(req.session.flag){
                                             reply.flag=true;
-                                            if(req.session.user.userName == post.username)
+                                            if(req.session.user.userName == reply.author)
                                                 reply.user = true;
                                         }
                                         replies.push(reply);
@@ -38,7 +38,7 @@ const homeController ={
                             }
                             if(req.session.flag){
                                 comment.flag=true;
-                                if(req.session.user.userName == post.username)
+                                if(req.session.user.userName == comment.author)
                                     comment.user = true;
                             }
                             comments.push(comment);
@@ -50,7 +50,7 @@ const homeController ={
                 }
                 if(req.session.flag){
                     post.flag=true;
-                    if(req.session.user.userName == post.username)
+                    if(req.session.user.userName == post.userName)
                         post.user = true;
                 }
                 tempPost.push(post);
@@ -68,6 +68,8 @@ const homeController ={
             }
             details.posts = tempPost;
             details.data = data;
+        
+                details.active_user = req.session.user;
         }else{
             details.flag=false;
             details.posts = posts;
