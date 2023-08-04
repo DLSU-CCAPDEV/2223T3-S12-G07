@@ -55,7 +55,6 @@ const homeController ={
                 tempPost.push(post);
             }
         }
-        console.log("tempost =  " + tempPost);
         if(req.session.flag){
             
             details.flag = true;
