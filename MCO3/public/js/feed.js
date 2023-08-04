@@ -3,7 +3,6 @@ $(document).ready(function(){
 
     var $upButtons = document.getElementsByClassName('upvote_button');
     var $downButtons = document.getElementsByClassName('downvote_button');
-    console.log($upButtons);
     
     //check upvoted comments
    for (let i = 0; i <$upButtons.length; i++){
@@ -16,7 +15,6 @@ $(document).ready(function(){
 // helpers
 
 function attachEventListeners(){
-    console.log("attaching event listeners");
 
     $('a.reply_button').click( function(){render_replies($(this).parent().parent())});
     $('.create_reply_button').click(function(){create_reply($(this))});
@@ -63,11 +61,10 @@ function delete_post($button){
 
 function getVoteData($button){
     var id =$button.attr('id');
-        console.log("upvote or downvote id  = " + id);
         if(id != null){
         $.get('/checkVote',{id:id}, function(req, res){
             if(res!=null){
-                console.log("req = " + req.upvote);
+
                 if(req.upvote==true){
                     render_upvote($button);
                 }else if(req.downvote==true){
@@ -78,9 +75,7 @@ function getVoteData($button){
     }
 }
 function click_upvote($button){
-    console.log("upvote button clicked after ");
     var details = render_upvote($button);
-    console.log("details = " + details);
     $.post('/voteContent', details,function(req){
         if(req.flag){
             if(req.upvotes != null && req.upvotes > 0){
@@ -94,8 +89,6 @@ function click_upvote($button){
 
 }
 function click_downvote(button){
-    console.log("downvote button clicked");
-    console.log(button.attr('id'));
     var details = render_downvote(button);
     $.post('/voteContent', details,function(req){
         if(req.flag){
@@ -109,14 +102,11 @@ function click_downvote(button){
     })
 }
 function create_comment(button){
-    console.log("this is comment function claled")
     var comment_section = button.parent().parent().parent().parent();
         var post = comment_section.parent();
         var post_id = post.attr('id');
-        console.log("comment"+post_id);
         var date = new Date();
         var content = button.siblings("textarea").val();
-        console.log("content = " + content);
         details ={
             content: content,
             post: post_id,
@@ -124,12 +114,10 @@ function create_comment(button){
         }
         $.post('/postComment',details, function(data){           
             if(data!=null){
-                console.log(data);
-                $.get('/getComment', {id: data._id}, function(object){
+                    $.get('/getComment', {id: data._id}, function(object){
                     var $feed = comment_section.find('.comment_feed')
                     $feed.append(object);
                     var $comment = $feed.find(`#${data._id}`);
-                    console.log("data id "+ data._id);
                     var $reply = $comment.find('.create_reply_button');
                     $reply.on("click", function(){create_reply($reply)});
                     var $toggle_reply = $comment.find('a.reply_button');
@@ -157,18 +145,15 @@ function create_reply(button){
             comment: comment_id,
             date: date,
         }
-        console.log("reply details: " + details);
 
         $.post('/postReply',details, function(data){
             if(data!=null){
                 $.get('/getReply', {id:data._id}, function(object){
                     var $feed = reply_section.find('.reply_feed');
                     $feed.append(object);
-                    console.log("reply data id "+ data._id);
                     var $reply = $feed.find(`#${data._id}`);
                    
                     var $upvote = $reply.find('.upvote_button');
-                    console.log("replix" + $reply);
                     $upvote.on("click",function(){click_upvote($upvote)});
                     var $downvote = $reply.find('.downvote_button');
                     $downvote.on("click",function(){click_downvote($downvote)});
@@ -182,7 +167,6 @@ function create_reply(button){
 }
 function render_comments(post){
     var comment = post.children('.comment_section');
-    console.log(comment);
     if(comment.css('display') =="flex"){
         comment.css('display',"none");
     }else{
@@ -193,11 +177,9 @@ function render_comments(post){
 }
 function render_replies(post){
     var comment = post.children('.reply_section');
-    console.log(comment.css('display'));
     if(comment.css('display')=="flex"){
         comment.css('display', "none");
     }else{
-        console.log("here");
         comment.css('display',"flex");
         comment.css('flex-direction', "column");
         comment.css('alignItems' , "flex-end");
@@ -232,7 +214,6 @@ function render_downvote($button){
 }
 
 function render_upvote($button){
-    console.log("button_id = "+ $button.attr('id'));
     var $upvote = $button.children('.upvote_icon');
     var $text = $button.children('.actions');
     var votes={downvotes: 0, upvotes: 0, button_id: `${$button.attr('id')}`};
