@@ -25,12 +25,8 @@ function attachEventListeners(){
         
    //  /*   redirectProfile($(this))*/  }); 
 }
-/*
-function redirectProfile(button){
-    //profile picture id should have username
-    window.location.href = '/profile_page?userName='+$(button).attr('id');
-}
-*/
+
+
 function refresh(){
     var $upButtons = document.getElementsByClassName('upvote_button');
     var $downButtons = document.getElementsByClassName('downvote_button');
@@ -55,6 +51,7 @@ function repaint(){
             }
     }
     });
+
     refresh();
     
  }

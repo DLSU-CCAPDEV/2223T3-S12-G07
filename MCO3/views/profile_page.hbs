@@ -21,7 +21,7 @@
                         </div>
                         <div class="profile_details">
                             <div class="profile_picture">
-                                <img class="profile_pic_img" id ="{{uniqueId userName}}"{{/with}}>
+                                <a href="/profile_page?userName={{userName}}"><img class="profile_pic_img" id ="{{uniqueId userName}}"{{/with}}></a>
                             </div>
                             {{#with data}}
                             <div class="name">{{firstName}} {{lastName}}</div>
