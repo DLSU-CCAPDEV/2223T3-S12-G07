@@ -12,7 +12,7 @@ const gfs = require('./models/gfs.js');
 dotenv.config();
 const app = express();
 port = process.env.PORT;
-hostname = process.env.HOSTNAME;
+//hostname = process.env.HOSTNAME;
 
 
 app.set('view engine', 'hbs');
@@ -65,6 +65,6 @@ app.use(function (req, res) {
         res.render('error', details);
     }
 });
-app.listen(port, hostname, function(){
-    console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(port, function(){
+    console.log(`Server running at http://animo_hube:${port}/`);
 });
