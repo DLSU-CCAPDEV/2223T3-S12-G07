@@ -11,12 +11,10 @@ Lance Labarrete
 
 Animo Hub is an online social media app/website made by Lasallians for Lasallians. This is a web forum for all things DLSU-related. The website can be visited either as a visitor or a registered user. Visitors can only view the posts, comments, and replies that registered users made in Animo Hub. To log in, users need to have an Animo Hub account. If they don't have an account yet, users can sign up to create their account and enjoy the full services this website can offer to Lasallians.
 
-### Setting up the app: Guide ###
-Note: include dotenv and the variable names and dependencies used
-1. Upon 
-2. asdf
-3. asdf
-4. asdf
+### Setting up the app: ###
+1. Upon pulling the source code, run the command 'npm install' on the projects' root directory to install all of the dependencies specified in the package.json file.
+2. Create a new .env file in the root directory of the project.
+3. Use the variables PORT, HOSTNAME, and DATABASE_URL to store environmental variables for your application.
 
 ### Features: ###
 
