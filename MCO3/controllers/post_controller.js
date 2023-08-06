@@ -525,6 +525,11 @@ const postController ={
         },
         getRenderPost : async function(req, res){
             const post = req.query.post;
+            if(req.session.flag){
+                post.flag=true;
+                if(req.session.user.userName == post.username)
+                    post.user = true;
+            }
             res.render('partials/posts_card', post);
         },
     

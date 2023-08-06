@@ -272,3 +272,7 @@ a.announcement:hover{
 #cov_pic_br{
     display:none;
 }
+
+#trending:visited{
+    color:#11ADC9;
+}
