@@ -28,13 +28,9 @@ const Img = {
   getByName: async function (req, res) {
     try {
         const filename = req.query.name;
-        console.log(gfs.grid);
         // Find the file by filename
-        console.log("filename"+req.session.user.prof_pic);
-        console.log("asdf"+ filename);
 
-        const file = await gfs.findOne({ filename:req.session.user.prof_pic });
-        console.log("file" + file);
+        const file = await gfs.findOne({ filename:filename });
         if (!file) {
           return res.status(404).send('File not found');
         }
@@ -53,15 +49,25 @@ const Img = {
   },
     getImage: async function(req,res){
       const name = req.query.name;
+      const type = req.query.type;
       const user = await db.findOne(User,{userName: name});
+      var file = "";
       if(user!=null){
-        if(user.profilePhoto !=null){
-          console.log(user.profilePhoto);
-          res.set('Content-Type', 'application/json');
-          res.send({filename:user.profilePhoto});
+        if(type =="cover"){
+          if(user.coverPhoto !=null){
+            file = user.coverPhoto;
+          }
+        }else if(type == "profile"){
+          if(user.profilePhoto !=null){
+            file = user.profilePhoto;
+            
+          }
         }else
-          res.send(null);
-      }
+        res.set('Content-Type', 'application/json');
+        res.send({filename:file});
+        
+      }else
+      res.send(null);
     },
 
 

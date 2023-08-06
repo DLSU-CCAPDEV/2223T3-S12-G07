@@ -114,26 +114,24 @@ const profileController ={
             var prof_pic = null;
             var cov_pic = null;
 
-            if(req.files['profile_picture'][0]){
+            if(req.files['profile_picture']){
                 console.log('profile picture uploade '+ req.files['profile_picture'][0].filename);
                 prof_pic = req.files['profile_picture'][0].filename;
             }
-            if(req.files['cover_photo'][0]){
+            if(req.files['cover_photo']){
                 cov_pic = req.files['cover_photo'][0].filename;
             }
             //
-            query = {
-                firstName: firstName,
-                lastName: lastName,
-                contact_number: contactNumber,
-                aboutMe: aboutMe,
-            };
+            user.firstName = firstName;
+            user.lastName = lastName;
+            user.contact_number = contactNumber;
+            user.aboutMe = aboutMe;
             if(prof_pic != null)
-                query.profilePhoto = prof_pic;
+                user.profilePhoto = prof_pic;
             if(cov_pic != null)
-                query.coverPhoto = cov_pic;
-            console.log(query);
-            await db.updateOne(User, {userName: username}, {$set:query});
+                user.coverPhoto = cov_pic;
+            console.log(user);
+            await db.updateOne(User, {userName: username}, {$set:user});
             res.redirect('/profile_page?userName='+username);
         }else{
             //error

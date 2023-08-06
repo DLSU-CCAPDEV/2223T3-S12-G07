@@ -27,7 +27,7 @@ function attachEventListeners(){
     $('.delete_reply').click(function(){delete_reply($(this))});
     $('.delete_post').click(function(){delete_post($(this))});
 
-    $('img').each( function(){render_image($(this))});
+    $('.profile_picture_bubble, .profile_pic_img, .profile_picture, .cover_photo, .cover_photo_img').each( function(){render_image($(this))});
         
    //  /*   redirectProfile($(this))*/  }); 
 }
@@ -39,20 +39,25 @@ function redirectProfile(button){
 */
 
  function  render_image($img){
-    const name = $img.prop('src');
-    if(name =="" || name == ""){
        // change id into : author_cover_post_date
-       const file = $img.attr('id').split('_')[0];
-       console.log('file' +file);
-       $.get('/fileNameByAuthor', {name: file},function(data){
-            if(data!=null&&data!=""){
-                const url = '/imageByName?name='+data.filename;
-                console.log("urlo = "+ url);
-                $img.prop('src', url);
-            }
-       });
-    }
-
+       console.log('$img');
+       if($img.attr('id') != null){
+            const file = $img.attr('id').split('_');
+            let pic="";
+            console.log('file ' +file);
+            if(file.length>2)
+                    pic="cover"
+                else
+                    pic="profile"
+            console.log('type ' +pic);
+            $.get('/fileNameByAuthor', {name: file[0], type:pic},function(data){
+                    if(data!=null&&data.filename!=""){
+                        const url = '/imageByName?name='+data.filename;
+                        console.log("urlo = "+ url);
+                        $img.prop('src', url);
+                    }
+            });
+     }
 }
 
 function delete_comment($button){

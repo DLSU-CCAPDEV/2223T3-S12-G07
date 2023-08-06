@@ -17,11 +17,11 @@
                     <!--profile_header consists of two rows-->
                     <div class="profile_header">
                         <div class="cover_photo">
-                            <img class="cover_photo_img" {{#if cover_photo}}src="{{cover_photo}}"{{/if}}>
+                            <img{{#with data}} id="{{uniqueId userName}}_cover_Photo" class="cover_photo_img">
                         </div>
                         <div class="profile_details">
                             <div class="profile_picture">
-                                <img class="profile_pic_img" id ="{{uniqueId "{{userName}}_profPic"}}">
+                                <img class="profile_pic_img" id ="{{uniqueId userName}}"{{/with}}>
                             </div>
                             {{#with data}}
                             <div class="name">{{firstName}} {{lastName}}</div>
@@ -41,7 +41,7 @@
                             <div class="create_posts">
                                 <form>
                                     {{#with data}}
-                                    <div class="profile_picture_bubble"><img class="profile_pic_img" id ="{{uniqueId "{{userName}}_profPic"}}"> </div>
+                                    <div class="profile_picture_bubble"><img class="profile_pic_img" id ="{{uniqueId userName}}"> </div>
                                     <a href="create_post?userName={{userName}}&lastName={{lastName}}&firstName={{firstName}}">
                                     <input type="text" placeholder="What's on your mind?"><br>
                                     <input type="submit" value="POST">
