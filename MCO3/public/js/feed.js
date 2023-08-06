@@ -1,7 +1,7 @@
 
 $(document).ready(function(){
 
-    refresh();
+    attachEventListeners();
     $('#trending').click(function(){sort_trending()});
 });
 
@@ -9,6 +9,12 @@ $(document).ready(function(){
 
 function attachEventListeners(){
    // $('.profile_picture_bubble').click(function(){});
+   var $upButtons = document.getElementsByClassName('upvote_button');
+   var $downButtons = document.getElementsByClassName('downvote_button');
+   for (let i = 0; i <$upButtons.length; i++){
+       getVoteData($($upButtons[i]));
+       getVoteData($($downButtons[i]));
+ }
     $('a.reply_button').click( function(){render_replies($(this).parent().parent())});
     $('.create_reply_button').click(function(){create_reply($(this))});
     $('.create_comment_button').click(function(){create_comment($(this))});
@@ -27,14 +33,57 @@ function attachEventListeners(){
 }
 
 
-function refresh(){
-    var $upButtons = document.getElementsByClassName('upvote_button');
-    var $downButtons = document.getElementsByClassName('downvote_button');
+function refresh(parent){
+    var $upButtons = parent.find('upvote_button');
+    var $downButtons = parent.find('downvote_button');
     for (let i = 0; i <$upButtons.length; i++){
         getVoteData($($upButtons[i]));
         getVoteData($($downButtons[i]));
   }
-    attachEventListeners();
+    $replies = parent.find($('a.reply_button'))
+    $addreplies = parent.find($('.create_reply_button'));
+    $addcomments = parent.find($('.create_comment_button'));
+   $comment =parent.find($('a.comment_button'));
+    $upvote = parent.find($('.upvote_button')); 
+   $downvote = parent.find($('.downvote_button'));
+
+   $delete_comment =parent.find($('.delete_comment'));
+   $delete_reply =  parent.find($('.delete_reply'));
+   $delete_post = parent.find($('.delete_post'));
+    $images = parent.find($('.profile_picture_bubble, .profile_pic_img, .profile_picture, .cover_photo, .cover_photo_img'));
+    console.log("images  " + $images.length);
+    for (var i =0; i<$replies.length;i++){
+        $replies[0].on("click",function(){render_replies($(this).parent().parent())});
+    }
+    for(var i = 0; i<$addreplies.length; i++){
+        $addreplies[i].on("click",function(){create_reply($(this))});
+    }
+    for(var i = 0; i<$addcomments.length; i++){
+        $addcomments[i].on("click",function(){create_comment($(this))});
+    }
+    for(var i = 0; i<$comment.length; i++){
+        $comment[i].on("click",function(){console.log("clicked this");render_comments($(this).parent().parent())});
+    }
+    for(var i = 0; i<$upvote.length; i++){
+        $upvote[i].on("click",function(){click_upvote($(this))});
+    }
+    for(var i = 0; i<$downvote.length; i++){
+        $downvote[i].on("click",function(){click_downvote($(this))});
+    }
+    for(var i = 0; i<$delete_comment.length; i++){
+        $delete_comment[i].on("click",function(){delete_comment($(this))});
+    }
+    for(var i = 0; i<$delete_reply.length; i++){
+        $delete_reply[i].on("click",function(){delete_reply($(this))});
+    }
+    for(var i = 0; i<$delete_post.length; i++){
+        $delete_post[i].on("click",function(){delete_post($(this))});
+    }
+    for(var i = 0; i<$images.length; i++){
+        $images[i].on("load",function(){render_image($(this))});
+    }
+
+  
 }
 function repaint(){
     $('#new_posts').empty();
@@ -49,11 +98,10 @@ function repaint(){
                     $('#new_posts').append(data);
                 });
             }
+           
     }
     });
-
-    refresh();
-    
+  //  refresh($('#new_posts'));
  }
  function  render_image($img){
        // change id into : author_cover_post_date

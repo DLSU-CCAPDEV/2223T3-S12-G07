@@ -21,11 +21,13 @@
                       <div class="create_posts">
                             
                         <form>
-                            <a href = "/profile_page?userName={{userName}}"><img class="profile_picture_bubble" id ="{{uniqueId userName}}" ></a>
+                            {{#with active_user}}
+                            <div class="profile_picture_bubble"> <img class="profile_pic_img" id ="{{uniqueId userName}}" ></div>
                             <a href="create_post">
                             <input type="text" placeholder="What's on your mind?"><br>
                             <input type="submit" value="POST">
                             </a>
+                            {{/with}}
                         </form>
                     </div>
                     {{/if}}
