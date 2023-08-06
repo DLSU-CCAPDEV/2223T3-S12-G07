@@ -13,6 +13,11 @@ const postController ={
         userName = req.session.user.userName;
         firstName = req.session.user.firstName;
         lastName = req.session.user.lastName;
+        active_user = {
+            userName: userName,
+            firstName: firstName,
+            lastName: lastName,
+        }
         res.render('create_post',{userName:userName,firstName:firstName,lastName:lastName});
         }else{
             res.redirect('/login');

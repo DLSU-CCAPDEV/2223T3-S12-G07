@@ -160,6 +160,7 @@ function create_comment(button){
                     var $delete_comment = $comment.find('.delete_comment');
                     $delete_comment.on("click", function(){delete_comment($delete_comment)});
                     button.siblings("textarea").val("");
+                    $comment.find('.profile_picture_bubble').each( function(){render_image($(this))});
                 });
             }
         });
@@ -191,6 +192,7 @@ function create_reply(button){
                     var $delete_reply = $reply.find('.delete_reply');
                     $delete_reply.on("click", function(){delete_reply($delete_reply)});
                     button.siblings("textarea").val("");
+                    $reply.find('.profile_picture_bubble').each( function(){render_image($(this))});
                 });
             }
         });
