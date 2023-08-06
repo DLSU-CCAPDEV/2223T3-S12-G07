@@ -10,14 +10,14 @@
             <div class="lower_body">
                 <div class="nav_bar">
                     <a href="home">Home</a><br>
-                    <a href="home">Trending</a>
+                    <a id="trending">Trending</a>
                 </div>
                 <div class="main_body post_creation">
                     <div class="feed create_post_feed">
                         <div class="white_box create_post_whitebox">
                             <form id="create_post" method="post" class="flex_col">
                                 <div class="flex_row center_align">
-                                    <div class="profile_picture_bubble" id ="{{uniqueId userName}}" ></div>
+                                    <img class="profile_picture_bubble" id ="{{uniqueId userName}}" >
                                     <div class="user_identity">
                                         {{firstName}} {{lastName}}
                                         <p class="user_name">@{{userName}}</p>

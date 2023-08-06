@@ -47,4 +47,7 @@ app.post('/editprofile', fileMiddleWare.fields([{name: 'profile_picture', maxCou
 app.get('/imageByName', imageController.getByName);
 app.get('/fileNameByAuthor', imageController.getImage);
 
+app.get('/trending', postController.getTrending);
+app.get('/render_post', postController.getRenderPost);
+
 module.exports = app;

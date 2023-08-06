@@ -11,6 +11,8 @@ const profileController ={
         var query = {userName: user};
         var details = {};
         req.session.prev_page = 'profile_page';
+        req.session.prev_page_user = user;
+        console.log(req.session.prev_page_user);
         var posts = [];
         var comments = [];
         var replies = [];
@@ -138,6 +140,7 @@ const profileController ={
             res.redirect(`/${req.session.prev_page}?userName=${userName}`);
         }
     },
+
 
 }
 

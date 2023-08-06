@@ -13,12 +13,9 @@ const postController ={
         userName = req.session.user.userName;
         firstName = req.session.user.firstName;
         lastName = req.session.user.lastName;
-        active_user = {
-            userName: userName,
-            firstName: firstName,
-            lastName: lastName,
-        }
-        res.render('create_post',{userName:userName,firstName:firstName,lastName:lastName});
+        active_user = req.session.user;
+        
+        res.render('create_post',{userName:userName,firstName:firstName,lastName:lastName, active_user:active_user, flag:true});
         }else{
             res.redirect('/login');
         }
@@ -384,7 +381,9 @@ const postController ={
                         title: title,
                         content: content,
                         id: id,
-                        post: post
+                        post: post,
+                        active_user: req.session.user,
+                        flag: true,
                     }
                 else
                     query = {
@@ -394,6 +393,8 @@ const postController ={
                         type: type,
                         content: content,
                         id: id,
+                        active_user: req.session.user,
+                        flag:true,
                     }
                 res.render('edit_post', query);
                 
@@ -439,7 +440,7 @@ const postController ={
                 post.comments = comments;
                 if(req.session.flag){
                     post.flag= true;
-                    if(req.session.user.userName == post.author){
+                    if(req.session.user.userName == post.username){
                         post.user = true
                     }
                 }
@@ -456,6 +457,76 @@ const postController ={
             }else{
                 res.redirect('/home');
             }
+        },
+
+        getTrending: async function(req, res){
+            const sort = req.query.sort;
+            const model = req.query.model;
+            const page = req.session.prev_page;
+            var data_posts = [];
+            var  posts =[];
+            var comments = [];
+            var  replies =[];
+            var post, comment, reply = "";
+            var user = "";
+            if(req.session.prev_page == "profile_page"){
+                data_posts = await db.sort(Post,{username:req.session.prev_page_user},{},sort);
+                user= req.session.prev_page_user;
+            }else if(req.session.prev_page=="home"){
+                data_posts = await db.sort(Post,{},{},sort);
+                user= req.session.user.userName ;
+            }
+            console.log(data_posts)
+            if(data_posts != null && data_posts.length > 0)
+            {
+                for (var i = 0; i<data_posts.length; i++) {
+                    comments = [];
+                    post=data_posts[i];
+                    console.log("post = " + post);
+                    if(post!= null){
+                        if(post.comments != null && post.comments.length > 0){
+                            for(const j of post.comments){
+                                replies = [];
+                                comment = await db.findOne(Comment, {_id: j});
+                                if(comment != null){
+                                    if(comment.replies != null && comment.replies.length>0){
+                                        for(const h of comment.replies){
+                                            reply = await db.findOne(Reply, {_id: h});
+                                            if(reply != null){
+                                                if(req.session.flag){
+                                                    reply.flag=true;
+                                                    if(req.session.user.userName == user)
+                                                        reply.user = true;
+                                                }
+                                                replies.push(reply);
+                                            }
+                                        }
+                                        comment.replies = replies;
+                                    }
+                                    if(req.session.flag){
+                                        comment.flag=true;
+                                        if(req.session.user.userName == user)
+                                            comment.user = true;
+                                    }
+                                    comments.push(comment);
+                                }
+                            }
+                            post.comments = comments;
+                        }
+                        if(req.session.flag){
+                            post.flag=true;
+                            if(req.session.user.userName == user)
+                                post.user = true;
+                        }
+                        posts.push(post);
+                    }
+                }
+            }
+            res.send(posts);
+        },
+        getRenderPost : async function(req, res){
+            const post = req.query.post;
+            res.render('partials/posts_card', post);
         },
     
 };

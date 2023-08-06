@@ -65,6 +65,7 @@ const homeController ={
             }
             details.active_user = req.session.user;
             req.session.prev_page = 'home';
+            details.userName = req.session.user.userName;
             res.render('home',details);
         }else{
             details.flag=false;

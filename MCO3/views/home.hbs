@@ -13,7 +13,7 @@
                 <!--the nav_bar contains the links to home and trending-->
                 <div class="nav_bar">
                     <a href="home">Home</a><br>
-                    <a href="error">Trending</a>
+                    <a id="trending">Trending</a>
                 </div>
                 <div class="main_body">
                       <!--this is where the POSTS start-->
@@ -30,7 +30,7 @@
                     </div>
                     {{/if}}
 
-                    <div id="new_post" {{#if posts}} style="display:block;"{{/if}}>
+                    <div id="new_posts" {{#if posts}} style="display:block;"{{/if}}>
                         {{#each posts}}
                             {{>posts_card this}}
                         {{/each}}

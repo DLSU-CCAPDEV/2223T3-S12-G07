@@ -1,15 +1,8 @@
 
 $(document).ready(function(){
 
-    var $upButtons = document.getElementsByClassName('upvote_button');
-    var $downButtons = document.getElementsByClassName('downvote_button');
-    
-    //check upvoted comments
-   for (let i = 0; i <$upButtons.length; i++){
-         getVoteData($($upButtons[i]));
-         getVoteData($($downButtons[i]));
-   }
-    attachEventListeners();
+    refresh();
+    $('#trending').click(function(){sort_trending()});
 });
 
 // helpers
@@ -28,6 +21,7 @@ function attachEventListeners(){
     $('.delete_post').click(function(){delete_post($(this))});
 
     $('.profile_picture_bubble, .profile_pic_img, .profile_picture, .cover_photo, .cover_photo_img').each( function(){render_image($(this))});
+    
         
    //  /*   redirectProfile($(this))*/  }); 
 }
@@ -37,7 +31,33 @@ function redirectProfile(button){
     window.location.href = '/profile_page?userName='+$(button).attr('id');
 }
 */
-
+function refresh(){
+    var $upButtons = document.getElementsByClassName('upvote_button');
+    var $downButtons = document.getElementsByClassName('downvote_button');
+    for (let i = 0; i <$upButtons.length; i++){
+        getVoteData($($upButtons[i]));
+        getVoteData($($downButtons[i]));
+  }
+    attachEventListeners();
+}
+function repaint(){
+    $('#new_posts').empty();
+}
+ function sort_trending(){
+    
+    $.get('/trending',{model:"posts", sort:{upvotes:-1}} , function(data){
+        if(data!=null){
+            repaint();
+            for(var i = 0; i<data.length; i++){
+                $.get('render_post', {post: data[i]}, function(data){
+                    $('#new_posts').append(data);
+                });
+            }
+    }
+    });
+    refresh();
+    
+ }
  function  render_image($img){
        // change id into : author_cover_post_date
        console.log('$img');

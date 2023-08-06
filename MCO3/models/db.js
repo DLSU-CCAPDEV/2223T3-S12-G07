@@ -97,6 +97,10 @@ const database = {
     */
     deleteMany: async function(model, conditions) {
         return await model.deleteMany(conditions);
+    },
+
+    sort: async function(model, query, projection, sort){
+        return await model.find(query,projection).sort(sort);
     }
 
 }
