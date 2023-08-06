@@ -175,7 +175,7 @@ a{
     margin:10px;
     padding:10px;
 }
-.create_posts input[type='submit']{
+.create_posts input[type='button']{
     border-radius:100px;
 }
 form{

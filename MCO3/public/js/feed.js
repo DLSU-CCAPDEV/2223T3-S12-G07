@@ -198,7 +198,7 @@ function click_upvote($button){
         if(req.flag){
             if(req.upvotes != null && req.upvotes > 0){
                 var text = $button.children('.actions');
-                text.html(req.upvotes + 'upvotes');
+                text.html(req.upvotes + ' upvotes');
             }
            
         }
@@ -212,7 +212,7 @@ function click_downvote(button){
         if(req.flag){
             if(req.downvotes != null && req.downvotes > 0){
                 var text = button.children('.actions');
-                text.html(req.downvotes + 'downvotes');
+                text.html(req.downvotes + ' downvotes');
             }
             
         }
