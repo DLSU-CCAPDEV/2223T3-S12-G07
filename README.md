@@ -2,57 +2,48 @@
 ## Forum Web application ##
 
 Members:
-Rovic Balanon
+Rovic E. Balanon
 David Grasparil
 Ralph Dawson G. Pineda
+Lance Labarrete
 
 ### Introduction ### 
 
-Animo Hub is a social media app...
+Animo Hub is a social media app/website that is made by Lasallians for Lasallians. You can visit the website by signing in 
 
 ### Setting up the app: Guide ###
 Note: include dotenv and the variable names and dependencies used
-1. asdf
+1. Set up dotevn
 2. asdf
 3. asdf
 4. asdf
 
 ### Features: ###
-Note: pick applicable phase 1 features as well
-* CRUD operations
-* Upvotes and downvotes
-* Edit profile
-* Upload profile picture and cover photo
-* encrypt password, session, form validation
-
-
-### Phase 1 features: ###
 
 * email validation:xx@xx.com
 * password validation : password must be atleast 8 characters long and have atleast 1 capitalized, 1 lowercase, and 1 digit with no special characters
 * contact number validation: accepts different formats (+639xxxxxxxxxx   09xxxxxxxxx) source for the regex is provided below
 * post content: contents in this forum are text-only and must contain a title
+* edit post: contents in this forum are text-only and must contain a title
+* delete post: remove post from your profile and in the database 
 * comment : you can comment on posts, you can hide/unhide the comment section of each post
-* reply : you can reply on comments, oyu can hide/unhide the reply section of each comment
+* edit comment: you can comment on posts, you can hide/unhide the comment section of each post
+* delete comment: remove comment from the post, your profile, and in the database
+* reply : you can reply on comments, you can hide/unhide the reply section of each comment
+* edit reply: you can reply on comments, you can hide/unhide the reply section of each comment
+* delete reply: remove reply from the comment, the post, your profile, and in the database
 * upvotes/downvotes : you can upvote/downvote every post, comment, and reply on the forum
-* profile page redirection: you can visit the profile page of users by clicking on their profile picture (works for newly created posts but not for newly made comments/ replies)
-* home(visitor) : this forum is public and you can view the posts shared here without having an account but you cannot post content as a visitor
+* profile page redirection: you can visit the profile page of users by clicking on their profile picture
 * signout : you can sign out after log-in
 * view post : a post has a separate page on its own, different expercience for visitors and registered users
-* image preview : can view what your profile picture or cover photo will look like whhile in edditing the profile. 
-* can apply the  updated name/ about me / profile picture / cover photo of the user (john dee is the default)
-
-
-### Limitations: ###
-Note: test first to see which are applicable
-* view who upvoted/downvoted : The number of downvotes/upvotes are not counted and the user who upvoted/downvoted is not stored
-* can't track if user is logged in : this experience is simulated through hard coded webpages for logged in / visitor versions but a loop hole exists for a visitor to accomplish what a logged in user can do. For instance, all our current profile pages are viewed a registered users perspective even when visited by a visitor user
-
-### FLOW of navigation ###
-
-## START ##
-* asdf
-* asdf
+* image preview : can view what your profile picture or cover photo will look like while in edditing the profile.
+* CRUD operations (CREATE, READ, UPDATE, DELETE)
+* create and edit profile
+* Upload profile picture and cover photo
+* encrypt password
+* session
+* form validation
+* hashing
 
 Sources:
 https://stackoverflow.com/questions/31175221/regex-pattern-for-philippine-phone-number
