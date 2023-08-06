@@ -7,6 +7,7 @@ const session = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const methodOverride = require('method-override');
+const idGenerator = require('./controllers/helpers/transducer.js');
 const gfs = require('./models/gfs.js');
 dotenv.config();
 const app = express();
@@ -19,11 +20,7 @@ app.use(methodOverride('_method'));
 app.use(express.urlencoded({extended: true}));
 app.use(express.static('public'));
 hbs.registerPartials(__dirname + '/views/partials');
-hbs.registerHelper('helpflag', function(input) {
-    input.flag = req.session.flag;
-    console.log(input)
-    return input;
-});
+hbs.registerHelper('uniqueId' ,idGenerator.uniqueId);
 
 db.connect();
 gfs.connect(db.conn);
@@ -55,6 +52,7 @@ app.use(function (req, res) {
         details.firstName = req.session.user.firstName;
         details.lastName = req.session.user.lastName;
         details.userName = req.session.user.userName;
+        details.prof_pic = req.session.user.prof_pic
 
         res.render('home', details);
     }

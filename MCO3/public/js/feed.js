@@ -27,7 +27,7 @@ function attachEventListeners(){
     $('.delete_reply').click(function(){delete_reply($(this))});
     $('.delete_post').click(function(){delete_post($(this))});
 
-   // $('.profile_picture_bubble').each( function(){render_image($(this));
+    $('img').each( function(){render_image($(this))});
         
    //  /*   redirectProfile($(this))*/  }); 
 }
@@ -37,27 +37,24 @@ function redirectProfile(button){
     window.location.href = '/profile_page?userName='+$(button).attr('id');
 }
 */
-/*
+
  function  render_image($img){
-    if($img.prop('src')){
-        imgname = $img.prop('src').substring($img.prop('src').lastIndexOf('/') + 1);
-        console.log("img src = "+imgname);
-        $.get('/imageByName', {name: imgname},  function(data){
-            console.log(data._body);
-            const blob = new Blob([data._body]);
-            const mimeType = blob.type;
-            const reader = new FileReader();
-            reader.readAsDataURL(blob);
-            const dataUrl = reader.result;
-         
-            //const blob = new Blob(data);
-            $img.attr('src', dataUrl);
-            console.log(dataUrl);
-    });
-}
+    const name = $img.prop('src');
+    if(name =="" || name == ""){
+       // change id into : author_cover_post_date
+       const file = $img.attr('id').split('_')[0];
+       console.log('file' +file);
+       $.get('/fileNameByAuthor', {name: file},function(data){
+            if(data!=null&&data!=""){
+                const url = '/imageByName?name='+data.filename;
+                console.log("urlo = "+ url);
+                $img.prop('src', url);
+            }
+       });
+    }
 
 }
-*/
+
 function delete_comment($button){
 
     var id = $button.attr('id');

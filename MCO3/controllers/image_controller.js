@@ -1,5 +1,6 @@
-gfs = require('../models/gfs.js');
-db = require('../models/db.js');
+const gfs = require('../models/gfs.js');
+const db = require('../models/db.js');
+const User = require('../models/UserModel.js');
 
 const Img = {
     getByID:  async function (req, res) {
@@ -50,25 +51,20 @@ const Img = {
       }
     
   },
+    getImage: async function(req,res){
+      const name = req.query.name;
+      const user = await db.findOne(User,{userName: name});
+      if(user!=null){
+        if(user.profilePhoto !=null){
+          console.log(user.profilePhoto);
+          res.set('Content-Type', 'application/json');
+          res.send({filename:user.profilePhoto});
+        }else
+          res.send(null);
+      }
+    },
 
-  getImage: async function (req, res) {
-    const filename = req.query.name;
-        console.log(gfs.grid);
-        // Find the file by filename
-        console.log("filename"+req.session.user.prof_pic);
-        console.log("asdf"+ filename);
 
-        const file = await gfs.findOne({ filename:req.session.user.prof_pic });
-        console.log("file" + file);
-        if (!file) {
-          return res.status(404).send('File not found');
-        }
-    
-    var readstream = await gfs.createReadStream(
-        file._id
-    );
-    res.pipe(readstream);
-  },
+};
 
-}
 module.exports=Img;

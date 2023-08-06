@@ -3,8 +3,6 @@ dotenv.config();
 // import module `mongoose`
 const mongoose = require('mongoose');
 
-// import module `User` from `../models/UserModel.js`
-
 // ccapdev-mongoose is the name of the database
 const url = process.env.DATABASE_URL;
 
@@ -16,18 +14,22 @@ const options = {
     useNewUrlParser: true
 };
 
-var conn ="";
 // defines an object which contains necessary database functions
 const database = {
     /*
         connects to database
     */
-   conn: conn,
+    conn: null,
+
     connect:  function () {
      mongoose.connect(url, options);
      conn = mongoose.connection;
     console.log('Connected to: ' + url);
-    db.conn=conn;
+   
+     mongoose.connect(url, options);
+     conn = mongoose.connection;
+    console.log('Connected to: ' + url);
+    this.conn = conn;
 
     },
     /*

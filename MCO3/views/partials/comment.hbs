@@ -1,7 +1,7 @@
 <div class="indiv_comment_container" id="{{_id}}">
     
                                 <div class="posts_header">
-                                    <img class="profile_picture_bubble" {{#if prof_pic}}src="imageByName?name={{prof_pic}}"{{/if}}>
+                                    <img id ="{{uniqueId "{{userName}}_profPic"}}"  class="profile_picture_bubble">
                                     <span class="user_name">{{author}}</span>
                              
                                     {{#if user}}

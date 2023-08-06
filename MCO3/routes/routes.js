@@ -45,6 +45,6 @@ app.get('/editprofile', profileController.getEditProfile);
 app.post('/editprofile', fileMiddleWare.fields([{name: 'profile_picture', maxCount:1},{name:'cover_photo', maxCount:1}]),profileController.postEditProfile);
 
 app.get('/imageByName', imageController.getByName);
-app.get('/images/', imageController.getImage);
+app.get('/fileNameByAuthor', imageController.getImage);
 
 module.exports = app;
