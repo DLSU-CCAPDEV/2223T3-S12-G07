@@ -42,15 +42,15 @@ Animo Hub is an online social media app/website made by Lasallians for Lasallian
 * upload a profile picture and cover photo
 * search by username
 * sort by trending
+* password hashing
 * encrypt password
-* session
 * form validation
-* hashing
+* sessions
 
 Sources:
 https://stackoverflow.com/questions/31175221/regex-pattern-for-philippine-phone-number
 https://www.insidethediv.com/javascript-login-form-validation-with-source-code
-https://www.svgrepo.com/vectors/upvote/ (this is where the assets inside icons folder were taken from)
+https://www.svgrepo.com/vectors/upvote/ (this is where the assets inside the icons folder were taken from)
 https://www.freepik.com/free-photos-vectors/cover-art
 https://pixabay.com/images/search/cover%20art/
 https://www.pexels.com/search/profile%20picture/
