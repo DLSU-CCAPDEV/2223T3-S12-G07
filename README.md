@@ -1,6 +1,31 @@
 # 2223T3-S12-G07 #
 ## Forum Web application ##
 
+Members:
+Rovic Balanon
+David Grasparil
+Ralph Dawson G. Pineda
+
+### Introduction ### 
+
+Animo Hub is a social media app...
+
+### Setting up the app: Guide ###
+Note: include dotenv and the variable names and dependencies used
+1. asdf
+2. asdf
+3. asdf
+4. asdf
+
+### Features: ###
+Note: pick applicable phase 1 features as well
+* CRUD operations
+* Upvotes and downvotes
+* Edit profile
+* Upload profile picture and cover photo
+* encrypt password, session, form validation
+
+
 ### Phase 1 features: ###
 
 * email validation:xx@xx.com
@@ -12,25 +37,16 @@
 * upvotes/downvotes : you can upvote/downvote every post, comment, and reply on the forum
 * profile page redirection: you can visit the profile page of users by clicking on their profile picture (works for newly created posts but not for newly made comments/ replies)
 * home(visitor) : this forum is public and you can view the posts shared here without having an account but you cannot post content as a visitor
-* signout : you can sign out after log in
+* signout : you can sign out after log-in
 * view post : a post has a separate page on its own, different expercience for visitors and registered users
 * image preview : can view what your profile picture or cover photo will look like whhile in edditing the profile. 
 * can apply the  updated name/ about me / profile picture / cover photo of the user (john dee is the default)
 
 
 ### Limitations: ###
-
-* search_user : since there is no database yet, this feature has not yet been implemented
-* log in: you can log in as long as the inputs pass the email and password verification, 
-        however there is only one default user as of now which is "John Doe" since 
-        there is no database implementation yet.
-* feed ranking : There is no algorithm for the rankings of the posts you see on the feed based on the upvotes/downvotes as of now.
-* profile comments : There is no dedicated page yet for viewing all the comments of a user
-* profile upvotes : There is no dedicated page yet for viewing all the upvoted posts/comments by a user
-* profile downvotes : There is no dedicated page yet for viewing all the downvoted posts/comments by a user
+Note: test first to see which are applicable
 * view who upvoted/downvoted : The number of downvotes/upvotes are not counted and the user who upvoted/downvoted is not stored
 * can't track if user is logged in : this experience is simulated through hard coded webpages for logged in / visitor versions but a loop hole exists for a visitor to accomplish what a logged in user can do. For instance, all our current profile pages are viewed a registered users perspective even when visited by a visitor user
-
 
 ### FLOW of navigation ###
 
@@ -44,19 +60,6 @@
 * unimplemented features : { trending, search, profile[comments, upvotes,downvotes] } will lead to maintenance page
 * mainteance page signs out the user and leads to home(visitor)
 
-***NOTES***
-This repo contains alot of html files and a lot of those files are duplicates to hardcode the users and posts that were used to fill up the forum.
-The important html files are: 
-* create_post.html
-* editprofile.html
-* register.html
-* login.html
-* profile_page_John.html
-* home(loggedin).html
-* home(visitor).html
-* post(visitor)_John.html
-* post(loggedin)_John.html
-
 Sources:
 https://stackoverflow.com/questions/31175221/regex-pattern-for-philippine-phone-number
 https://www.insidethediv.com/javascript-login-form-validation-with-source-code
@@ -64,8 +67,3 @@ https://www.svgrepo.com/vectors/upvote/ (this is where the assets inside icons f
 https://www.freepik.com/free-photos-vectors/cover-art
 https://pixabay.com/images/search/cover%20art/
 https://www.pexels.com/search/profile%20picture/
-
-Members:
-Rovic Balanon
-David Grasparil
-Ralph Dawson G. Pineda
