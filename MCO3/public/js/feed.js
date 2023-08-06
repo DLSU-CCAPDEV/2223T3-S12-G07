@@ -32,9 +32,9 @@ function attachEventListeners(){
         
    //  /*   redirectProfile($(this))*/  }); 
 }
-function refresh(parent){
-    var $upButtons = parent.find($('upvote_button'));
-    var $downButtons = parent.find$(('downvote_button'));
+function refresh($parent){
+    var $upButtons = $parent.find($('.upvote_button'));
+    var $downButtons = $parent.find($('.downvote_button'));
     for (let i = 0; i <$upButtons.length; i++){
         getVoteData($($upButtons[i]));
         getVoteData($($downButtons[i]));

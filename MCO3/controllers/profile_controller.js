@@ -87,8 +87,11 @@ const profileController ={
             }else{
                 details.flag = false;
                 details.user = false;
+                details.data= data;
             }
             res.render('profile_page',details);
+        }else{
+            res.redirect('/home');
         }
     },
 

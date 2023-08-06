@@ -10,11 +10,11 @@ const postController ={
         var firstName = "";
         var lastName = "";
         if(req.session.flag){
-        userName = req.session.user.userName;
-        firstName = req.session.user.firstName;
-        lastName = req.session.user.lastName;
-        var active_user = req.session.user;
-        
+            userName = req.session.user.userName;
+            firstName = req.session.user.firstName;
+            lastName = req.session.user.lastName;
+            var active_user = req.session.user;
+            
         res.render('create_post',{userName:userName,firstName:firstName,lastName:lastName, active_user:active_user, flag:true});
         }else{
             res.redirect('/login');
@@ -474,7 +474,6 @@ const postController ={
                 user= req.session.prev_page_user;
             }else if(req.session.prev_page=="home"){
                 data_posts = await db.sort(Post,{},{},sort);
-                user= req.session.user.userName ;
             }
             console.log(data_posts)
             if(data_posts != null && data_posts.length > 0)
@@ -521,7 +520,7 @@ const postController ={
                         posts.push(post);
                     }
                 }
-            }
+        }
             res.send(posts);
         },
         getRenderPost : async function(req, res){

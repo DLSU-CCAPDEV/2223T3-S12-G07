@@ -598,3 +598,8 @@ a >.informative_text:hover{
     justify-content: center;
 
 }
+
+#trending:visited{
+    color:#41e996;
+
+}
