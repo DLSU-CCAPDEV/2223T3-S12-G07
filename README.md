@@ -51,14 +51,8 @@ Note: test first to see which are applicable
 ### FLOW of navigation ###
 
 ## START ##
-* either register / login / home (visitor)
-
-* register  -  profile_page_JohnDoe(loggedin) after registering,  home(visitor) after clicking the mascot sheep (not registered)
-* login - profile_page_JohnDoe(loggedin) after login,  home(visitor) after clicking the mascot sheep (not logged in)
-* home (visitor) - can lead to profile_page(visitor) by clicking the profile pictures, post pages when clicking on the posts, log in and register pages
-* profile page - can lead to post page  or home
-* unimplemented features : { trending, search, profile[comments, upvotes,downvotes] } will lead to maintenance page
-* mainteance page signs out the user and leads to home(visitor)
+* asdf
+* asdf
 
 Sources:
 https://stackoverflow.com/questions/31175221/regex-pattern-for-philippine-phone-number
