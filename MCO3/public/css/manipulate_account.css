@@ -234,6 +234,9 @@ a.announcement:hover{
     text-align: justify;
 }
 
+#bio{
+    height:100px;
+}
 #submit:disabled{
     cursor:not-allowed;
     background-color:#065217;

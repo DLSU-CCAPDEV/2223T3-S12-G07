@@ -10,8 +10,7 @@
             <div class="profile_drop_down">
                 <div class="profile_drop_down_interface">
                     <a href='profile_page?userName={{userName}}'>
-                        <div class="profile_picture_bubble">
-                        </div>
+                        <img class="profile_picture_bubble" {{#if prof_pic}}src="imageByName?name={{prof_pic}}"{{/if}}>
                      </a>
                     <div class="user_identity">
                         <div>{{firstName}} {{lastName}}</div>

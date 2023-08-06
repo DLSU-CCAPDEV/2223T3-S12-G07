@@ -26,11 +26,36 @@ function attachEventListeners(){
     $('.delete_comment').click(function(){delete_comment($(this))});
     $('.delete_reply').click(function(){delete_reply($(this))});
     $('.delete_post').click(function(){delete_post($(this))});
+
+   // $('.profile_picture_bubble').each( function(){render_image($(this));
+        
+   //  /*   redirectProfile($(this))*/  }); 
 }
 /*
 function redirectProfile(button){
     //profile picture id should have username
     window.location.href = '/profile_page?userName='+$(button).attr('id');
+}
+*/
+/*
+ function  render_image($img){
+    if($img.prop('src')){
+        imgname = $img.prop('src').substring($img.prop('src').lastIndexOf('/') + 1);
+        console.log("img src = "+imgname);
+        $.get('/imageByName', {name: imgname},  function(data){
+            console.log(data._body);
+            const blob = new Blob([data._body]);
+            const mimeType = blob.type;
+            const reader = new FileReader();
+            reader.readAsDataURL(blob);
+            const dataUrl = reader.result;
+         
+            //const blob = new Blob(data);
+            $img.attr('src', dataUrl);
+            console.log(dataUrl);
+    });
+}
+
 }
 */
 function delete_comment($button){

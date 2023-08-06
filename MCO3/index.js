@@ -6,28 +6,27 @@ const db = require('./models/db.js');
 const session = require('express-session');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
-
-
+const methodOverride = require('method-override');
+const gfs = require('./models/gfs.js');
 dotenv.config();
 const app = express();
 port = process.env.PORT;
 hostname = process.env.HOSTNAME;
 
+
 app.set('view engine', 'hbs');
+app.use(methodOverride('_method'));
+app.use(express.urlencoded({extended: true}));
+app.use(express.static('public'));
 hbs.registerPartials(__dirname + '/views/partials');
 hbs.registerHelper('helpflag', function(input) {
     input.flag = req.session.flag;
     console.log(input)
     return input;
 });
-// parses incoming requests with urlencoded payloads
-app.use(express.urlencoded({extended: true}));
-// set the folder `public` as folder containing static assets
-// such as css, js, and image files
-app.use(express.static('public'));
-
 
 db.connect();
+gfs.connect(db.conn);
 // define the paths contained in `./routes/routes.js`
 app.use(session({
     'secret': 'ccapdev-session',
@@ -42,6 +41,7 @@ app.use(session({
 }));
 
 app.use('/', routes);
+
 app.use(function (req, res) {
     var details = {};
 
@@ -52,9 +52,9 @@ app.use(function (req, res) {
     */
     if(req.session.idNum) {
         details.flag = true;
-        details.firstName = req.session.firstName;
-        details.lastName = req.session.lastName;
-        details.userName = req.session.userName;
+        details.firstName = req.session.user.firstName;
+        details.lastName = req.session.user.lastName;
+        details.userName = req.session.user.userName;
 
         res.render('home', details);
     }
@@ -67,9 +67,6 @@ app.use(function (req, res) {
         res.render('error', details);
     }
 });
-
-
-
 app.listen(port, hostname, function(){
     console.log(`Server running at http://${hostname}:${port}/`);
 });

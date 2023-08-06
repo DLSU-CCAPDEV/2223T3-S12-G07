@@ -19,7 +19,6 @@ const controller = {
             res.redirect(`/${link}`);
         });
     },
-    
 }
 
 module.exports = controller;

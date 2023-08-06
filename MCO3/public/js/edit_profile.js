@@ -1,8 +1,13 @@
+
 $(document).ready(function(){
     $('#contact_number').keyup(function(){
         validateField($('#contact_number'), 'Contact Number ', $('#warning_contact_number'));
     });
+
+  
 });
+
+// client side validators
 function isValidContactNumber(field){
     var cNum = validator.trim($('#contact_number').val());
     var regex = /((^(\+)(\d){12}$)|(^\d{11}$))/;
@@ -55,4 +60,6 @@ function validateField(field, fieldName, error) {
         }else
             $('#submit').prop('disabled', true);
     }
+
+
 }

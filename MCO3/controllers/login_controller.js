@@ -16,17 +16,20 @@ const loginController ={
         var password = req.body.password;
         var query = {userName: username};
         var data={};
-        var projection = 'password firstName lastName';
+        var projection = 'password firstName lastName profilePhoto';
 
         var result = await db.findOne(User, query, projection);
         if(result){
-            bcrypt.compare(password, result.password,function(err, equal){
+             bcrypt.compare(password, result.password, function(err, equal){
                 if(equal){
                     data ={
                         userName: username,
                         firstName: result.firstName,
                         lastName: result.lastName,
                     };
+                    if(result.profilePhoto != null){
+                        data.prof_pic = result.profilePhoto;
+                    }
 
                     req.session.user = data;
                     req.session.flag = true;

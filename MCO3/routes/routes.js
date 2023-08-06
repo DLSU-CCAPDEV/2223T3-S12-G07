@@ -5,6 +5,8 @@ const profileController = require('../controllers/profile_controller.js');
 const loginController = require('../controllers/login_controller.js');
 const homeController = require('../controllers/home_controller.js');
 const postController = require('../controllers/post_controller.js');
+const fileMiddleWare = require('../controllers/middlewares/file_upload.js');
+const imageController = require('../controllers/image_controller.js');
 const app = express();
 
 app.get('/favicon.ico', controller.getFavicon);
@@ -40,5 +42,9 @@ app.post('/deleteReply', postController.postDeleteReply);
 app.post('/edit_post', postController.postEditPost);
 app.get('/edit_post', postController.getEditPost);
 app.get('/editprofile', profileController.getEditProfile);
-app.post('/editprofile', profileController.postEditProfile);
+app.post('/editprofile', fileMiddleWare.fields([{name: 'profile_picture', maxCount:1},{name:'cover_photo', maxCount:1}]),profileController.postEditProfile);
+
+app.get('/imageByName', imageController.getByName);
+app.get('/images/', imageController.getImage);
+
 module.exports = app;

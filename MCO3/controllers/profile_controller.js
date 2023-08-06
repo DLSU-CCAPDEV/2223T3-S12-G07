@@ -4,6 +4,7 @@ const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
 const Reply = require('../models/ReplyModel.js');
 
+
 const profileController ={
     getProfile: async function(req, res){
         var user = req.query.userName;
@@ -21,6 +22,13 @@ const profileController ={
         {
             if(data.posts != null && data.posts.length > 0)
             {
+                if(data.cover_photo)
+                    $.get('/byID', {filename:data.cover_photo}, function(data){
+                    if(data != null){
+                        details.cover_photo = data;
+                        console.log(data);
+                    }
+                })
                 for (const i of data.posts) {
                     comments = [];
                     post =  await db.findOne(Post, {_id: i});
@@ -103,14 +111,27 @@ const profileController ={
             var lastName = req.body.last_name;  
             var contactNumber = req.body.contact_number;
             var aboutMe = req.body.bio;
+            var prof_pic = null;
+            var cov_pic = null;
 
+            if(req.files['profile_picture'][0]){
+                console.log('profile picture uploade '+ req.files['profile_picture'][0].filename);
+                prof_pic = req.files['profile_picture'][0].filename;
+            }
+            if(req.files['cover_photo'][0]){
+                cov_pic = req.files['cover_photo'][0].filename;
+            }
+            //
             query = {
                 firstName: firstName,
                 lastName: lastName,
                 contact_number: contactNumber,
                 aboutMe: aboutMe,
-                userName: username,
             };
+            if(prof_pic != null)
+                query.profilePhoto = prof_pic;
+            if(cov_pic != null)
+                query.coverPhoto = cov_pic;
             console.log(query);
             await db.updateOne(User, {userName: username}, {$set:query});
             res.redirect('/profile_page?userName='+username);
@@ -119,6 +140,7 @@ const profileController ={
             res.redirect(`/${req.session.prev_page}?userName=${userName}`);
         }
     },
+
 }
 
 module.exports = profileController;

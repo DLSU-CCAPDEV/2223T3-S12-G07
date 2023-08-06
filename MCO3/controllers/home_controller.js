@@ -1,5 +1,4 @@
 const db = require('../models/db.js');
-const User = require('../models/UserModel.js');
 const Post = require('../models/PostModel.js');
 const Comment = require('../models/CommentModel.js');
 const Reply = require('../models/ReplyModel.js');
@@ -59,14 +58,11 @@ const homeController ={
             
             details.flag = true;
             details.user= true;
-            data = {
-                userName : req.session.user.userName,
-                firstName : req.session.user.firstName,
-                lastName : req.session.user.lastName,  
-            }
             details.posts = tempPost;
-            details.data = data;
-        
+            details.data = req.session.user;
+            if(details.data.prof_pic != null){
+                console.log(details.data.prof_pic);
+            }
             details.active_user = req.session.user;
             req.session.prev_page = 'home';
             res.render('home',details);

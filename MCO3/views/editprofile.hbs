@@ -11,7 +11,7 @@
         <div class="content">
             {{>signin_header title="Make Some Changes" link='profile_page?username={{userName}}'}}
             <div class ="mainForm">
-                <form id ="edit_profile_form" method ='post'>
+                <form id ="edit_profile_form" method ='post' enctype="multipart/form-data">
                     <label for ="first_name">First Name</label><br>
                     <input type ="text" id ="first_name" name ="first_name" placeholder="{{firstName}}" value="{{firstName}}"><br>
                     <p id="warning_firstName" class = "warning"></p>
@@ -24,10 +24,10 @@
                     <div id="prof_pic_br"><br></div>
                     <label for="cover_photo">Cover Photo</label><br>
                     <input type="file" id ="cover_photo" name ="cover_photo" accept="image/*"><br>
-                    <img id="cov_pic"  >
+                    <img id="cov_pic_{{userName}}"  >
                     <div id="cov_pic_br"><br></div>
                     <label for="bio">About Yourself</label><br>
-                    <textarea id="bio" name="bio" rows="20" cols="100" {{#if aboutMe}} placeholder="{{aboutMe}}" value="{{aboutMe}}" {{/if}}></textarea><br>
+                    <textarea id="bio" name="bio" rows="20" cols="100" {{#if aboutMe}} placeholder="{{aboutMe}}"  {{/if}}>{{aboutMe}}</textarea><br>
                     <label for="contact_number">Contact Number</label><br>
                     <input type="text" id="contact_number" name="contact_number"><br>
                     <p id="warning_contact_number" class = "warning"></p>

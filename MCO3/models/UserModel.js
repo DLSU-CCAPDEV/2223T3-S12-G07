@@ -44,7 +44,15 @@ var UserSchema = new mongoose.Schema({
     replies:{
         type: Array,
         required: false
-    }
+    },
+    coverPhoto:{
+        type:String,
+        required: false
+    },
+    profilePhoto:{
+        type:String,
+        required: false
+    },
 
 });
 
