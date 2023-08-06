@@ -9,6 +9,7 @@ $(document).ready(function(){
 
 function attachEventListeners(){
    // $('.profile_picture_bubble').click(function(){});
+
    var $upButtons = document.getElementsByClassName('upvote_button');
    var $downButtons = document.getElementsByClassName('downvote_button');
    for (let i = 0; i <$upButtons.length; i++){
@@ -31,8 +32,28 @@ function attachEventListeners(){
         
    //  /*   redirectProfile($(this))*/  }); 
 }
-
-
+function refresh(parent){
+    var $upButtons = parent.find($('upvote_button'));
+    var $downButtons = parent.find$(('downvote_button'));
+    for (let i = 0; i <$upButtons.length; i++){
+        getVoteData($($upButtons[i]));
+        getVoteData($($downButtons[i]));
+  }
+     $parent.find($('a.reply_button')).on("click",( function(){render_replies($(this).parent().parent())}));
+     $parent.find($('.create_reply_button')).on("click",(function(){create_reply($(this))}));
+     $parent.find($('.create_comment_button')).on("click",(function(){create_comment($(this))}));
+     $parent.find($('a.comment_button')).on("click",function(){render_comments($(this).parent().parent())});
+     $parent.find($('.upvote_button')).on("click", function(){click_upvote($(this))}); 
+     $parent.find( $('.downvote_button')).on("click",function(){click_downvote($(this))});
+ 
+     $parent.find( $('.delete_comment')).on("click",function(){delete_comment($(this))});
+     $parent.find($('.delete_reply')).on("click",(function(){delete_reply($(this))}));
+     $parent.find($('.delete_post')).on("click",(function(){delete_post($(this))}));
+ 
+     $parent.find( $('.profile_picture_bubble, .profile_pic_img, .profile_picture, .cover_photo, .cover_photo_img')).each( function(){render_image($(this))});
+     
+}
+/*
 function refresh(parent){
     var $upButtons = parent.find('upvote_button');
     var $downButtons = parent.find('downvote_button');
@@ -85,6 +106,7 @@ function refresh(parent){
 
   
 }
+*/
 function repaint(){
     $('#new_posts').empty();
 }
@@ -98,7 +120,7 @@ function repaint(){
                     $('#new_posts').append(data);
                 });
             }
-           
+           refresh($('#new_posts'));
     }
     });
   //  refresh($('#new_posts'));
