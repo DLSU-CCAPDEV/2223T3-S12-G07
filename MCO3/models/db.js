@@ -4,8 +4,10 @@ dotenv.config();
 const mongoose = require('mongoose');
 
 // ccapdev-mongoose is the name of the database
-const url = 'mongodb+srv://rovicbalanon:cksfOKNH9Uqvkw0x@project0.9fgsgyc.mongodb.net/?retryWrites=true&w=majority;'
+const url = process.env.DATABASE_URL;
 
+// deployed url
+//'mongodb+srv://rovicbalanon:cksfOKNH9Uqvkw0x@project0.9fgsgyc.mongodb.net/?retryWrites=true&w=majority'
 
 
 // additional connection options
